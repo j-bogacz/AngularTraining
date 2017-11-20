@@ -12,12 +12,14 @@ export class DetailPlaylistComponent implements OnInit {
     name: string,
     description: string,
     favourite: boolean,
-    color: string
+    color: string,
+    editMode: boolean
   } = {
     name: 'First',
     description: 'Description',
     favourite: true,
-    color: '#00BCD4'
+    color: '#00BCD4',
+    editMode: false
   };
 
   constructor() {
@@ -25,10 +27,6 @@ export class DetailPlaylistComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  returnGreen() {
-    return 'green';
   }
 
 }
