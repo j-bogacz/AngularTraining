@@ -38,5 +38,5 @@ export class AppComponent {
       color: "#ff00ff"
     },
   ];
-  selectedPlaylist: Playlist = this.playlists[2];
+
 }
