@@ -5,7 +5,8 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   templateUrl: './detail-playlists.component.html',
   styles: [`
     .card-title {
-      border-right: 2px solid transparent;
+      border: 2px solid transparent;
+      padding: 5px;
     }
   `
   ],

@@ -1,8 +1,8 @@
-<div [hidden]="isEditMode">
-<h2>{{title}}</h2>
+<div *ngIf="!isEditMode">
+  <h2>{{title}}</h2>
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title" [style.border-right-color]="playlist.color">{{playlist.name}}</h4>
+      <h4 class="card-title" [style.border-color]="playlist.color">{{playlist.name}}</h4>
       <p class="card-text">
         {{playlist.description}}
         <br/>
@@ -13,56 +13,57 @@
     </div>
   </div>
 </div>
-<div [hidden]="!isEditMode">
-<form>
-  <div class="form-group">
-    <label for="playlistName">Nazwa listy</label>
-    <input
-      type="text"
-      class="form-control"
-      id="playlistName"
-      aria-describedby="playlistNameHelp"
-      placeholder="Wpisz nazwe listy"
-      [style.color]="playlist.color"
-      [(ngModel)]="playlist.name"
-      name="playlistName"
-    >
-    <small id="emailHelp" class="form-text text-muted">Nazwa listy jest niezbędna!</small>
-  </div>
-  <div class="form-group">
-    <label for="playlistDesc">Opis</label>
-    <input
-      type="text"
-      class="form-control"
-      id="playlistDesc"
-      placeholder="Opis"
-      [(ngModel)]="playlist.description"
-      name="playlistDesc"
-    >
-  </div>
-  <div class="form-group">
-    <label for="colorInput">Kolor wpisu</label>
-    <input
-      type="color"
-      id="colorInput"
-      [(ngModel)]="playlist.color"
-      name="colorInput"
-    >
-    <div class="form-check">
-      <label class="form-check-label">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="favList"
-          [(ngModel)]="playlist.favorite"
-          name="favList"
-        >
-        Ulubiona
-      </label>
-    </div>
 
-  </div>
-  <a (click)="isEditMode = false" href="#" class="btn btn-primary">Zapisz</a>
-  <div>Test: '{{playlist | json}}'</div>
-</form>
+<div *ngIf="isEditMode">
+  <form>
+    <div class="form-group">
+      <label for="playlistName">Nazwa listy</label>
+      <input
+        type="text"
+        class="form-control"
+        id="playlistName"
+        aria-describedby="playlistNameHelp"
+        placeholder="Wpisz nazwe listy"
+        [style.color]="playlist.color"
+        [(ngModel)]="playlist.name"
+        name="playlistName"
+      >
+      <small id="emailHelp" class="form-text text-muted">Nazwa listy jest niezbędna!</small>
+    </div>
+    <div class="form-group">
+      <label for="playlistDesc">Opis</label>
+      <input
+        type="text"
+        class="form-control"
+        id="playlistDesc"
+        placeholder="Opis"
+        [(ngModel)]="playlist.description"
+        name="playlistDesc"
+      >
+    </div>
+    <div class="form-group">
+      <label for="colorInput">Kolor wpisu</label>
+      <input
+        type="color"
+        id="colorInput"
+        [(ngModel)]="playlist.color"
+        name="colorInput"
+      >
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="favList"
+            [(ngModel)]="playlist.favorite"
+            name="favList"
+          >
+          Ulubiona
+        </label>
+      </div>
+
+    </div>
+    <a (click)="isEditMode = false" href="#" class="btn btn-primary">Zapisz</a>
+    <div>Test: '{{playlist | json}}'</div>
+  </form>
 </div>
