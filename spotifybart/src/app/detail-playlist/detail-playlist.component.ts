@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'bart-detail-playlist',
@@ -15,8 +15,8 @@ export class DetailPlaylistComponent implements OnInit {
     description: string,
     favourite: boolean,
     color: string
-  } =  {
-    name : "Pierwsza",
+  } = {
+    name: "Pierwsza",
     description: "Opis pierszrj",
     favourite: true,
     color: "#aa0000"
@@ -27,12 +27,13 @@ export class DetailPlaylistComponent implements OnInit {
   playlistColour: string = "#aa0000";
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-    returnGreen() {
-      return "green";
-    }
+  returnGreen() {
+    return "green";
+  }
 }
