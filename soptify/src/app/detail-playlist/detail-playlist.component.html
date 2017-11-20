@@ -1,0 +1,47 @@
+<h1>{{title }}</h1>
+<form>
+  <div class="form-group">
+    <label for="name">Playlist details</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      aria-describedby="emailHelp"
+      placeholder="Enter name"
+      [value]="playlist.name"
+      [style.border-color]="'red'"
+    >
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="description"
+      placeholder="Description"
+      [value]="playlist.description">
+  </div>
+  <div class="form-group">
+    <label for="colorInput">Color</label>
+    <input type="color"  id="colorInput" [value]="playlist.color" >
+  </div>
+
+  <div class="form-group">
+    <label for="description">Favorite</label>
+    <input
+      type="text"
+      class="form-control"
+      id="favorite"
+      placeholder="Description"
+      [value]="playlist.favorite? 'Yes':'No'">
+  </div>
+
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" [checked]="playlist.favorite">
+      Check me out
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
