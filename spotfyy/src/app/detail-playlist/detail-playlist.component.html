@@ -1,8 +1,18 @@
 <h1>{{title + (test>1?'blue':'red') + ' ' +returnGreen()}}</h1>
-<pre>{{playlist | json}}</pre>
 
+<div class="card" [hidden]="isEditingMode">
+  <div class="card-body">
+    <h4 class="card-title" [style.border-right-color]="playlist.color">{{playlist.name}}</h4>
+    <p class="card-text">
+      {{playlist.description}}
+      <br />
+      Favorite {{(playlist.favorite?'Yes':'No')}}
+    </p>
+    <a href="#" class="btn btn-primary" (click)="isEditingMode = true">Edit</a>
+  </div>
+</div>
 
-<form>
+<form [hidden]="!isEditingMode">
   <div class="form-group">
     <label for="nameInput">Playlist name</label>
     <input
@@ -45,5 +55,5 @@
       name="color"
     >
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="isEditingMode = false">Submit</button>
 </form>

@@ -3,11 +3,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'lekarz-detail-playlist',
   templateUrl: './detail-playlist.component.html',
-  styles: [],
+  styles: [`
+	    .card-title{
+		    border-right:2px solid transparent;
+	    }
+  `],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class DetailPlaylistComponent implements OnInit {
-
+  isEditingMode: boolean = false;
   title: string = 'Playlist detail';
   test: number = 2;
   playlist: {
