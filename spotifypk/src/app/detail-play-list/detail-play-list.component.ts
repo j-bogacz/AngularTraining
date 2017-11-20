@@ -13,11 +13,13 @@ export class DetailPlayListComponent implements OnInit {
     description: string,
     color: string,
     favourite: boolean
+    visibility: string
   } = {
-    name: 'Pierwszza',
+    name: 'Pierwsza',
     description: 'Opis pierwsza',
     color: '#ff0000',
-    favourite: true
+    favourite: true,
+    visibility: "hidden"
   };
   constructor() {
     console.log(this.playList);
@@ -25,8 +27,15 @@ export class DetailPlayListComponent implements OnInit {
   ngOnInit() {
   }
 
-  returnGreen(){
-    return 'green';
+  getVisibility(){
+    if(this.playList.visibility == "hidden")
+    {
+      this.playList.visibility = "visible";
+    }
+    else if(this.playList.visibility == "visible")
+    {
+      this.playList.visibility = "hidden";
+    }
   }
 
 }

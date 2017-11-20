@@ -1,5 +1,19 @@
 <h1>{{title}}</h1>
-<form>
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"
+          [style.backgroundColor]="playList.color"> {{ playList.name }} </h4>
+      <p class="card-text">
+        {{ playList.description }}
+        <br />
+        {{ playList.favourite ? "Yes" : "No" }}
+      </p>
+      <a href="#" class="btn btn-primary"
+         (click)="getVisibility()">Edit</a>
+    </div>
+  </div>
+<form [style.visibility]="playList.visibility">
   <div class="form-group">
     <label for="exampleInputEmail1">Playlist name</label>
     <input type="text"
