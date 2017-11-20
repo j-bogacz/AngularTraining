@@ -8,6 +8,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DetailPlaylistComponent implements OnInit {
 
+  isEdit:boolean = true;
+
+
   constructor() {
     console.log(this);
   }
@@ -29,4 +32,9 @@ export class DetailPlaylistComponent implements OnInit {
     favorite: false,
     color: '#5655ff'
   }
+
+  edit(){
+    this.isEdit = !this.isEdit;
+  }
+
 }

@@ -1,8 +1,19 @@
 <h1>{{title }}</h1>
 
+<div class="card" style="width: 20rem;" [style.display]="isEdit?'block':'none'">
+  <div class="card-body">
+    <h4 class="card-title"
+        [style.background]="playlist.color">{{playlist.name}}</h4>
+    <p class="card-text">
+      {{playlist.description}}
+      <br/>
+      Favorite {{(playlist.favorite?'Yes':'No')}}
+    </p>
+    <a (click)="edit()" class="btn btn-primary">Edit</a>
+  </div>
+</div>
 
-<p>{{playlist | json}}</p>
-<form>
+<form [style.display]="isEdit?'none':'block'">
   <div class="form-group">
     <label for="name">Playlist details</label>
     <input
@@ -57,5 +68,5 @@
     </label>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="edit()">Submit</button>
 </form>
