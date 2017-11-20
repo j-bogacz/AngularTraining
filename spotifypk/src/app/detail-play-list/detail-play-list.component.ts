@@ -13,13 +13,13 @@ export class DetailPlayListComponent implements OnInit {
     description: string,
     color: string,
     favourite: boolean
-    visibility: string
+    isEditingMode: boolean
   } = {
     name: 'Pierwsza',
     description: 'Opis pierwsza',
     color: '#ff0000',
     favourite: true,
-    visibility: "hidden"
+    isEditingMode: true
   };
   constructor() {
     console.log(this.playList);
@@ -28,13 +28,13 @@ export class DetailPlayListComponent implements OnInit {
   }
 
   getVisibility(){
-    if(this.playList.visibility == "hidden")
+    if(this.playList.isEditingMode)
     {
-      this.playList.visibility = "visible";
+      this.playList.isEditingMode = false;
     }
-    else if(this.playList.visibility == "visible")
+    else
     {
-      this.playList.visibility = "hidden";
+      this.playList.isEditingMode = true;
     }
   }
 
