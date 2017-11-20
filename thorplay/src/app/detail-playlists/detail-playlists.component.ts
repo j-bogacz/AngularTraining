@@ -14,7 +14,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 export class DetailPlaylistsComponent implements OnInit {
 
   title: string = 'Szczegóły listy';
-  mode: number = 1;
+  isEditMode: boolean = false;
 
   playlist: {
     name: string,
