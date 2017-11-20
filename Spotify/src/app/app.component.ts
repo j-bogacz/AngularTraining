@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Playlist} from 'playlist';
+import {Playlist} from "./playlist";
 
 @Component({
   selector: 'app-root',
