@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
-
-<div class="card" style="width: 20rem;" *ngIf="!showHide">
+<div [ngSwitch]="showHide">
+<div class="card" style="width: 20rem;" *ngSwitchCase="false">
   <div class="card-body">
     <h4 class="card-title"  [style.background-color]="playlist.color">{{playlist.name}}</h4>
     <p class="card-text">{{playlist.description}}</p>
@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<form *ngIf="showHide">
+<form *ngSwitchCase="true">
   <div class="form-group" >
     <label for="nameInput">Playlist name</label>
     <input type="text" class="form-control" id="nameInput" aria-describedby="emailHelp" placeholder="Enter name"
@@ -34,3 +34,4 @@
   </div>
   <button type="submit" class="btn btn-primary" (click)="showHide = false">Submit</button>
 </form>
+</div>
