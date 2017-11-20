@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { playList } from '../play-list';
 
 @Component({
   selector: 'pawel-detail-play-list',
@@ -8,19 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DetailPlayListComponent implements OnInit {
 
-  playList: {
-    name: string,
-    description: string,
-    color: string,
-    favourite: boolean
-    isEditingMode: boolean
-  } = {
-    name: 'Pierwsza',
-    description: 'Opis pierwsza',
-    color: '#ff0000',
-    favourite: true,
-    isEditingMode: true
-  };
+  @Input()  playList: playList;
   constructor() {
     console.log(this.playList);
   }

@@ -2,10 +2,13 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <pawel-list-play-lists></pawel-list-play-lists>
+      <pawel-list-play-lists [listPlayLists]="listPlayLists"
+                             (selectedChanged)="selectedItem = $event">
+      </pawel-list-play-lists>
     </div>
     <div class="col-sm">
-      <pawel-detail-play-list></pawel-detail-play-list>
+      <pawel-detail-play-list [playList]="selectedItem">
+      </pawel-detail-play-list>
     </div>
   </div>
 </div>
