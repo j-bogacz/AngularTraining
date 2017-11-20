@@ -2,12 +2,18 @@
   <div class="row">
     <div class="col-sm">
       <bart-list-playlist
-          [listPlayList]="listPlaylist">
+          [listPlaylists]="listPlaylists">
           (selectedChanged) = "selected = $event"
-      </bart-list-playlist>
+      ></bart-list-playlist>
     </div>
     <div class="col-sm">
-      <bart-detail-playlist></bart-detail-playlist>
+      <bart-detail-playlist
+              *ngIf="selected"
+              [playlist]="selected"
+            ></bart-detail-playlist>
+      <div class="alert alert-primary" role="alert" *ngIf="!selected">
+        Proszę wybrać playlistę z listy
+      </div>
     </div>
   </div>
 </div>
