@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 
-<div class="card" style="width: 20rem;" [hidden]="isInEditMode">
+<div class="card" style="width: 20rem;" *ngIf="!isInEditMode">
   <div class="card-body">
     <h4
       class="card-title" [style.border-right-color]="playlist.color">{{playlist.name}}
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<form [hidden]="!isInEditMode">
+<form *ngIf="isInEditMode">
   <div class="form-group">
     <label for="nameInput">Playlist name</label>
     <input
