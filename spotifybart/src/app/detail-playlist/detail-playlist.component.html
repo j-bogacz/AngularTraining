@@ -1,6 +1,9 @@
-<h1>Title: {{title + " " + (test>1 ? "blue" : "red") + " " + returnGreen()}}</h1>
+<h1>Title: {{title}}</h1>
 
-  <div class="card" style="width: 20rem;" *ngIf="!editMode">
+
+<div [ngSwitch]="editMode">
+
+  <div class="card" style="width: 20rem;" *ngSwitchCase="false">
     <div class="card-body" [style.background] = "playlist.color">
       <h4 class="card-title">{{playlist.name}}</h4>
       <p class="card-text">{{playlist.description}}
@@ -11,7 +14,7 @@
     </div>
   </div>
 
-  <form *ngIf="editMode">
+  <form *ngSwitchCase="true">
     <div class="form-group">
       <label for="nameInput">Playlist name</label>
       <input
@@ -55,4 +58,5 @@
     </div>
     <button type="submit" class="btn btn-primary" (click) = "editMode = false">Submit</button>
   </form>
+</div>
 
