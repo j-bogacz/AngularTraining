@@ -10,6 +10,7 @@ export class DetailPlayListComponent implements OnInit {
 
   title: string = "Playlist details";
   test: number = 10;
+  isEditMode: boolean = false;
 
   playList: {
     name: string,
@@ -18,9 +19,9 @@ export class DetailPlayListComponent implements OnInit {
     color: string
   } = {
     name: "pierwsza",
-    description : "opis",
+    description : "jakis bardzo dlugi opis, jakis bardzo dlugi opis, jakis bardzo dlugi opis, jakis bardzo dlugi opis, ",
     favorite: true,
-    color: '#0000ff'
+    color: '#ffffff'
   };
 
   constructor() {

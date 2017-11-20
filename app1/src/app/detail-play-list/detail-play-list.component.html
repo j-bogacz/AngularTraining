@@ -1,54 +1,70 @@
 <h1>{{title}}</h1>
 
-<pre>{{playList | json}}</pre>
-
-<form>
-  <div class="form-group">
-    <label for="nameImput">Play list name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="nameImput"
-      placeholder="name"
-      [(ngModel)]="playList.name"
-      name="name"
-      [style.color]="'red'"
-
-    >
+<div class="card" [hidden] = "isEditMode">
+  <div class="card-body" [style.background-color]="playList.color">
+    <h4 class="card-title">{{playList.name}} </h4>
+    <p class="card-text">{{playList.description}}</p><br>
+    <p class="card-text"> Favorite: {{playList.favorite == true ? 'TAK' : 'NIE'}} </p>
+    <a href="#"
+       class="btn btn-primary"
+       (click) = "isEditMode = true"
+    >Edit</a>
   </div>
-  <div class="form-group">
-    <label for="descriptionInput">Play list description</label>
-    <input
-      type="text"
-      class="form-control"
-      id="descriptionInput"
-      [(ngModel)]="playList.description"
-      placeholder="description"
-      name="description"
+</div>
 
-    >
-  </div>
-  <div class="form-group">
-    <label for="colorInput">Play list color</label>
-    <input
-      type="color"
-      [(ngModel)]="playList.color"
-      id="colorInput"
-      name="color"
 
-    >
-  </div>
+<div class="col-md"
+   [hidden] = "!isEditMode">
+  <form>
+    <div class="form-group">
+      <label for="nameImput">Play list name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nameImput"
+        placeholder="name"
+        [(ngModel)]="playList.name"
+        name="name"
+        [style.color]="'red'"
 
-  <div class="form-group">
-    <label for="favoriteInput">Ulubiona</label>
-    <input
-      type="checkbox"
-      [(ngModel)]="playList.favorite"
-      id="favoriteInput"
-      name="favorite"
+      >
+    </div>
+    <div class="form-group">
+      <label for="descriptionInput">Play list description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="descriptionInput"
+        [(ngModel)]="playList.description"
+        placeholder="description"
+        name="description"
 
-    >
-  </div>
+      >
+    </div>
+    <div class="form-group">
+      <label for="colorInput">Play list color</label>
+      <input
+        type="color"
+        [(ngModel)]="playList.color"
+        id="colorInput"
+        name="color"
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="favoriteInput">Favorite</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="playList.favorite"
+        id="favoriteInput"
+        name="favorite"
+
+      >
+    </div>
+
+    <button type="submit"
+            (click) = "isEditMode = false"
+            class="btn btn-primary">Hide</button>
+  </form>
+</div>
