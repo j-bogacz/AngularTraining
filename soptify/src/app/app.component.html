@@ -2,10 +2,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <butelka-list-playlist></butelka-list-playlist>
+      <butelka-list-playlist
+      [listPlaylist] = listPlaylist (selectedChanged)="listPlaylist.selected = $event"></butelka-list-playlist>
     </div>
     <div class="col-sm">
-      <butelka-detail-playlist></butelka-detail-playlist>
+      <butelka-detail-playlist
+        [playlist] = "selected" ></butelka-detail-playlist>
     </div>
   </div>
 </div>
