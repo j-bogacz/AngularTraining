@@ -1,0 +1,40 @@
+<h1>Title: {{title + " " + (test>1 ? "blue" : "red") + " " + returnGreen()}}</h1>
+<form>
+  <div class="form-group">
+    <label for="nameInput">Playlist name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nameInput"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      [value]="playlist.name"
+      [style.color]="'red'"
+    >
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+  <div class="form-group">
+    <label for="descriptionInput">Playlist description</label>
+    <input type="text"
+           class="form-control"
+           id="descriptionInput"
+           placeholder="description"
+           [value]="playlist.description"
+    >
+  </div>
+  <div class="form-group">
+    <label for="colorInput">Playlist colour</label>
+    <input type="Color"
+           id="colorinput"
+           [value]="playlist.color"
+    >
+  </div>
+  <div class="form-group">
+    <label for="favouriteInput">Favourite</label>
+    <input type="checkbox"
+           id="favouriteInput"
+           [checked]="playlist.favourite"
+    >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
