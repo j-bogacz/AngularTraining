@@ -3,12 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { test } from './test.component';
+import { ListPlayListComponent } from './list-play-list/list-play-list.component';
+import { DetailPlayListComponent } from './detail-play-list/detail-play-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    test
+    ListPlayListComponent,
+    DetailPlayListComponent
+
   ],
   imports: [
     BrowserModule

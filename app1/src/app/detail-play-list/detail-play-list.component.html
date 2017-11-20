@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+<form>
+  <div class="form-group">
+    <label for="nameImput">Play list name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nameImput"
+      placeholder="name"
+      [value]="playList.name"
+      [style.color] = "'red'"
+    >
+  </div>
+  <div class="form-group">
+    <label for="descriptionInput">Play list description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="descriptionInput"
+      [value]="playList.description"
+      placeholder="description">
+  </div>
+  <div class="form-group">
+    <label for="colorInput">Play list color</label>
+    <input
+      type="color"
+      [value]="playList.color"
+      id="colorInput" >
+  </div>
+
+  <div>{{(playList.favorite == true ? "ulubiona playlista" : "standardowa playlista")}}</div>
+
+  <div class="form-group">
+    <label for="favoriteInput">Play list color</label>
+    <input
+      type="checkbox"
+      [checked]="playList.favorite"
+      id="favoriteInput" >
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
