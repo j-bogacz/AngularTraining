@@ -1,13 +1,13 @@
 <h1>{{'Playlist ' + playlist.name + (playlist.favourite ? ' (Fav)' : '' )}}</h1>
 <h4>{{playlist.description}}</h4>
 <pre>{{playlist | json}}</pre>
-<div [ngSwitch]="playlist.editMode">
+<div [ngSwitch]="editMode">
   <div class="card" *ngSwitchCase=false>
     <div class="card-body">
       <h4 class="card-title" [style.color]="playlist.color">{{'Playlist ' + playlist.name + (playlist.favourite ? ' (Fav)'
         : '' )}}</h4>
       <p class="card-text">{{playlist.description}}</p>
-      <a href="#" class="btn btn-primary" (click)="playlist.editMode=true">Edit</a>
+      <a href="#" class="btn btn-primary" (click)="editMode=true">Edit</a>
     </div>
   </div>
 
@@ -54,7 +54,7 @@
         name="favourite"
       >
     </div>
-    <button type="submit" class="btn btn-primary" (click)="playlist.editMode=false">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="editMode=false">Submit</button>
   </form>
 </div>
 

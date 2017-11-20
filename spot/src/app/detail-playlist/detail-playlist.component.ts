@@ -13,7 +13,7 @@ export class DetailPlaylistComponent implements OnInit {
     description: string,
     favourite: boolean,
     color: string,
-    editMode: boolean
+    editMode
   } = {
     name: 'First',
     description: 'Description',
@@ -21,6 +21,8 @@ export class DetailPlaylistComponent implements OnInit {
     color: '#00BCD4',
     editMode: false
   };
+
+  editMode: boolean = false;
 
   constructor() {
     console.log(this.playlist);
