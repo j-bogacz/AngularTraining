@@ -10,8 +10,7 @@
       class="form-control"
       id="nameImput"
       placeholder="name"
-      [ngModel]="playList.name"
-      (ngModelChange)  = "playList.name = $event"
+      [(ngModel)]="playList.name"
       name="name"
       [style.color]="'red'"
 
@@ -23,20 +22,20 @@
       type="text"
       class="form-control"
       id="descriptionInput"
-      [ngModel]="playList.description"
+      [(ngModel)]="playList.description"
       placeholder="description"
       name="description"
-      (ngModelChange) = "playList.description = $event"
+
     >
   </div>
   <div class="form-group">
     <label for="colorInput">Play list color</label>
     <input
       type="color"
-      [ngModel]="playList.color"
+      [(ngModel)]="playList.color"
       id="colorInput"
       name="color"
-      (ngModelChange) = "playList.color = $event"
+
     >
   </div>
 
@@ -44,10 +43,10 @@
     <label for="favoriteInput">Ulubiona</label>
     <input
       type="checkbox"
-      [ngModel]="playList.favorite"
+      [(ngModel)]="playList.favorite"
       id="favoriteInput"
       name="favorite"
-      (ngModelChange) = "playList.favorite = $event"
+
     >
   </div>
 
