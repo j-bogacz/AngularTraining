@@ -8,7 +8,7 @@
       class="form-control"
       id="nameInput"
       placeholder="Name"
-      [ngModel]="playlist.name"
+      [(ngModel)]="playlist.name"
       (ngModelChange)="playlist.name = $event"
       [style.color]="playlist.color"
     >
@@ -21,7 +21,7 @@
       class="form-control"
       id="descriptionInput"
       placeholder="Description"
-      [ngModel]="playlist.description"
+      [(ngModel)]="playlist.description"
       (ngModelChange)="playlist.description = $event"
     >
   </div>
@@ -31,7 +31,7 @@
       name="color"
       type="color"
       id="colorInput"
-      [ngModel]="playlist.color"
+      [(ngModel)]="playlist.color"
       (ngModelChange)="playlist.color = $event"
     >
   </div>
@@ -41,7 +41,7 @@
         name="favorite"
         type="checkbox"
         class="form-check-input"
-        [ngModel]="playlist.favorite"
+        [(ngModel)]="playlist.favorite"
         (ngModelChange)="playlist.favorite = $event"
       >
       Is favorite
