@@ -11,8 +11,7 @@
       id="nameInput"
       aria-describedby="emailHelp"
       placeholder="Enter email"
-      [ngModel]= "playlist.name"
-      (ngModelChange) ="playlist.name = $event"
+      [(ngModel)]= "playlist.name"
       name = "name"
     >
     <small id="emailHelp" class="form-text text-muted"></small>
@@ -23,8 +22,7 @@
            class="form-control"
            id="descriptionInput"
            placeholder="description"
-           [ngModel]="playlist.description"
-           (ngModelChange) ="playlist.description = $event"
+           [(ngModel)]="playlist.description"
            name = "description"
 
     >
@@ -33,8 +31,7 @@
     <label for="colorInput">Playlist colour</label>
     <input type="Color"
            id="colorinput"
-           [ngModel]="playlist.color"
-           (ngModelChange) = "playlist.color = $event"
+           [(ngModel)]="playlist.color"
            name = "color"
     >
   </div>
@@ -42,8 +39,7 @@
     <label for="favouriteInput">Favourite</label>
     <input type="checkbox"
            id="favouriteInput"
-           [ngModel]="playlist.favourite"
-           (ngModelChange) = "playlist.favourite = $event"
+           [(ngModel)]="playlist.favourite"
            name = "Favourite"
 
     >
