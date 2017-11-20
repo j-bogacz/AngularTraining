@@ -1,0 +1,45 @@
+<h2>{{title}}</h2>
+<form>
+  <div class="form-group">
+    <label for="playlistName">Nazwa listy</label>
+    <input
+      type="text"
+      class="form-control"
+      id="playlistName"
+      aria-describedby="playlistNameHelp"
+      placeholder="Wpisz nazwe listy"
+      [value]="playlist.name"
+      style.color="{{playlist.color}}"
+    >
+    <small id="emailHelp" class="form-text text-muted">Nazwa listy jest niezbędna!</small>
+  </div>
+  <div class="form-group">
+    <label for="playlistDesc">Opis</label>
+    <input
+      type="text"
+      class="form-control"
+      id="playlistDesc"
+      placeholder="Opis"
+      [value]="playlist.description"
+    >
+  </div>
+  <div class="form-group">
+    <label for="colorInput">Kolor wpisu</label>
+    <input
+      type="color"
+      id="colorInput"
+      value="{{playlist.color}}"
+    >
+    <div class="form-check">
+      <label class="form-check-label">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          checked="{{playlist.favorite ? 'checked': ''}}"
+        >
+        Ulubiona
+      </label>
+    </div>
+
+  </div>  <button type="submit" class="btn btn-primary">Zapisz</button>
+</form>

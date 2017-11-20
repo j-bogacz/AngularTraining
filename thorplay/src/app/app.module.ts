@@ -1,15 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { TestComponent} from './test.component';
-
 
 import { AppComponent } from './app.component';
+import { ListPlaylistsComponent } from './list-playlists/list-playlists.component';
+import { DetailPlaylistsComponent } from './detail-playlists/detail-playlists.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    ListPlaylistsComponent,
+    DetailPlaylistsComponent
   ],
   imports: [
     BrowserModule
