@@ -8,8 +8,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DetailPlaylistComponent implements OnInit {
 
-  title: string = 'Playlist detail';
-  test: number = 0;
   playlist: {
     name: string,
     description: string,
@@ -22,7 +20,9 @@ export class DetailPlaylistComponent implements OnInit {
     color: '#00BCD4'
   };
 
-  constructor() { }
+  constructor() {
+    console.log(this.playlist);
+  }
 
   ngOnInit() {
   }
