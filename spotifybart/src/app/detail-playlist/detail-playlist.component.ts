@@ -28,6 +28,7 @@ export class DetailPlaylistComponent implements OnInit {
 
 
   constructor() {
+    console.log(this);
   }
 
   ngOnInit() {
