@@ -1,4 +1,5 @@
 <h1>{{title}}</h1>
+
 <ng-template [ngIf]="playList.isEditingMode">
   <div class="card">
     <div class="card-body">
@@ -14,6 +15,7 @@
     </div>
   </div>
 </ng-template>
+
 <ng-template [ngIf]="!playList.isEditingMode">
   <form [style.visibility]="playList.visibility">
     <div class="form-group">

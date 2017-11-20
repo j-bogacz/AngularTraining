@@ -1,4 +1,10 @@
 
-<p>
-  list-play-lists works!
-</p>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let playList of listPlayLists"
+    [class.active]="selectedItem == playList"
+    (click)="selectedItem = playList"
+    >{{ playList.name}}
+  </li>
+</ul>
