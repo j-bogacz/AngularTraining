@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 20rem;" *ngIf="!showHide">
   <div class="card-body">
     <h4 class="card-title"  [style.background-color]="playlist.color">{{playlist.name}}</h4>
     <p class="card-text">{{playlist.description}}</p>
