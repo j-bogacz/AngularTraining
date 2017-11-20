@@ -1,0 +1,45 @@
+<h1>{{title + (isReadOnly()?' (read only)':'')}}</h1>
+<form>
+  <div class="form-group">
+    <label for="nameInput">Playlist name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nameInput"
+      aria-describedby="nameHelp"
+      placeholder="Name"
+      [value]="playlist.name"
+      [style.color]="playlist.color"
+    >
+    <small id="nameHelp" class="form-text text-muted">Please enter some name.</small>
+  </div>
+  <div class="form-group">
+    <label for="descriptionInput">Playlist description</label>
+    <input
+      type="text"
+      class="form-control"
+      id="descriptionInput"
+      placeholder="Description"
+      [value]="playlist.description"
+    >
+  </div>
+  <div class="form-group">
+    <label for="colorInput">Playlist color</label>
+    <input
+      type="color"
+      id="colorInput"
+      [value]="playlist.color"
+    >
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        [checked]="playlist.favorite"
+      >
+      Is favorite
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
