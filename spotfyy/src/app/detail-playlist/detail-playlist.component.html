@@ -9,10 +9,8 @@
       type="text"
       class="form-control"
       id="nameInput"
-      aria-describedby="emailHelp"
       placeholder="Enter name"
-      [ngModel]="playlist.name"
-      (ngModelChange)="playlist.name = $event"
+      [(ngModel)]="playlist.name"
       name="name"
     >
   </div>
@@ -23,8 +21,7 @@
       class="form-control"
       id="descriptionInput"
       placeholder="Description"
-      [ngModel]="playlist.description"
-      (ngModelChange)="playlist.description = $event"
+      [(ngModel)]="playlist.description"
       name="description"
     >
   </div>
@@ -35,8 +32,7 @@
       type="checkbox"
       class="form-control"
       id="favoriteInput"
-      [ngModel]="playlist.favorite"
-      (ngModelChange)="playlist.favorite = $event"
+      [(ngModel)]="playlist.favorite"
       name="favorite"
     >
   </div>
@@ -45,8 +41,7 @@
     <input
       type="color"
       id="colorInput"
-      [ngModel]="playlist.color"
-      (ngModelChange)="playlist.color = $event"
+      [(ngModel)]="playlist.color"
       name="color"
     >
   </div>
