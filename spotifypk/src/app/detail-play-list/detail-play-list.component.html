@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Playlist name</label>
+    <input type="text"
+           class="form-control"
+           id="nameInput"
+           placeholder="Enter name"
+           [value]="playList.name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Playlist description</label>
+    <input type="text" class="form-control"
+           id="descriptionInput"
+           [value]="playList.description"
+           placeholder="Enter description">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Playlist color</label>
+    <input type="color"  id="colorImput" [value]="playList.color">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Is favourite</label>
+    <input type="checkbox"  id="isFavouriteInput" [checked]="playList.favourite">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
