@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import {PlayList} from "../playlist";
 
 @Component({
   selector: 'abc-detail-play-list',
@@ -23,6 +24,8 @@ export class DetailPlayListComponent implements OnInit {
     favorite: true,
     color: '#ffffff'
   };
+
+  @Input() playlist: PlayList;
 
   constructor() {
     console.log(this.playList);

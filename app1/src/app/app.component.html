@@ -1,10 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <abc-list-play-list>list</abc-list-play-list>
+      <abc-list-play-list
+        [listPlayList] = "listPlayLists"
+        (selectedChange) = "selected = $event"
+      >list</abc-list-play-list>
     </div>
     <div class="col-sm">
-      <abc-detail-play-list>detail</abc-detail-play-list>
+      <abc-detail-play-list
+        [playlist] = "selected"
+      >detail</abc-detail-play-list>
     </div>
   </div>
 </div>

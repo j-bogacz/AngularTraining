@@ -4,9 +4,9 @@
   <li
     [id]="p.id"
     class="list-group-item"
-    (click) = "selected = p"
-    [class.active]="selected == p"
-    *ngFor="let p of listPlayLists"
+    (click) = "onSelected(playList)"
+
+    *ngFor="let p of listPlayList"
       >{{p.name}}
 
   </li>
