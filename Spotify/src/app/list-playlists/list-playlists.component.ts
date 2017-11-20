@@ -9,7 +9,7 @@ import {Playlist} from '../playlist';
 })
 export class ListPlaylistsComponent implements OnInit {
 
-  title: string = 'Playlist list';
+  title: string = 'Playlist';
 
   @Input()
   playlists: Playlist[];
