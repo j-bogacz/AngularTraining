@@ -1,3 +1,10 @@
-<p>
-  list-playlists works!
-</p>
+<ul class="list-group">
+  <li
+    *ngFor="let pl of listPlaylists"
+    class="list-group-item"
+    [class.active]="(pl == currentPlaylist ? true : false)"
+    (click)="currentPlaylist = pl"
+  >
+    {{pl.name}}
+  </li>
+</ul>
