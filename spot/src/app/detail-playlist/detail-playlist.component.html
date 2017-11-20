@@ -1,4 +1,5 @@
 <h1>{{'Playlist ' + playlist.name}}</h1>
+<h4>{{playlist.description}}</h4>
 <form>
   <div class="form-group">
     <label for="nameInput">Playlist name</label>
@@ -9,8 +10,9 @@
       aria-describedby="nameHelp"
       placeholder="Enter name"
       [value]="playlist.name"
+      (keyup)="playlist.name = $event.target.value"
     >
-    <small id="nameHelp" class="form-text text-muted">You typed {{playlist.name}} </small>
+    <small id="nameHelp" class="form-text text-muted">You typed {{playlist.name}}</small>
   </div>
   <div class="form-group">
     <label for="descriptionInput">Playlist description</label>
@@ -20,6 +22,7 @@
       id="descriptionInput"
       placeholder="Description"
       [value]="playlist.description"
+      (keyup)="playlist.description = $event.target.value"
     >
   </div>
   <div class="form-group">
@@ -28,14 +31,17 @@
       type="color"
       id="colorInput"
       [value]="playlist.color"
+      (change)="playlist.color = $event.target.value"
     >
-  </div>  <div class="form-group">
-    <label for="favouriteInput">Favourite</label>
+  </div>
+  <div class="form-group">
+    <label for="favouriteInput">{{(playlist.favourite ? 'Favourite ' : '' ) + 'playlist'}}</label>
     <input
       type="checkbox"
       id="favouriteInput"
       [value]="playlist.favourite"
       [checked]="playlist.favourite"
+      (change)="playlist.favourite = $event.target.checked"
     >
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

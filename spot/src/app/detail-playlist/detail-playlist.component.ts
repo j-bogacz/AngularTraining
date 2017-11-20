@@ -20,7 +20,7 @@ export class DetailPlaylistComponent implements OnInit {
     description: 'Description',
     favourite: true,
     color: '#00BCD4'
-  }
+  };
 
   constructor() { }
 
