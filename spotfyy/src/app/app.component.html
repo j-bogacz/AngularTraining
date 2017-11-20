@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <lekarz-list-playlists></lekarz-list-playlists>
+      <lekarz-list-playlists [listPlaylists]="listPlaylists" (selectedChanged)="selectedPlaylist = $event"></lekarz-list-playlists>
     </div>
     <div class="col-sm">
-      <lekarz-detail-playlist></lekarz-detail-playlist>
+      <lekarz-detail-playlist *ngIf="selectedPlaylist" [playlist]="selectedPlaylist"></lekarz-detail-playlist>
     </div>
   </div>
 </div>

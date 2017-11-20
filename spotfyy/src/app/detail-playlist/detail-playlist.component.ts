@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {PlayList} from '../playlist';
 
 @Component({
   selector: 'lekarz-detail-playlist',
@@ -9,24 +10,26 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class DetailPlaylistComponent implements OnInit {
 
   title : string = 'Playlist detail';
-  playlist: {
-    name: string,
-    description: string,
-    favorite: boolean,
-    color: string
-  } = {
-    name: 'Pierwsza',
-    description: 'Opis pierwszej',
-    favorite: false,
-    color: '#ff0000'
-  }
+  @Input() selected: PlayList;
+
+  // playlist: {
+  //   name: string,
+  //   description: string,
+  //   favorite: boolean,
+  //   color: string
+  // } = {
+  //   name: 'Pierwsza',
+  //   description: 'Opis pierwszej',
+  //   favorite: false,
+  //   color: '#ff0000'
+  // }
+
+
   showHide : boolean = false;
-  //playlistName : string = 'Pierwsza';
-  //playlistDescription : string = 'Opis pierwszej';
-  //playlistColor : string = '#ff0000';
+
 
   constructor() {
-    console.log(this.playlist);
+    console.log(this.selected);
   }
 
   ngOnInit() {
