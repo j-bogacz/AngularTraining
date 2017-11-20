@@ -1,14 +1,20 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'kuku-detail-playlists',
   templateUrl: './detail-playlists.component.html',
-  styles: [],
+  styles: [`
+    .card-title {
+      border-right: 2px solid transparent;
+    }
+  `
+  ],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class DetailPlaylistsComponent implements OnInit {
 
   title: string = 'Szczegóły listy';
+  mode: number = 1;
 
   playlist: {
     name: string,
@@ -19,10 +25,12 @@ export class DetailPlaylistsComponent implements OnInit {
     name: 'Domyślna nazwa',
     description: 'Domyślny opis',
     favorite: true,
-    color: "#ff0000"
-  }
+    color: '#ff0000'
+  };
 
-  constructor() { }
+  constructor() {
+    console.log(this.playlist);
+  }
 
   ngOnInit() {
   }

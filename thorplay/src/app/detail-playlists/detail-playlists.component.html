@@ -1,4 +1,19 @@
+<div id="pokaz" [style.display]="(mode == 1 ? 'block' : 'none')">
 <h2>{{title}}</h2>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title" [style.border-right-color]="playlist.color">{{playlist.name}}</h4>
+      <p class="card-text">
+        {{playlist.description}}
+        <br/>
+        Ulubiona: {{playlist.favorite ? 'tak' : 'nie'}}
+        <br/>
+      </p>
+      <a (click)="mode=2" href="#" class="btn btn-primary">Edycja</a>
+    </div>
+  </div>
+</div>
+<div id="edycja" [style.display]="(mode != 1 ? 'block' : 'none')">
 <form>
   <div class="form-group">
     <label for="playlistName">Nazwa listy</label>
@@ -9,8 +24,8 @@
       aria-describedby="playlistNameHelp"
       placeholder="Wpisz nazwe listy"
       [style.color]="playlist.color"
-      [value]="playlist.name"
-      (keyup)="playlist.name = $event.target.value"
+      [(ngModel)]="playlist.name"
+      name="playlistName"
     >
     <small id="emailHelp" class="form-text text-muted">Nazwa listy jest niezbędna!</small>
   </div>
@@ -21,8 +36,8 @@
       class="form-control"
       id="playlistDesc"
       placeholder="Opis"
-      [value]="playlist.description"
-      (keyup)="playlist.description = $event.target.value"
+      [(ngModel)]="playlist.description"
+      name="playlistDesc"
     >
   </div>
   <div class="form-group">
@@ -30,27 +45,29 @@
     <input
       type="color"
       id="colorInput"
-      [value]="playlist.color"
-      (change)="playlist.color = $event.target.value"
+      [(ngModel)]="playlist.color"
+      name="colorInput"
     >
     <div class="form-check">
       <label class="form-check-label">
         <input
           type="checkbox"
           class="form-check-input"
-          checked="{{playlist.favorite ? 'checked': ''}}"
-          (change)="playlist.favorite = $event.target.checked"
+          id="favList"
+          [(ngModel)]="playlist.favorite"
+          name="favList"
         >
         Ulubiona
       </label>
     </div>
 
   </div>
-  <button
-    type="submit"
-    class="btn btn-primary"
+  <button (click)="mode=1"
+          type="submit"
+          class="btn btn-primary"
   >
     Zapisz
   </button>
-  <div>Test nazwy: '{{playlist.name}}'</div>
+  <div>Test: '{{playlist | json}}'</div>
 </form>
+</div>
