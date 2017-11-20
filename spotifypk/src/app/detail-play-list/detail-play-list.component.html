@@ -6,22 +6,28 @@
            class="form-control"
            id="nameInput"
            placeholder="Enter name"
-           [value]="playList.name">
+           [value]="playList.name"
+           (keyup)="playList.name = $event.target.value">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Playlist description</label>
     <input type="text" class="form-control"
            id="descriptionInput"
            [value]="playList.description"
-           placeholder="Enter description">
+           placeholder="Enter description"
+           (keyup)="playList.description = $event.target.value">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Playlist color</label>
-    <input type="color"  id="colorImput" [value]="playList.color">
+    <input type="color"  id="colorImput"
+           [value]="playList.color"
+           (change)="playList.color = $event.target.value">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Is favourite</label>
-    <input type="checkbox"  id="isFavouriteInput" [checked]="playList.favourite">
+    <label for="exampleInputPassword1">Is favourite {{ (playList.favourite ? "Yes" : "No") }}</label>
+    <input type="checkbox"  id="isFavouriteInput"
+           [checked]="playList.favourite"
+           (change)="playList.favourite = $event.target.checked">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
