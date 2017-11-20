@@ -23,7 +23,9 @@ export class DetailPlayListComponent implements OnInit {
     color: '#0000ff'
   };
 
-  constructor() { }
+  constructor() {
+    console.log(this.playList);
+  }
 
   ngOnInit() {
   }

@@ -1,4 +1,7 @@
 <h1>{{title}}</h1>
+
+<pre>{{playList | json}}</pre>
+
 <form>
   <div class="form-group">
     <label for="nameImput">Play list name</label>
@@ -7,9 +10,11 @@
       class="form-control"
       id="nameImput"
       placeholder="name"
-      [value]="playList.name"
+      [ngModel]="playList.name"
+      (ngModelChange)  = "playList.name = $event"
+      name="name"
       [style.color]="'red'"
-      (keyup) = "playList.name = $event.target.value"
+
     >
   </div>
   <div class="form-group">
@@ -18,18 +23,20 @@
       type="text"
       class="form-control"
       id="descriptionInput"
-      [value]="playList.description"
+      [ngModel]="playList.description"
       placeholder="description"
-      (keyup) = "playList.description = $event.target.value"
+      name="description"
+      (ngModelChange) = "playList.description = $event"
     >
   </div>
   <div class="form-group">
     <label for="colorInput">Play list color</label>
     <input
       type="color"
-      [value]="playList.color"
+      [ngModel]="playList.color"
       id="colorInput"
-      (change) = "playList.color = $event.target.value"
+      name="color"
+      (ngModelChange) = "playList.color = $event"
     >
   </div>
 
@@ -37,9 +44,10 @@
     <label for="favoriteInput">Ulubiona</label>
     <input
       type="checkbox"
-      [checked]="playList.favorite"
+      [ngModel]="playList.favorite"
       id="favoriteInput"
-      (change) = "playList.favorite = $event.target.checked"
+      name="favorite"
+      (ngModelChange) = "playList.favorite = $event"
     >
   </div>
 
