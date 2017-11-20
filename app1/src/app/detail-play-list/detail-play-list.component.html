@@ -1,20 +1,18 @@
 <h1>{{title}}</h1>
 
-<div class="card" [hidden] = "isEditMode">
+<div class="card" *ngIf="!isEditMode">
   <div class="card-body" [style.background-color]="playList.color">
     <h4 class="card-title">{{playList.name}} </h4>
     <p class="card-text">{{playList.description}}</p><br>
     <p class="card-text"> Favorite: {{playList.favorite == true ? 'TAK' : 'NIE'}} </p>
     <a href="#"
        class="btn btn-primary"
-       (click) = "isEditMode = true"
+       (click)="isEditMode = true"
     >Edit</a>
   </div>
 </div>
 
-
-<div class="col-md"
-   [hidden] = "!isEditMode">
+<div class="col-md" *ngIf="isEditMode">
   <form>
     <div class="form-group">
       <label for="nameImput">Play list name</label>
@@ -26,7 +24,6 @@
         [(ngModel)]="playList.name"
         name="name"
         [style.color]="'red'"
-
       >
     </div>
     <div class="form-group">
@@ -38,7 +35,6 @@
         [(ngModel)]="playList.description"
         placeholder="description"
         name="description"
-
       >
     </div>
     <div class="form-group">
@@ -48,7 +44,6 @@
         [(ngModel)]="playList.color"
         id="colorInput"
         name="color"
-
       >
     </div>
 
@@ -59,12 +54,13 @@
         [(ngModel)]="playList.favorite"
         id="favoriteInput"
         name="favorite"
-
       >
     </div>
 
     <button type="submit"
-            (click) = "isEditMode = false"
-            class="btn btn-primary">Hide</button>
+            (click)="isEditMode = false"
+            class="btn btn-primary">Hide
+    </button>
   </form>
 </div>
+
