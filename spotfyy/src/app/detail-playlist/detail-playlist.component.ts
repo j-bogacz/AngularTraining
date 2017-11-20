@@ -25,7 +25,10 @@ export class DetailPlaylistComponent implements OnInit {
   // playlistDescription: string = 'Opis pierwszej';
   // playlistColor: string = '#ff0000';
 
-  constructor() { }
+  constructor() {
+    this.playlist.name = 'Druga';
+    console.log(this.playlist);
+  }
 
   ngOnInit() {
   }

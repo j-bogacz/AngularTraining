@@ -1,4 +1,7 @@
 <h1>{{title + (test>1?'blue':'red') + ' ' +returnGreen()}}</h1>
+<pre>{{playlist | json}}</pre>
+
+
 <form>
   <div class="form-group">
     <label for="nameInput">Playlist name</label>
@@ -8,8 +11,9 @@
       id="nameInput"
       aria-describedby="emailHelp"
       placeholder="Enter name"
-      [value]="playlist.name"
-      (keyup)="playlist.name = $event.target.value"
+      [ngModel]="playlist.name"
+      (ngModelChange)="playlist.name = $event"
+      name="name"
     >
   </div>
   <div class="form-group">
@@ -19,8 +23,9 @@
       class="form-control"
       id="descriptionInput"
       placeholder="Description"
-      [value]="playlist.description"
-      (keyup)="playlist.description = $event.target.value"
+      [ngModel]="playlist.description"
+      (ngModelChange)="playlist.description = $event"
+      name="description"
     >
   </div>
   <div class="form-group">
@@ -30,8 +35,9 @@
       type="checkbox"
       class="form-control"
       id="favoriteInput"
-      [checked]="playlist.favorite"
-      (change)="playlist.favorite = $event.target.checked"
+      [ngModel]="playlist.favorite"
+      (ngModelChange)="playlist.favorite = $event"
+      name="favorite"
     >
   </div>
   <div class="form-group">
@@ -39,8 +45,9 @@
     <input
       type="color"
       id="colorInput"
-      [value]="playlist.color"
-      (change)="playlist.color = $event.target.value"
+      [ngModel]="playlist.color"
+      (ngModelChange)="playlist.color = $event"
+      name="color"
     >
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
