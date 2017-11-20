@@ -9,7 +9,8 @@
       aria-describedby="emailHelp"
       placeholder="Enter name"
       [value]="playlist.name"
-      [style.border-color]="'red'"
+      [style.color]="playlist.color"
+      (change)="playlist.name = $event.target.value"
     >
   </div>
   <div class="form-group">
@@ -19,27 +20,37 @@
       class="form-control"
       id="description"
       placeholder="Description"
-      [value]="playlist.description">
+      [value]="playlist.description"
+      (change)="playlist.description = $event.target.value"
+      >
   </div>
   <div class="form-group">
     <label for="colorInput">Color</label>
-    <input type="color"  id="colorInput" [value]="playlist.color" >
+    <input type="color"
+           id="colorInput"
+           [value]="playlist.color"
+           (change)="playlist.color =$event.target.value">
   </div>
 
   <div class="form-group">
-    <label for="description">Favorite</label>
+    <label for="favorite">Favorite</label>
     <input
       type="text"
       class="form-control"
       id="favorite"
       placeholder="Description"
-      [value]="playlist.favorite? 'Yes':'No'">
+      [value]="playlist.favorite? 'Yes':'No'"
+     >
   </div>
 
   <div class="form-check">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" [checked]="playlist.favorite">
-      Check me out
+      <input type="checkbox"
+             class="form-check-input"
+             [checked]="playlist.favorite"
+             (change)="playlist.favorite = $event.target.checked"
+      >
+     Favorite
     </label>
   </div>
 

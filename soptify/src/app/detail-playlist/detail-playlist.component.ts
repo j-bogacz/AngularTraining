@@ -27,10 +27,4 @@ export class DetailPlaylistComponent implements OnInit {
     favorite: false,
     color: '#5655ff'
   }
-
-  PlaylistName :string = "Pierwsza";
-  description: string = 'Opis pierwszego';
-  playlistColor : string = "#ff0000"
-
-
 }
