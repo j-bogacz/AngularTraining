@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <component-list-playlists></component-list-playlists>
+      <component-list-playlists
+        [playlists]="playlists"
+        [selectedPlaylist]="selectedPlaylist"
+        (selectedPlaylistChanged)="selectedPlaylist = $event"
+      ></component-list-playlists>
     </div>
     <div class="col-sm">
-      <component-detail-playlists></component-detail-playlists>
+      <component-detail-playlists [playlist]="selectedPlaylist"></component-detail-playlists>
     </div>
   </div>
 </div>
