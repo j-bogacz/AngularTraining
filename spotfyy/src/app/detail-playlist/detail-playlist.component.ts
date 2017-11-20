@@ -20,6 +20,7 @@ export class DetailPlaylistComponent implements OnInit {
     favorite: false,
     color: '#ff0000'
   }
+  showHide : boolean = false;
   //playlistName : string = 'Pierwsza';
   //playlistDescription : string = 'Opis pierwszej';
   //playlistColor : string = '#ff0000';

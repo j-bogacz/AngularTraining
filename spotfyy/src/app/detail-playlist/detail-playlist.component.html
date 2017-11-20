@@ -1,9 +1,16 @@
 <h1>{{title}}</h1>
 
-<pre>{{playlist | json}}</pre>
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h4 class="card-title"  [style.background-color]="playlist.color">{{playlist.name}}</h4>
+    <p class="card-text">{{playlist.description}}</p>
+    <p>Favorite {{playlist.favorite? 'Yes' : 'No'}}</p>
+    <a href="#" class="btn btn-primary" (click)="showHide = !showHide">Edit</a>
+  </div>
+</div>
 
-<form>
-  <div class="form-group">
+<form *ngIf="showHide">
+  <div class="form-group" >
     <label for="nameInput">Playlist name</label>
     <input type="text" class="form-control" id="nameInput" aria-describedby="emailHelp" placeholder="Enter name"
            name="nameInp"
@@ -25,5 +32,5 @@
     <input type="checkbox" id="favoriteCbx" name="favoriteCb"
            [(ngModel)]="playlist.favorite"/>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="showHide = false">Submit</button>
 </form>
