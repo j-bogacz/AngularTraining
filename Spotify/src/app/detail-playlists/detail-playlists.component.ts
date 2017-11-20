@@ -3,7 +3,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 @Component({
   selector: 'component-detail-playlists',
   templateUrl: './detail-playlists.component.html',
-  styles: [],
+  styles: ['.card-title { border-right: 10px solid transparent;}'],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class DetailPlaylistsComponent implements OnInit {
@@ -22,14 +22,12 @@ export class DetailPlaylistsComponent implements OnInit {
     color: '#0000ff'
   };
 
+  isInEditMode: boolean = false;
+
   constructor() {
     console.log(this);
   }
 
   ngOnInit() {
-  }
-
-  isReadOnly() {
-    return true;
   }
 }
