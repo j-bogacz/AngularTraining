@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from "@angular/forms";
+
 import { AppComponent } from './app.component';
 import { ListPlaylistComponent } from './list-playlist/list-playlist.component';
 import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.component';
@@ -13,7 +15,8 @@ import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.compo
     DetailPlaylistComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

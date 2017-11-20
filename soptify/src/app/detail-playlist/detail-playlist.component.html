@@ -1,4 +1,7 @@
 <h1>{{title }}</h1>
+
+
+<p>{{playlist | json}}</p>
 <form>
   <div class="form-group">
     <label for="name">Playlist details</label>
@@ -8,9 +11,10 @@
       id="name"
       aria-describedby="emailHelp"
       placeholder="Enter name"
-      [value]="playlist.name"
+      [ngModel]="playlist.name"
       [style.color]="playlist.color"
-      (change)="playlist.name = $event.target.value"
+      (ngModelChange)="playlist.name = $event"
+      name="name"
     >
   </div>
   <div class="form-group">
@@ -20,16 +24,18 @@
       class="form-control"
       id="description"
       placeholder="Description"
-      [value]="playlist.description"
-      (change)="playlist.description = $event.target.value"
+      [ngModel]="playlist.description"
+      (ngModelChange)="playlist.description = $event"
+      name="description"
       >
   </div>
   <div class="form-group">
     <label for="colorInput">Color</label>
     <input type="color"
            id="colorInput"
-           [value]="playlist.color"
-           (change)="playlist.color =$event.target.value">
+           [ngModel]="playlist.color"
+           (ngModelChange)="playlist.color =$event"
+           name="color">
   </div>
 
   <div class="form-group">
@@ -39,7 +45,8 @@
       class="form-control"
       id="favorite"
       placeholder="Description"
-      [value]="playlist.favorite? 'Yes':'No'"
+      [ngModel]="playlist.favorite? 'Yes':'No'"
+      name="favorite"
      >
   </div>
 
@@ -47,8 +54,9 @@
     <label class="form-check-label">
       <input type="checkbox"
              class="form-check-input"
-             [checked]="playlist.favorite"
-             (change)="playlist.favorite = $event.target.checked"
+             [ngModel]="playlist.favorite"
+             (ngModelChange)="playlist.favorite = $event"
+             name="favorite"
       >
      Favorite
     </label>

@@ -8,7 +8,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DetailPlaylistComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log(this);
+  }
 
   ngOnInit() {
   }
