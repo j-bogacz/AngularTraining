@@ -1,16 +1,16 @@
 <h1>{{'Playlist ' + playlist.name + (playlist.favourite ? ' (Fav)' : '' )}}</h1>
 <h4>{{playlist.description}}</h4>
 <pre>{{playlist | json}}</pre>
-
-<div class="card">
+<div class="card" *ngIf="!playlist.editMode">
   <div class="card-body">
-    <h4 class="card-title" [style.color]="playlist.color">{{'Playlist ' + playlist.name + (playlist.favourite ? ' (Fav)' : '' )}}</h4>
+    <h4 class="card-title" [style.color]="playlist.color">{{'Playlist ' + playlist.name + (playlist.favourite ? ' (Fav)'
+      : '' )}}</h4>
     <p class="card-text">{{playlist.description}}</p>
     <a href="#" class="btn btn-primary" (click)="playlist.editMode=true">Edit</a>
   </div>
 </div>
 
-<form  [hidden]="!playlist.editMode">
+<form *ngIf="playlist.editMode">
   <div class="form-group">
     <label for="nameInput">Playlist name</label>
     <input
@@ -55,3 +55,6 @@
   </div>
   <button type="submit" class="btn btn-primary" (click)="playlist.editMode=false">Submit</button>
 </form>
+
+
+
