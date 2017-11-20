@@ -1,3 +1,14 @@
-<p>
-  list-play-list works!
-</p>
+<h1>Lista</h1>
+
+<ul class="list-group">
+  <li
+    [id]="p.id"
+    class="list-group-item"
+    (click) = "selected = p"
+    [class.active]="selected == p"
+    *ngFor="let p of listPlayLists"
+      >{{p.name}}
+
+  </li>
+
+</ul>
