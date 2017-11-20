@@ -2,10 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <kuku-list-playlists></kuku-list-playlists>
+      <kuku-list-playlists [listPlaylists]="playlists"
+                           (onCurrentPlaylistChange)="currentPlaylist = $event"></kuku-list-playlists>
     </div>
     <div class="col-sm">
-      <kuku-detail-playlists></kuku-detail-playlists>
+      <kuku-detail-playlists [myPlaylist]="currentPlaylist"></kuku-detail-playlists>
     </div>
   </div>
 </div>

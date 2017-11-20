@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Playlist} from "../playlist";
 
 @Component({
   selector: 'kuku-detail-playlists',
@@ -17,23 +18,16 @@ export class DetailPlaylistsComponent implements OnInit {
   title: string = 'Szczegóły listy';
   isEditMode: boolean = false;
 
-  playlist: {
-    name: string,
-    description: string,
-    favorite: boolean,
-    color: string
-  } = {
-    name: 'Domyślna nazwa',
-    description: 'Domyślny opis',
-    favorite: true,
-    color: '#ff0000'
-  };
+  @Input() myPlaylist: Playlist;
 
   constructor() {
-    console.log(this.playlist);
   }
 
   ngOnInit() {
+  }
+
+  onCurrentPlaylistChange(playlist) {
+    this.myPlaylist = playlist;
   }
 
 }

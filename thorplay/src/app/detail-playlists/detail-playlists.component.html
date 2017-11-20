@@ -1,13 +1,14 @@
+<div *ngIf="myPlaylist != null">
 <div [ngSwitch]="isEditMode">
   <div *ngSwitchDefault>
     <h2>{{title}}</h2>
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title" [style.border-color]="playlist.color">{{playlist.name}}</h4>
+        <h4 class="card-title" [style.border-color]="myPlaylist.color">{{myPlaylist.name}}</h4>
         <p class="card-text">
-          {{playlist.description}}
+          {{myPlaylist.description}}
           <br/>
-          Ulubiona: {{playlist.favorite ? 'tak' : 'nie'}}
+          Ulubiona: {{myPlaylist.favorite ? 'tak' : 'nie'}}
           <br/>
         </p>
         <a (click)="isEditMode = true" href="#" class="btn btn-primary">Edycja</a>
@@ -18,28 +19,28 @@
   <div *ngSwitchCase="true">
     <form>
       <div class="form-group">
-        <label for="playlistName">Nazwa listy</label>
+        <label for="myPlaylistName">Nazwa listy</label>
         <input
           type="text"
           class="form-control"
-          id="playlistName"
-          aria-describedby="playlistNameHelp"
+          id="myPlaylistName"
+          aria-describedby="myPlaylistNameHelp"
           placeholder="Wpisz nazwe listy"
-          [style.color]="playlist.color"
-          [(ngModel)]="playlist.name"
-          name="playlistName"
+          [style.color]="myPlaylist.color"
+          [(ngModel)]="myPlaylist.name"
+          name="myPlaylistName"
         >
         <small id="emailHelp" class="form-text text-muted">Nazwa listy jest niezbędna!</small>
       </div>
       <div class="form-group">
-        <label for="playlistDesc">Opis</label>
+        <label for="myPlaylistDesc">Opis</label>
         <input
           type="text"
           class="form-control"
-          id="playlistDesc"
+          id="myPlaylistDesc"
           placeholder="Opis"
-          [(ngModel)]="playlist.description"
-          name="playlistDesc"
+          [(ngModel)]="myPlaylist.description"
+          name="myPlaylistDesc"
         >
       </div>
       <div class="form-group">
@@ -47,7 +48,7 @@
         <input
           type="color"
           id="colorInput"
-          [(ngModel)]="playlist.color"
+          [(ngModel)]="myPlaylist.color"
           name="colorInput"
         >
         <div class="form-check">
@@ -56,7 +57,7 @@
               type="checkbox"
               class="form-check-input"
               id="favList"
-              [(ngModel)]="playlist.favorite"
+              [(ngModel)]="myPlaylist.favorite"
               name="favList"
             >
             Ulubiona
@@ -65,7 +66,8 @@
 
       </div>
       <a (click)="isEditMode = false" href="#" class="btn btn-primary">Zapisz</a>
-      <div>Test: '{{playlist | json}}'</div>
+      <div>Test: '{{myPlaylist | json}}'</div>
     </form>
   </div>
+</div>
 </div>
