@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Playlist} from '../playlist';
 
 @Component({
   selector: 'mk-detail-playlist',
@@ -8,20 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DetailPlaylistComponent implements OnInit {
 
-  playlist: {
-    name: string,
-    description: string,
-    favourite: boolean,
-    color: string,
-    editMode
-  } = {
-    name: 'First',
-    description: 'Description',
-    favourite: true,
-    color: '#00BCD4',
-    editMode: false
-  };
-
+  @Input() playlist: Playlist;
   editMode: boolean = false;
 
   constructor() {

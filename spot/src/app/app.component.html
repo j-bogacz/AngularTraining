@@ -1,12 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <mk-list-playlists></mk-list-playlists>
+      <mk-list-playlists
+        [listPlaylists]="listPlaylists"
+        (selectedChange)="selectedPlaylist = $event"
+      ></mk-list-playlists>
     </div>
     <div class="col-sm">
-      <mk-detail-playlist></mk-detail-playlist>
+      <mk-detail-playlist
+        *ngIf="selectedPlaylist"
+        [playlist]="selectedPlaylist"
+      ></mk-detail-playlist>
     </div>
   </div>
 </div>
+
 
 
