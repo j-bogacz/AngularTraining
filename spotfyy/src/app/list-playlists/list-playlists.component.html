@@ -1,3 +1,8 @@
-<p>
-  list-playlists works!
-</p>
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let playlist of listPlaylists" 
+    (click)="selected = playlist" 
+    [class.active]="selected == playlist"
+  >{{playlist.name}}</li>
+</ul>
