@@ -8,8 +8,9 @@
       id="playlistName"
       aria-describedby="playlistNameHelp"
       placeholder="Wpisz nazwe listy"
+      [style.color]="playlist.color"
       [value]="playlist.name"
-      style.color="{{playlist.color}}"
+      (keyup)="playlist.name = $event.target.value"
     >
     <small id="emailHelp" class="form-text text-muted">Nazwa listy jest niezbędna!</small>
   </div>
@@ -21,6 +22,7 @@
       id="playlistDesc"
       placeholder="Opis"
       [value]="playlist.description"
+      (keyup)="playlist.description = $event.target.value"
     >
   </div>
   <div class="form-group">
@@ -28,7 +30,8 @@
     <input
       type="color"
       id="colorInput"
-      value="{{playlist.color}}"
+      [value]="playlist.color"
+      (change)="playlist.color = $event.target.value"
     >
     <div class="form-check">
       <label class="form-check-label">
@@ -36,10 +39,18 @@
           type="checkbox"
           class="form-check-input"
           checked="{{playlist.favorite ? 'checked': ''}}"
+          (change)="playlist.favorite = $event.target.checked"
         >
         Ulubiona
       </label>
     </div>
 
-  </div>  <button type="submit" class="btn btn-primary">Zapisz</button>
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary"
+  >
+    Zapisz
+  </button>
+  <div>Test nazwy: '{{playlist.name}}'</div>
 </form>
