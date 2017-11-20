@@ -1,6 +1,6 @@
 <h1>{{title }}</h1>
 
-<div class="card" style="width: 20rem;" [style.display]="isEdit?'block':'none'">
+<div class="card" style="width: 20rem;" *ngIf="!isEdit">
   <div class="card-body">
     <h4 class="card-title"
         [style.background]="playlist.color">{{playlist.name}}</h4>
@@ -13,7 +13,9 @@
   </div>
 </div>
 
-<form [style.display]="isEdit?'none':'block'">
+
+
+<form *ngIf="isEdit">
   <div class="form-group">
     <label for="name">Playlist details</label>
     <input
@@ -35,7 +37,7 @@
       placeholder="Description"
       [(ngModel)]="playlist.description"
       name="description"
-      >
+    >
   </div>
   <div class="form-group">
     <label for="colorInput">Color</label>
@@ -54,7 +56,7 @@
       placeholder="Description"
       [value]="playlist.favorite? 'Yes':'No'"
       name="favorite"
-     >
+    >
   </div>
 
   <div class="form-check">
@@ -62,11 +64,11 @@
       <input type="checkbox"
              class="form-check-input"
              [(ngModel)]="playlist.favorite"
-             name="favorite"
-      >
-     Favorite
+             name="favorite">
+      Favorite
     </label>
   </div>
 
   <button type="submit" class="btn btn-primary" (click)="edit()">Submit</button>
 </form>
+

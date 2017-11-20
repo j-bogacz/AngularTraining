@@ -8,7 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DetailPlaylistComponent implements OnInit {
 
-  isEdit:boolean = true;
+  isEdit:boolean = false;
 
 
   constructor() {
