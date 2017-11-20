@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'component-detail-playlists',
@@ -22,12 +22,13 @@ export class DetailPlaylistsComponent implements OnInit {
     color: '#0000ff'
   };
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  isReadOnly(){
+  isReadOnly() {
     return true;
   }
 }

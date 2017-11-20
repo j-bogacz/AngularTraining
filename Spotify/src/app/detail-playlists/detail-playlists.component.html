@@ -6,13 +6,12 @@
       type="text"
       class="form-control"
       id="nameInput"
-      aria-describedby="nameHelp"
       placeholder="Name"
       [value]="playlist.name"
       [style.color]="playlist.color"
+      (keyup)="playlist.name = $event.target.value"
     >
-    <small id="nameHelp" class="form-text text-muted">Please enter some name.</small>
-  </div>
+ </div>
   <div class="form-group">
     <label for="descriptionInput">Playlist description</label>
     <input
@@ -21,6 +20,7 @@
       id="descriptionInput"
       placeholder="Description"
       [value]="playlist.description"
+      (keyup)="playlist.description = $event.target.value"
     >
   </div>
   <div class="form-group">
@@ -29,6 +29,7 @@
       type="color"
       id="colorInput"
       [value]="playlist.color"
+      (change)="playlist.color = $event.target.value"
     >
   </div>
   <div class="form-check">
@@ -37,9 +38,15 @@
         type="checkbox"
         class="form-check-input"
         [checked]="playlist.favorite"
+        (change)="playlist.favorite = $event.target.checked"
       >
       Is favorite
     </label>
   </div>
+  <small class="form-text text-muted">{{playlist.name}}</small>
+  <small class="form-text text-muted">{{playlist.description}}</small>
+  <small class="form-text text-muted">{{playlist.color}}</small>
+  <small class="form-text text-muted">{{(playlist.favorite?'Favorite':'')}}</small>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
