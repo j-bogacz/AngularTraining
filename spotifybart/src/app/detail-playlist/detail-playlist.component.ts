@@ -22,7 +22,7 @@ export class DetailPlaylistComponent implements OnInit {
     color: string
   } = {
     name: "Pierwsza",
-    description: "Opis pierwszej",
+    description: "Opis pierszrj",
     favourite: true,
     color: "#aa0000"
   };
