@@ -1,3 +1,6 @@
-<div class="card-group">
-  <lekarz-album-details></lekarz-album-details>
+<div class="card-group" >
+  <lekarz-album-details
+    *ngFor="let album of albums"
+    [album]="album"
+  ></lekarz-album-details>
 </div>

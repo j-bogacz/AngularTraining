@@ -1,7 +1,7 @@
-<div class="card" style="width: 20rem;">
-  <img class="card-img-top" src="" alt="Zdjęcie albumu">
+<div class="card">
+  <img class="card-img-top" [src]="album.images[0].url" [style.width]="album.images[0].width" alt="Zdjęcie albumu">
   <div class="card-body">
-    <h4 class="card-title">Tytuł albumu</h4>
-    <p class="card-text">Wykonawca</p>
+    <h4 class="card-title">{{album.name}}</h4>
+    <p class="card-text">{{album.artists[0].name}}</p>
   </div>
 </div>

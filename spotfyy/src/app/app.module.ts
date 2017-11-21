@@ -10,6 +10,7 @@ import { HighlightDirective } from './shared/highlight.directive';
 
 import { SearchMusicModule } from './search-music/search-music.module';
 import {AuthService} from "./auth/auth.service";
+import {SpotifyService} from "./search-music/spotify.service";
 
 @NgModule({
   declarations: [
