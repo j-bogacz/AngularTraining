@@ -7,6 +7,9 @@ import {ListPlaylistsComponent} from './list-playlists/list-playlists.component'
 import {DetailPlaylistsComponent} from './detail-playlists/detail-playlists.component';
 import {HighlightDirective} from './shared/highlight.directive';
 
+import {SearchModule} from "./search/search.module";
+import {AuthService} from "./auth/auth.service";
+
 
 @NgModule({
   declarations: [
@@ -17,9 +20,14 @@ import {HighlightDirective} from './shared/highlight.directive';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    SearchModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private spotifyAuth: AuthService) {
+    spotifyAuth.getToken();
+  }
+}

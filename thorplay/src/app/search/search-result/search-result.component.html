@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-3" *ngFor="let pl of foundPlaylists">
+      <div class="card">
+        <img class="card-img-top img-fluid"
+             src="https://yt3.ggpht.com/-WLsbm_Kuu68/AAAAAAAAAAI/AAAAAAAAAAA/iJ94LTFBF-E/s100-c-k-no-mo-rj-c0xffffff/photo.jpg">
+        <div class="card-block">
+          <h4 class="card-title">{{pl.name}}</h4>
+          <p class="card-text">
+            {{pl.description}}
+          </p>
+          <p class="card-text">
+            {{pl.color}}
+          </p>
+        </div>
+      </div>
