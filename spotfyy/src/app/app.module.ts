@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { SearchPanelModule } from './search-panel/search-panel.module';
 
 import { AppComponent } from './app.component';
 import { ListPlaylistsComponent } from './list-playlists/list-playlists.component';
 import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.component';
 import { HighlightDirective } from './shared/highlight.directive';
+import {AuthService} from './auth/auth.service';
+
 
 
 @NgModule({
@@ -15,12 +17,21 @@ import { HighlightDirective } from './shared/highlight.directive';
     ListPlaylistsComponent,
     DetailPlaylistComponent,
     HighlightDirective
+
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    SearchPanelModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private auth: AuthService){
+    this.auth.getToken();
+  }
+
+}
