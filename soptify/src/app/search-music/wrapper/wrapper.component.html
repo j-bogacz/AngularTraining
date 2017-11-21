@@ -2,11 +2,8 @@
   <lekarz-search></lekarz-search>
   <br/>
   <div class="card-deck">
-    <lekarz-album></lekarz-album>
-    <lekarz-album></lekarz-album>
-    <lekarz-album></lekarz-album>
-    <lekarz-album></lekarz-album>
-    <lekarz-album></lekarz-album>
-    <lekarz-album></lekarz-album>
+    <lekarz-album *ngFor="let a of albums"
+                  [albums]="a"
+      ></lekarz-album>
   </div>
 </div>
