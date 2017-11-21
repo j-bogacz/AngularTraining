@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
-import { PlayList } from '../playlist';
+
+import {Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
+import { Playlist } from '../playlist';
 
 @Component({
   selector: 'lekarz-list-playlists',
@@ -8,15 +9,18 @@ import { PlayList } from '../playlist';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ListPlaylistsComponent implements OnInit {
-  selectedPlaylist: PlayList;
-  @Input() listPlaylists: PlayList[];
-  @Output() selectedChange = new EventEmitter();
+
+  selected: Playlist;
+  @Input() listPlaylists: Playlist[];
+  @Output() selectedChanged = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
   onSelected(playlist){
-    this.selectedChange.emit(playlist);
-    console.log(playlist);
+    this.selectedChanged.emit(playlist);
+
+    this.selected = playlist;
+
   }
 }
