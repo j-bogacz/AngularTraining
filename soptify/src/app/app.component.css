@@ -2,3 +2,6 @@
 :host(.pink) p {
   color: hotpink;
 }
+:host{
+  margin: 5px;
+}

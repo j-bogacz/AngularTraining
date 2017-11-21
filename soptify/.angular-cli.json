@@ -57,7 +57,7 @@
   "defaults": {
     "styleExt": "css",
     "component": {
-      "inlineStyle":true,
+      "inlineStyle":false,
       "inlineTemplate": false,
       "spec" : false,
       "flat" : false,
