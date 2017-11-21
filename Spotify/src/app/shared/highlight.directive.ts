@@ -1,10 +1,11 @@
-import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
-import {propertyNames} from "@angular/language-service/src/html_info";
+import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[directive-highlight]'
 })
 export class HighlightDirective implements OnInit {
+
+  hovered: boolean;
 
   @Input()
   propertyName: string;
@@ -15,24 +16,31 @@ export class HighlightDirective implements OnInit {
   @Input()
   defaultColor: string;
 
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
   ngOnInit() {
-    this.Highlight(this.defaultColor);
+    // this.Highlight(this.defaultColor);
   }
 
   @HostListener('mouseenter')
   onMouseEnter() {
-    this.Highlight(this.highlightedColor);
+    this.hovered = true;
+    // this.Highlight(this.highlightedColor);
   }
 
   @HostListener('mouseleave')
   onMouseLeave() {
-    this.Highlight(this.defaultColor);
+    this.hovered = false;
+    // this.Highlight(this.defaultColor);
   }
 
-  private Highlight(color: string) {
-    this.el.nativeElement.style[this.propertyName] = color;
+  /* private Highlight(color: string) {
+    this.renderer.setStyle(this.el.nativeElement, this.propertyName, color);
+  } */
+
+  @HostBinding('style.borderRightColor')
+  get getColor() {
+    return this.hovered ? this.highlightedColor : this.defaultColor;
   }
 }
