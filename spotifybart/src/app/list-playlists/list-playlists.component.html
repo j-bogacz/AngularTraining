@@ -3,10 +3,8 @@
     class="list-group-item"
     *ngFor="let playlist of listPlaylists"
     (click)="onSelected(playlist)"
-
     [ngClass]="{'active': selected == playlist}"
-    [style.borderLeftColor] = "(hover == playlist?playlist.color:'black')"
-    (mouseenter)="hover = playlist"
-    (mouseleave)="hover = false"
+    [bartHighlight]="playlist.color"
+    [defaultColor]="'black'"
   >{{playlist.name}}</li>
 </ul>
