@@ -1,16 +1,8 @@
 <ul class="list-group">
   <li
     class="list-group-item"
+    *ngFor="let album of albums;"
   >
-    Album name
+    {{album.artists[0].name}} - {{album.name}}
   </li>
 </ul>
-<!--<li-->
-<!--class="list-group-item"-->
-<!--*ngFor="let album of albums;"-->
-<!--(click)="SelectPlaylist(playlist)"-->
-<!--[ngClass]="{'active': selectedPlaylist == playlist}"-->
-<!--directive-highlight propertyName="border-right-color" [highlightedColor]="playlist.color" defaultColor="lightgray"-->
-<!--&gt;-->
-<!--{{playlist.name}}{{i}}-->
-<!--</li>-->

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'component-search',
@@ -8,7 +8,10 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  albumName: string;
+  albumName: string = 'acdc';
+
+  @Output()
+  albumNameChanged = new EventEmitter();
 
   constructor() {
   }
@@ -18,6 +21,7 @@ export class SearchComponent implements OnInit {
 
   Search() {
     console.log('Looking for album: ', this.albumName);
+    this.albumNameChanged.emit(this.albumName);
   }
 
 }

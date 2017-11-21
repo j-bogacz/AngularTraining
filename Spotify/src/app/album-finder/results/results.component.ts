@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Album} from "../interfaces";
 
 @Component({
   selector: 'component-results',
@@ -7,6 +8,9 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ResultsComponent implements OnInit {
+
+  @Input()
+  albums: Album[];
 
   constructor() {
   }

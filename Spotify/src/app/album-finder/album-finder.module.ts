@@ -5,10 +5,14 @@ import {SearchComponent} from './search/search.component';
 import {ResultsComponent} from './results/results.component';
 import {AlbumFinderComponent} from './album-finder.component';
 import {DetailsComponent} from './details/details.component';
+import {SpotifyAccessorService} from "./spotify-accessor.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {SpotifyAccessorAuthenticationService} from "./spotify-accessor-authentication.service";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [
     SearchComponent,
@@ -16,6 +20,7 @@ import {DetailsComponent} from './details/details.component';
     AlbumFinderComponent,
     DetailsComponent
   ],
+  providers: [SpotifyAccessorService, SpotifyAccessorAuthenticationService],
   exports: [AlbumFinderComponent]
 })
 export class AlbumFinderModule {
