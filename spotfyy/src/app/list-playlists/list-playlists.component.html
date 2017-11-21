@@ -5,6 +5,9 @@
     *ngFor="let playlist of listPlaylists"
     (click)="onSelected(playlist)"
     [ngClass]="{'active': selected == playlist}"
+
+    [lekarzHighlight]="playlist.color"
+    [defaultColor]="'black'"
   >{{playlist.name}}</li>
 
 </ul>
