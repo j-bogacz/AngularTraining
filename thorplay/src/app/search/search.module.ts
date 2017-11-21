@@ -5,10 +5,12 @@ import {SearchPanelComponent} from './search-panel/search-panel.component';
 import {SearchViewComponent} from "./search-view/search-view.component";
 import {HttpClientModule} from "@angular/common/http";
 import {SpotifyService} from "./spotify.service";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     HttpClientModule
   ],
   exports: [

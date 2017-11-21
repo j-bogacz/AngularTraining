@@ -13,17 +13,16 @@ export class SearchPanelComponent implements OnInit {
 
 
   constructor(private spotifyService: SpotifyService) {
-    this.spotifyService.getAlbums('acdc').subscribe((albums: Album[]) => {
-      this.albums = albums;
-      console.log(this.albums);
-    });
   }
 
   ngOnInit() {
   }
 
-  getRequest(text: string) {
-    console.log('Wynik: ' + JSON.stringify(this.spotifyService.getAlbums(text)));
+  findAlbums(text: string) {
+    this.spotifyService.getAlbums(text).subscribe((albums: Album[]) => {
+      this.albums = albums;
+      console.log(this.albums);
+    });
   }
 
 }

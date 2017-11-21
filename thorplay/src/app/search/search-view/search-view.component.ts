@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'kuku-search-view',
@@ -12,6 +12,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class SearchViewComponent implements OnInit {
   searchText: string = '';
+  @Output() onSearchTextChange = new EventEmitter<string>();
 
   constructor() {
 
@@ -20,4 +21,7 @@ export class SearchViewComponent implements OnInit {
   ngOnInit() {
   }
 
+  searchSpotify() {
+    this.onSearchTextChange.emit(this.searchText);
+  }
 }
