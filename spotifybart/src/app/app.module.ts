@@ -9,7 +9,6 @@ import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.compo
 import { HighlightDirective } from './shared/highlight.directive';
 
 import { SpotifyModule } from './spotify/spotify.module';
-import {getLocaleMonthNames} from "@angular/common";
 import {AuthService} from "./auth/auth.service";
 
 

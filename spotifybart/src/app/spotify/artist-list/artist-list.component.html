@@ -1,7 +1,11 @@
-<div class="card" style="width: 20rem;">
-  <img class="card-img-top" src="..." alt="Album image">
+
+
+
+
+<div class="card" style="width: 20rem;" *ngFor="let album of albums">
+  <img class="card-img-top" src='{{album.images[0].url}}' alt="Album image">
   <div class="card-body">
-    <h4 class="card-title">ArtisName</h4>
-    <p class="card-text">Album name</p>
+    <h4 class="card-title">  {{album.name}}</h4>
+    <p class="card-text">{{album.artists[0].name}}</p>
   </div>
 </div>

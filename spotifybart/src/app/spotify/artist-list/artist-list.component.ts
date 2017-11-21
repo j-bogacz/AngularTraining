@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Album } from "../interfaces";
 
 @Component({
   selector: 'bart-artist-list',
@@ -7,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ArtistListComponent implements OnInit {
+
+  @Input() albums: Album[];
 
   constructor() { }
 
