@@ -4,8 +4,8 @@
     *ngFor="let playlist of listPlaylists"
     [class.active]="selectedPlaylist == playlist"
     (click)="onSelected(playlist)"
-    (mouseenter)="$event.target.style.borderLeftColor=playlist.color"
-    (mouseleave)="$event.target.style.borderLeftColor='transparent'"
+    [mkHighlight]="playlist.color"
+    [mkDefaultHighlight]="'black'"
   >{{playlist.name}}</li>
 </ul>
 

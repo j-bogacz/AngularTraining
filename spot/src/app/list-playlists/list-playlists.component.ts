@@ -6,7 +6,7 @@ import { Playlist } from '../playlist';
   templateUrl: './list-playlists.component.html',
   styles: [`
     .list-group-item {
-      border-left: 10px solid transparent;
+      border-left: 10px solid #9E9E9E;
     }
   `],
   encapsulation: ViewEncapsulation.Emulated
