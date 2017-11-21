@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Album} from "../../album";
 
 @Component({
@@ -9,7 +9,7 @@ import {Album} from "../../album";
 })
 export class GridAlbumsComponent implements OnInit {
 
-  albums: Album[] = [
+  @Input() albums: Album[] = [
     {id: 1, imgSrc: 'qwe', title: 'Title', artist: 'Singer'}
   ];
 

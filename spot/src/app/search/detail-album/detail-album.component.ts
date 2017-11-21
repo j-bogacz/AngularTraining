@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Album} from "../../album";
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Album} from '../../album';
 
 @Component({
   selector: 'mk-detail-album',
@@ -9,7 +9,7 @@ import {Album} from "../../album";
 })
 export class DetailAlbumComponent implements OnInit {
 
-  album: Album = {id: 1, imgSrc: 'qwe', title: 'Title', artist: 'Singer'};
+  @Input() album: Album = {id: 1, imgSrc: 'qwe', title: 'Titleasdasd', artist: 'Singer'};
 
   constructor() {
   }
