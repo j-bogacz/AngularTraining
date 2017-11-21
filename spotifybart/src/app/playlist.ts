@@ -1,8 +1,7 @@
 export interface Playlist {
-  id: number,
-  name: string,
-  description: string,
-  favourite: boolean,
-  color: string
-  isActive:boolean
+  id: number;
+  name: string;
+  description: string;
+  favorite: boolean;
+  color: string;
 }
