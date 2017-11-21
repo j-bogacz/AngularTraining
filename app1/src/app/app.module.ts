@@ -1,22 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }  from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import { ListPlayListComponent } from './list-play-list/list-play-list.component';
-import { DetailPlayListComponent } from './detail-play-list/detail-play-list.component';
+import { ListPlaylistsComponent } from './list-playlists/list-playlists.component';
+import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.component';
+import { HighlightDirective } from './shared/highlight.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListPlayListComponent,
-    DetailPlayListComponent
-
+    ListPlaylistsComponent,
+    DetailPlaylistComponent,
+    HighlightDirective
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
