@@ -1,13 +1,1 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <component-list-playlists
-        [playlists]="playlists"
-        (selectedPlaylistChanged)="selectedPlaylist = $event"
-      ></component-list-playlists>
-    </div>
-    <div class="col-sm">
-      <component-detail-playlists *ngIf="selectedPlaylist" [playlist]="selectedPlaylist"></component-detail-playlists>
-    </div>
-  </div>
-</div>
+<component-album-finder></component-album-finder>
