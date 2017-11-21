@@ -3,12 +3,11 @@
 <ul class="list-group">
   <li
     class="list-group-item"
-    *ngFor="let playlist of playlists"
+    *ngFor="let playlist of playlists;"
     (click)="SelectPlaylist(playlist)"
     [ngClass]="{'active': selectedPlaylist == playlist}"
-    (mouseenter)="$event.target.style['border-right-color'] = playlist.color"
-    (mouseleave)="$event.target.style['border-right-color'] = 'black'"
+    directive-highlight propertyName="borderRightColor" [highlightedColor]="playlist.color" defaultColor="lightgray"
   >
-    {{playlist.name}}
+    {{playlist.name}}{{i}}
   </li>
 </ul>
