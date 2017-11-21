@@ -1,11 +1,10 @@
 <ul class="list-group">
   <li
-    *ngFor="let pl of listPlaylists"
+    *ngFor="let pl of listPlaylists; let i = index"
     class="list-group-item"
     [class.active]="pl == currentPlaylist"
     (click)="selectPlaylist(pl)"
-    (mouseenter)="setSpecialColor($event, pl)"
-    (mouseleave)="setNormalColor($event, pl)"
+    [kukuHighlight]="pl.color" defaultColor="blue"
   >
     {{pl.name}}
   </li>

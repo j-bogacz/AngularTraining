@@ -31,6 +31,7 @@ export class ListPlaylistsComponent implements OnInit {
 
   @Output() onCurrentPlaylistChange = new EventEmitter<Playlist>();
   currentPlaylist: Playlist;
+  hover: number = 0;
 
   constructor() { }
 
@@ -47,6 +48,6 @@ export class ListPlaylistsComponent implements OnInit {
   }
 
   setNormalColor(event) {
-    event.target.style.borderLeftColor = 'black';
+    event.target.style.borderLeftColor = 'transparent';
   }
 }
