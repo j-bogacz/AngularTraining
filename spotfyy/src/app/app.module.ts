@@ -30,7 +30,7 @@ import {AuthService} from './auth/auth.service';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private auth: AuthService){
+  constructor(private auth: AuthService) {
     this.auth.getToken();
   }
 

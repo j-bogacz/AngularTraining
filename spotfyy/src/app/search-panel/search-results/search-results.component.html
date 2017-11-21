@@ -1,35 +1,11 @@
 <div class="card-deck">
-<!--  <div
-    class="card"
-    *ngFor="let playlist of listPlaylists"
-    (click)="onSelected(playlist)"
-    [ngClass]="{'active': selected == playlist}"
+  <div class="card" *ngFor="let album of albums" [ngClass]="{'active': selected == album}">
+    <img class="card-img-top" src="{{album.images[1].url}}" alt="{{album.name}}">
+    <div class="card-body">
+      <h4 class="card-title">{{album.name}}</h4>
+      <p class="card-text">{{album.artists[0].name}}</p>
+    </div>
+  </div>
 
-    [lekarzHighlight]="playlist.color"
-    [defaultColor]="'black'"
-  >{{playlist.name}}</div>-->
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
+
 </div>
