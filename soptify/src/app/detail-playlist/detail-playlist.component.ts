@@ -1,30 +1,31 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Playlist} from "../playlist";
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Playlist } from '../playlist';
 
 @Component({
   selector: 'butelka-detail-playlist',
   templateUrl: './detail-playlist.component.html',
-  styles: [],
+  styles: [`
+	    .card-title{
+		    border-right:2px solid transparent;
+	    }
+  `],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class DetailPlaylistComponent implements OnInit {
-
-  isEdit:boolean = false;
-
+  isEditingMode: boolean = false;
+  title: string = 'Playlist detail';
+  test: number = 2;
+  @Input() playlist: Playlist;
 
   constructor() {
-    console.log(this);
+    console.log(this.playlist);
   }
 
   ngOnInit() {
   }
 
-  title:string = "Playlist detail";
-
-  @Input() playlist: Playlist[];
-
-  edit(){
-    this.isEdit = !this.isEdit;
+  returnGreen(){
+    return 'green';
   }
 
 }

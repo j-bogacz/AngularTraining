@@ -1,28 +1,23 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {Playlist} from "../playlist";
+import {Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
+import { Playlist } from '../playlist';
 
 
 @Component({
-  selector: 'butelka-list-playlist',
+  selector: 'butelka-list-playlists',
   templateUrl: './list-playlist.component.html',
   styles: [],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class ListPlaylistComponent implements OnInit {
-
+export class ListPlaylistsComponent implements OnInit {
+  selected: Playlist;
+  @Input() listPlaylists: Playlist[];
+  @Output() selectedChange = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
-  selected : Playlist;
-  @Input() listPlaylist: Playlist[];
-
-  @Output() selectedChanged = new EventEmitter();
-
-
-  onSelected(p){
-    this.selectedChanged.emit(p);
-    this.selected = p;
+  onSelected(playlist){
+    this.selectedChange.emit(playlist);
+    this.selected = playlist;
   }
-
 }

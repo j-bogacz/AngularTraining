@@ -1,13 +1,20 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <butelka-list-playlist
-      [listPlaylist] = listPlaylist (selectedChanged)="selected = $event"></butelka-list-playlist>
+      <butelka-list-playlists
+        [listPlaylists]="listPlaylists"
+        (selectedChange)="selected = $event"
+      ></butelka-list-playlists>
     </div>
+    {{selected | json}}
     <div class="col-sm">
       <butelka-detail-playlist
-        [playlist] = "selected" ></butelka-detail-playlist>
+        *ngIf="selected"
+        [playlist]="selected"
+      ></butelka-detail-playlist>
+      <div class="alert alert-primary" role="alert" *ngIf="!selected">
+        Proszę wybrać playlistę z listy
+      </div>
     </div>
   </div>
 </div>
