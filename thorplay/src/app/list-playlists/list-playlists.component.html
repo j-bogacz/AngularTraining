@@ -4,6 +4,8 @@
     class="list-group-item"
     [class.active]="pl == currentPlaylist"
     (click)="selectPlaylist(pl)"
+    (mouseenter)="setSpecialColor($event, pl)"
+    (mouseleave)="setNormalColor($event, pl)"
   >
     {{pl.name}}
   </li>

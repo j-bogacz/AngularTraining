@@ -26,8 +26,5 @@ export class DetailPlaylistsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onCurrentPlaylistChange(playlist) {
-    this.myPlaylist = playlist;
-  }
 
 }

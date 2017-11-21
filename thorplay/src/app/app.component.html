@@ -2,11 +2,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <kuku-list-playlists [listPlaylists]="playlists"
-                           (onCurrentPlaylistChange)="currentPlaylist = $event"></kuku-list-playlists>
+      <kuku-list-playlists
+        [listPlaylists]="playlists"
+        (onCurrentPlaylistChange)="currentPlaylist = $event"
+        class="bordered"
+      >
+      </kuku-list-playlists>
+
     </div>
     <div class="col-sm">
-      <kuku-detail-playlists [myPlaylist]="currentPlaylist"></kuku-detail-playlists>
+      <kuku-detail-playlists *ngIf="currentPlaylist" [myPlaylist]="currentPlaylist"></kuku-detail-playlists>
+    </div>
+    <div class="alert alert-primary" role="alert" *ngIf="!currentPlaylist">
+      Proszę wybrać playlistę z listy
     </div>
   </div>
 </div>
