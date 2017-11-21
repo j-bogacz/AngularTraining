@@ -1,8 +1,8 @@
 <ul class="list-group">
   <li class="list-group-item"
-      *ngFor="let playList of listPlayList"
-      (click)="unSelected(playList)"
-      [class.active]="selected == playList">
-      {{playList.name}}
+      *ngFor="let playlist of listPlaylists"
+      (click)="onSelected(playlist)"
+      [ngClass]="{'active': selected == playlist}"
+   > {{playlist.name}}
   </li>
 </ul>
