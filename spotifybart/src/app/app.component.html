@@ -6,8 +6,12 @@
           (selectedChanged) = "selected = $event"
       </bart-list-playlist>
     </div>
+    {{selected | json}}
+
     <div class="col-sm">
-      <bart-detail-playlist></bart-detail-playlist>
+      <bart-detail-playlist
+        *ngIf 
+        ></bart-detail-playlist>
     </div>
   </div>
 </div>
