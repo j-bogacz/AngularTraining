@@ -1,30 +1,34 @@
-import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[mkHighlight]'
 })
 export class HighlightDirective {
+  hover: boolean;
 
   @Input('mkHighlight') highlightColor: string = 'black';
   @Input('mkDefaultHighlight') defaultColor: string = '#9E9E9E';
 
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
   ngOnInit() {
     this.el.nativeElement.style.borderLeftColor = this.defaultColor;
   }
 
+  @HostBinding('style.borderLeftColor')
+  get getColor() {
+    return this.hover ? this.highlightColor : this.defaultColor;
+  }
+
   @HostListener('mouseenter')
   onMouseEnter() {
-    this.el.nativeElement.style.borderLeftColor = this.highlightColor;
-    this.el.nativeElement.style.backgroundColor = '#fffdfa';
+    this.hover = true;
   }
 
   @HostListener('mouseleave')
   onMouseLeave() {
-    this.el.nativeElement.style.borderLeftColor = this.defaultColor;
-    this.el.nativeElement.style.backgroundColor = 'white';
+    this.hover = false;
   }
 
 }
