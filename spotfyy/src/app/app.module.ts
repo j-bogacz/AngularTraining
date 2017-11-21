@@ -6,15 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ListPlaylistsComponent } from './list-playlists/list-playlists.component';
 import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.component';
-import { HighlightDirective } from './shared/highlight.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPlaylistsComponent,
-    DetailPlaylistComponent,
-    HighlightDirective
+    DetailPlaylistComponent
   ],
   imports: [
     BrowserModule,

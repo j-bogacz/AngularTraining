@@ -4,6 +4,7 @@
     *ngFor="let playlist of listPlaylists"
     (click)="onSelected(playlist)"
     [ngClass]="{'active': selected == playlist}"
-    [style.border-left]
+    (mouseenter)="$event.target.style.borderLeftColor = playlist.color"
+    (mouseleave)="$event.target.style.borderLeftColor = 'black'"
   >{{playlist.name}}</li>
 </ul>

@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let playlist of listPlaylists; let i of index"
+    (click)="onSelected(playlist)"
+    [ngClass]="{'active': selected == playlist}"
+    [lekarzHighlight]="playlist.color"
+  >{{playlist.name}}</li>
+</ul>
