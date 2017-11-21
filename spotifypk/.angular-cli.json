@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "spotifypk"
+    "name": "spotfyy"
   },
   "apps": [
     {
@@ -17,7 +17,7 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "pawel",
+      "prefix": "lekarz",
       "styles": [
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -56,14 +56,12 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component":
-    {
-      "inlineStyle" : true,
-      "inlineTemplate" : false,
+    "component": {
+      "inlineStyle": true,
+      "inlineTemplate": false,
       "spec": false,
       "flat": false,
       "viewEncapsulation": "Emulated"
     }
-
   }
 }

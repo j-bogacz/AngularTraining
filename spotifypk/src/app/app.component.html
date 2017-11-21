@@ -1,14 +1,21 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
   <div class="row">
     <div class="col-sm">
-      <pawel-list-play-lists [listPlayLists]="listPlayLists"
-                             (selectedChanged)="selectedItem = $event">
-      </pawel-list-play-lists>
+      <lekarz-list-playlists
+        [listPlaylists]="listPlaylists"
+        (selectedChanged)="selected = $event"
+      ></lekarz-list-playlists>
     </div>
     <div class="col-sm">
-      <pawel-detail-play-list [playList]="selectedItem">
-      </pawel-detail-play-list>
+      <lekarz-detail-playlist
+        *ngIf="selected"
+        [playlist]="selected"
+      ></lekarz-detail-playlist>
+      <div class="alert alert-primary" role="alert" *ngIf="!selected">
+        Proszę wybrać playlistę z listy
+      </div>
     </div>
   </div>
 </div>
+
+

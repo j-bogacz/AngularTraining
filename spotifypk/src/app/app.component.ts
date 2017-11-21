@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { playList } from './play-list';
+import { Playlist } from './playlist';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,13 @@ import { playList } from './play-list';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'pawel_app';
-
-  listPlayLists : playList[] = [
-    {id: 1, name: "Hity lat 80tych", description: "Opis", favourite: false, color: "#ff0000", isEditingMode: false},
-    {id: 2, name: "Hity lat 70tych", description: "Opis", favourite: false, color: "#ff0000", isEditingMode: false},
-    {id: 3, name: "Hity lat 60tych", description: "Opis", favourite: false, color: "#ff0000", isEditingMode: false},
-    {id: 4, name: "Hity lat 50tych", description: "Opis", favourite: false, color: "#ff0000", isEditingMode: false},
+  selected: Playlist;
+  listPlaylists: Playlist[] = [
+    {id: 1, name: 'Hity lat 80', description: 'Opis1', favorite: true, color: '#ff0000'},
+    {id: 2, name: 'Hity lat 70', description: 'Opis2', favorite: false, color: '#00ff00'},
+    {id: 3, name: 'Hity lat 60', description: 'Opis3', favorite: false, color: '#0000ff'},
   ];
+  constructor(){
+    this.selected = this.listPlaylists[0];
+  }
 }
