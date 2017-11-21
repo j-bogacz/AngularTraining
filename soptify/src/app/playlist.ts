@@ -4,5 +4,4 @@ export interface Playlist {
   description: string;
   favorite: boolean;
   color: string;
-  selected: boolean;
 }

@@ -1,8 +1,8 @@
 <h1>{{title }}</h1>
 
-<div [ngSwitch]="isEdit">
 
-  <div class="card" style="width: 20rem;" *ngSwitchDefault>
+
+  <div class="card" style="width: 20rem;" *ngIf="isEdit">
     <div class="card-body">
       <h4 class="card-title"
           [style.background]="playlist.color">{{playlist.name}}</h4>
@@ -16,7 +16,7 @@
   </div>
 
 
-  <form *ngSwitchCase=true>
+  <form *ngIf="!isEdit">
     <div class="form-group">
       <label for="name">Playlist details</label>
       <input
@@ -69,6 +69,6 @@
 
     <button type="submit" class="btn btn-primary" (click)="edit()">Submit</button>
   </form>
-</div>
+
 
 
