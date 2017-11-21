@@ -1,10 +1,9 @@
 <ul class="list-group">
-  <!--  <li
+  <li
  class="list-group-item"
- *ngFor="let playlist of listPlaylists"
- (click)="onSelected(playlist)"
- [ngClass]="{'active': selected == playlist}"
- [lekarzHighlight]="playlist.color"
->{{playlist.name}}</li> -->
+ *ngFor="let album of albums">
+    <lekarz-search-result
+      [album]="album">
+    </lekarz-search-result>
+  </li>
 </ul>
-<p>search-resultlist works!</p>

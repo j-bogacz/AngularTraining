@@ -4,11 +4,13 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchResultlistComponent } from './search-resultlist/search-resultlist.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchWrapperComponent } from './search-wrapper/search-wrapper.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { SearchService } from './search.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [
     SearchBarComponent,
@@ -18,6 +20,9 @@ import { SearchWrapperComponent } from './search-wrapper/search-wrapper.componen
   ],
   exports: [
     SearchWrapperComponent
+  ],
+  providers: [
+    SearchService
   ]
 })
 export class SearchappModule { }

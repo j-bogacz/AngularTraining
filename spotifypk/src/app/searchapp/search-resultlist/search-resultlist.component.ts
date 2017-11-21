@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Album } from '../interfaces';
 
 @Component({
   selector: 'lekarz-search-resultlist',
@@ -8,6 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SearchResultlistComponent implements OnInit {
 
+  @Input() albums: Album[];
   constructor() { }
 
   ngOnInit() {
