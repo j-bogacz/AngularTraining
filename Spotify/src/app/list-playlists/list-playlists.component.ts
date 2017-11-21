@@ -4,7 +4,7 @@ import {Playlist} from '../playlist';
 @Component({
   selector: 'component-list-playlists',
   templateUrl: './list-playlists.component.html',
-  styles: [],
+  styles: ['.list-group-item { border-right: 10px solid black;}'],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ListPlaylistsComponent implements OnInit {
