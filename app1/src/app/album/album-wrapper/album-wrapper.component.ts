@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output } from '@angular/core';
+import { SpotifyService } from '../spotify.service';
+import { Album } from '../interfaces';
 
 @Component({
   selector: 'abc-album-wrapper',
@@ -7,8 +9,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AlbumWrapperComponent implements OnInit {
+  albums: Album[];
 
-  constructor() { }
+  constructor(private spotifyService: SpotifyService) {
+   this.spotifyService.getAlbums('Music')
+     .subscribe( albums => {
+       this.albums = albums as Album[];
+        console.log('albums', this.albums);
+     });
+
+  }
 
   ngOnInit() {
   }
