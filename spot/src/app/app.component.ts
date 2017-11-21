@@ -10,9 +10,9 @@ export class AppComponent {
   title = 'Spotify Premium';
 
   listPlaylists: Playlist[] = [
-    {id: 1, name: 'Chill', description: 'Chill music for the weekend', favourite: true, color: '#00BCD4'},
-    {id: 2, name: 'Relax', description: 'Relax music for the weekend', favourite: false, color: '#11BCD4'},
-    {id: 3, name: 'Jazz', description: 'Jazz music for the weekend', favourite: false, color: '#22BCD4'}
+    {id: 1, name: 'Chill', description: 'Chill music for the weekend', favourite: true, color: 'red'},
+    {id: 2, name: 'Relax', description: 'Relax music for the weekend', favourite: false, color: 'blue'},
+    {id: 3, name: 'Jazz', description: 'Jazz music for the weekend', favourite: false, color: 'green'}
   ];
 
 }
