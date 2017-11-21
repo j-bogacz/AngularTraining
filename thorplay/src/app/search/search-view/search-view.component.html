@@ -5,13 +5,15 @@
       <form>
         <div class="input-group input-group-lg">
           <input
+            placeholder="Wpisz nazwę albumu"
+            [(ngModel)]="searchText"
             class="form-control"
             type="text"
             id="searchField"
             name="searchField"
           >
           <span class="input-group-btn">
-            <a href="#" class="btn btn-secondary">Szukaj</a>
+            <a href="#" class="btn btn-primary">Szukaj</a>
           </span>
         </div>
       </form>

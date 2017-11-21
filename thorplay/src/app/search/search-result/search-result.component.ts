@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Playlist} from "../../playlist";
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Album} from "../interfaces";
 
 @Component({
   selector: 'kuku-search-result',
@@ -11,13 +11,9 @@ import {Playlist} from "../../playlist";
   encapsulation: ViewEncapsulation.Emulated
 })
 export class SearchResultComponent implements OnInit {
-  foundPlaylists: Playlist[];
+  @Input() albums: Album[];
 
   constructor() {
-    this.foundPlaylists = [
-      {id: 1, description: 'super', favorite: false, name: 'wymyslone piosenki', color: 'blue'},
-      {id: 2, description: 'super2', favorite: false, name: 'wymyslone piosenki2', color: 'red'}
-    ];
   }
 
   ngOnInit() {
