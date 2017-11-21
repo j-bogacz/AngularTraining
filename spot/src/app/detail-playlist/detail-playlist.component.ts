@@ -6,6 +6,7 @@ import {Playlist} from '../playlist';
   templateUrl: './detail-playlist.component.html',
   styles: [`
     .card-body {
+      background-color: lightblue;
       padding: 20px;
     }
   `],

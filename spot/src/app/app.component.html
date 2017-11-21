@@ -1,19 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <mk-list-playlists
-        [listPlaylists]="listPlaylists"
-        (selectedChange)="selectedPlaylist = $event"
-        class="red bordered"
-      ></mk-list-playlists>
-    </div>
-    <div class="col-sm">
-      <mk-detail-playlist
-        *ngIf="selectedPlaylist"
-        [playlist]="selectedPlaylist"
-      ></mk-detail-playlist>
-    </div>
-  </div>
+  <!--<div class="row">-->
+    <!--<div class="col-sm">-->
+      <!--<mk-list-playlists-->
+        <!--[listPlaylists]="listPlaylists"-->
+        <!--(selectedChange)="selectedPlaylist = $event"-->
+        <!--class="red bordered"-->
+      <!--&gt;</mk-list-playlists>-->
+    <!--</div>-->
+    <!--<div class="col-sm">-->
+      <!--<mk-detail-playlist-->
+        <!--*ngIf="selectedPlaylist"-->
+        <!--[playlist]="selectedPlaylist"-->
+      <!--&gt;</mk-detail-playlist>-->
+    <!--</div>-->
+  <!--</div>-->
+  <mk-search-wrapper></mk-search-wrapper>
 </div>
 
 
