@@ -12,16 +12,16 @@ export class SearchWrapperComponent implements OnInit {
 
    albums: Album[];
   constructor(private searchSvc: SearchService) {
-    this.searchSvc.getAlbums().subscribe(albums =>{
-      this.albums = albums as Album[];
-      console.log(albums[0]);
-    });
   }
 
   ngOnInit() {
   }
 
   getSearchResults(query: string){
-    this.searchSvc.getAlbums(query);
+    this.searchSvc.getAlbums(query).subscribe(albums =>{
+      this.albums = albums as Album[];
+      console.log(albums[0]);
+    });
+    // /this.searchSvc.getAlbums(query);
   }
 }

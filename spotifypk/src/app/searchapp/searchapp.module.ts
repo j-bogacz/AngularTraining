@@ -6,11 +6,13 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchWrapperComponent } from './search-wrapper/search-wrapper.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './search.service';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     SearchBarComponent,

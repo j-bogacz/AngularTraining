@@ -1,3 +1,4 @@
-<lekarz-search-bar></lekarz-search-bar>
+<lekarz-search-bar
+ (textChanged)="getSearchResults($event)"></lekarz-search-bar>
 <lekarz-search-resultlist
   [albums]="albums"></lekarz-search-resultlist>
