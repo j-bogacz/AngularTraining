@@ -53,11 +53,14 @@ export class SearchBoxComponent implements OnInit {
 
   ngOnInit() {
     this.queryForm = new FormGroup({
-      'query': new FormControl(null, [
+      'query': new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ])
     });
+    this.queryForm.patchValue({
+      'query': 'Initial value'
+    })
     this.queryForm.valueChanges.pipe(
       filter(this.FilterValues),
       debounceTime(500))
@@ -65,8 +68,8 @@ export class SearchBoxComponent implements OnInit {
   }
 
   FilterValues(value) {
-    console.log('Incoming query: ', value.query, value.query.length < 4 ? ' (too short)' : '');
-    return value.query.length > 3;
+    console.log('Incoming query: ', value.query, value.query.length < 3 ? ' (too short)' : '');
+    return value.query.length >= 3;
   }
 
   OnValueChanges(newValue, eventEmmiter) {
@@ -74,5 +77,11 @@ export class SearchBoxComponent implements OnInit {
     var query = newValue.query;
     console.log('Emit query: ', query);
     eventEmmiter.emit(query);
+  }
+
+  DoSearch() {
+    if (this.queryForm.valid) {
+      console.log(this.queryForm);
+    }
   }
 }

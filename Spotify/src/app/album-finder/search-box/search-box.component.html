@@ -13,7 +13,8 @@
 <!--</div>-->
 
 <form class="form-inline"
-      [formGroup]="queryForm">
+      [formGroup]="queryForm"
+      (submit)="DoSearch()">
   <div class="form-row align-items-center">
     <div class="col-auto">
       <input class="form-control"
@@ -27,6 +28,14 @@
               type="submit">
         Search
       </button>
+    </div>
+  </div>
+  <div *ngIf="queryForm.get('query').touched || queryForm.get('query').dirty">
+    <div class="alert alert-danger"
+         *ngIf="queryForm.get('query').hasError('required')">Field is required
+    </div>
+    <div class="alert alert-danger"
+         *ngIf="queryForm.get('query').hasError('minlength')">Value too short
     </div>
   </div>
 </form>
