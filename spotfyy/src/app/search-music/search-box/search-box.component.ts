@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {debounceTime, filter} from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'lekarz-search-box',
@@ -14,13 +15,37 @@ export class SearchBoxComponent implements OnInit {
 
   searchForm: FormGroup;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    const censor = (word: string): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
+      if (control.value && control.value.indexOf(word) !== -1) {
+        return {
+          'badword': word
+        };
+      } else {
+        return null;
+      }
+    };
+    type OptionalErrors = ValidationErrors|null;
+
+    const asyncCensor = (word: string): AsyncValidatorFn => (control: AbstractControl): Observable<OptionalErrors> => {
+      return Observable.create( observer => {
+        setTimeout(() => {
+          const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
+          observer.next(isError);
+          observer.complete();
+        },20000);
+      });
+    }
     this.searchForm = new FormGroup({
-      'keyWord': new FormControl('', [
+      'keyWord': new FormControl(null, [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        censor('batman')
+      ], [
+        asyncCensor('babcia')
       ])
     });
     this.searchForm.valueChanges.pipe(
@@ -31,18 +56,9 @@ export class SearchBoxComponent implements OnInit {
     });
 
   }
-  onGetDataFromApi(){
-    let fromApi = {
-      query: 'quen'
-    }
-    this.searchForm.patchValue({
-      'keyWord': fromApi.query
-    });
-    this.registerForm.setValue({
-      'addres': {'home':"Płock"}
-    });
-  }
+
   doSearch() {
+    console.log(this.searchForm);
     if (this.searchForm.valid) {
       this.keyWordChange.emit(this.searchForm.value.keyWord);
     }
