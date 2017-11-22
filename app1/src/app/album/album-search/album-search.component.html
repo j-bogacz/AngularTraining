@@ -15,5 +15,7 @@
   <div *ngIf="searchForm.get('searchString').touched || searchForm.get('searchString').dirty" >
     <div *ngIf="searchForm.get('searchString').hasError('required')">pole wymagane</div>
     <div *ngIf="searchForm.get('searchString').hasError('minlength')" class="alert alert-danger">za mało znaków </div>
+    <div *ngIf="searchForm.get('searchString').hasError('badword')" class="alert alert-danger">zabronione słowo </div>
+    <div *ngIf="searchForm.get('searchString').hasError('badwordasync')" class="alert alert-danger">zabronione słowo babcia async </div>
   </div>
 </form>
