@@ -1,4 +1,4 @@
-<ul class="list-group">
+<div class="card">
   <li
     class="list-group-item"
     *ngFor="let playlist of listPlaylists"
@@ -6,4 +6,4 @@
     [ngClass]="{'active': selected == playlist}"
     [lekarzHighlight]="playlist.color"
   >{{playlist.name}}</li>
-</ul>
+</div>

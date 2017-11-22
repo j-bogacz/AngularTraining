@@ -1,9 +1,8 @@
-<ul class="list-group">
-  <li
- class="list-group-item"
- *ngFor="let album of albums">
+<div class="card-deck">
+  <div *ngFor="let album of albums">
     <lekarz-search-result
       [album]="album">
     </lekarz-search-result>
-  </li>
-</ul>
+  </div>
+</div>
+
