@@ -26,8 +26,10 @@ export class AlbumSearchComponent implements OnInit {
         Validators.minLength(3)
       ])
     });
+
     this.searchForm.valueChanges.pipe(
-      filter( query => query.searchString.length >= 3),
+      filter( () => this.searchForm.valid),
+        //query => query.searchString.length >= 3),
       debounceTime(500)
     ).subscribe(
       (dataIn) => {
@@ -36,7 +38,10 @@ export class AlbumSearchComponent implements OnInit {
   }
 
   doSearch() {
-    //console.log(this.searchForm);
+    if(this.searchForm.valid) {
+      this.clickBtn.emit(this.searchForm.value.searchString);
+    }
+    console.log(this.searchForm);
     // this.clickBtn.emit(searchString);
   }
 
