@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { filter, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'lekarz-search-bar',
@@ -9,9 +11,22 @@ import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } fro
 export class SearchBarComponent implements OnInit {
 
   query: string;
+  searchForm: FormGroup;
   constructor() { }
 
   ngOnInit() {
+    this.searchForm = new FormGroup({
+        'query': new FormControl(null, [
+          Validators.required,
+          Validators.minLength(3)
+        ])
+    });
+    this.searchForm.valueChanges.pipe(
+      filter(query => query['query'].length >= 3),
+      debounceTime(1000)
+    ).subscribe((dataIn) => {
+        this.doSearch(dataIn['query']);
+    });
   }
 
   @Output() textChanged = new EventEmitter<string>();
@@ -19,8 +34,9 @@ export class SearchBarComponent implements OnInit {
     this.textChanged.emit(text);
   }
 
-  doSearch() {
-    this.onTextChanged(this.query);
-    console.log('Current value of query is: ' + this.query);
+  doSearch(value) {
+    console.log(this.searchForm);
+    this.onTextChanged(value);
+    console.log('Current value of query is: ' + value);
   }
 }

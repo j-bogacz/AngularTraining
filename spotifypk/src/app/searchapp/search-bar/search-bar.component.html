@@ -1,16 +1,16 @@
-<div class="form-group">
+<form
+   [formGroup]="searchForm">
   <div class="form-group">
-    <label>Type your query here</label>
+    <label>Provide your query</label>
     <input
       type="text"
       class="form-control"
       id="nameInput"
       placeholder="Find something..."
-      [(ngModel)]="query"
-      name="query"
+      formControlName="query"
     >
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary" (click)="doSearch()">Search</button>
+    <button type="submit" class="btn btn-primary">Search</button>
   </div>
-</div>
+</form>

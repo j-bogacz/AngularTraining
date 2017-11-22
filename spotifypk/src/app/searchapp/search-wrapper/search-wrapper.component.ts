@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SearchService } from '../search.service';
+import { SpotifyMockService } from '../spotify-mock.service';
 import {Album} from '../interfaces';
 
 @Component({
@@ -17,11 +18,11 @@ export class SearchWrapperComponent implements OnInit {
   ngOnInit() {
   }
 
-  getSearchResults(query: string){
+  getSearchResults(query: string) {
     this.searchSvc.getAlbums(query).subscribe(albums =>{
       this.albums = albums as Album[];
-      console.log(albums[0]);
     });
-    // /this.searchSvc.getAlbums(query);
+    //console.log('doSearchResults() executed');
+    //this.albums = this.searchSvc.getAlbums()['albums']['items'] as Album[];
   }
 }

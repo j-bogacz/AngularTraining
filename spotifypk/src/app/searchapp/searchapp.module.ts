@@ -6,13 +6,14 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchWrapperComponent } from './search-wrapper/search-wrapper.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './search.service';
-import {FormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { SpotifyMockService } from './spotify-mock.service';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   declarations: [
     SearchBarComponent,
@@ -24,7 +25,8 @@ import {FormsModule} from "@angular/forms";
     SearchWrapperComponent
   ],
   providers: [
-    SearchService
+    SearchService,
+    SpotifyMockService
   ]
 })
 export class SearchappModule { }

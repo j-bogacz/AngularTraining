@@ -1,5 +1,5 @@
 export interface ResultImage {
-  with: number;
+  width: number;
   height: number;
   url: string;
 }
@@ -13,5 +13,5 @@ export interface Artist extends Entity { }
 
 export interface Album extends Entity {
   images: ResultImage[];
-  artistis: Artist[];
+  artists: Artist[];
 }
