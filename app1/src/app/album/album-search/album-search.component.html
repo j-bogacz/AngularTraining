@@ -1,16 +1,14 @@
-<form class="form-inline">
+<form
+    class="form-inline"
+    [formGroup]="searchForm"
+>
   <div class="form-group">
-    <label for="searchInput">Album title</label>
     <input
       type="text"
       class="form-control"
-      id="searchInput"
       placeholder="Enter album title"
-      name="searchString"
-      [(ngModel)]="searchString"
+      formControlName="searchString"
     >
-    <button type="submit" class="btn btn-primary"
-    (click)="onClickEvent($event)"
-    >Search</button>
+    <button type="submit" class="btn btn-primary">Search</button>
   </div>
 </form>

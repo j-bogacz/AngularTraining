@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { SpotifyService } from '../spotify.service';
+import { SpotifyMockService} from '../spotify-mock.service';
 import { Album } from '../interfaces';
 
 @Component({
@@ -14,17 +15,20 @@ export class AlbumWrapperComponent implements OnInit {
   @Input('searchText') searchText: string;
 
 
-  constructor(private spotifyService: SpotifyService) {
+  constructor(
+      private spotifyService: SpotifyService,
+      private spotifyMockService: SpotifyMockService) {
    this.search('acdc');
   }
 
-  search(text: string){
-    this.spotifyService.getAlbums(text)
+  search(query: string){
+    this.spotifyService.getAlbums(query)
       .subscribe( albums => {
         this.albums = albums as Album[];
         console.log('albums', this.albums);
-      });
-
+     });
+    //console.log(query);
+    //this.albums = this.spotifyMockService.getAlbums()['albums']['items'];
   }
 
   ngOnInit() {

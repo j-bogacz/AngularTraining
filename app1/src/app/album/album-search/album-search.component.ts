@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { filter, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'abc-album-search',
@@ -11,15 +13,31 @@ export class AlbumSearchComponent implements OnInit {
 
   @Output() clickBtn = new EventEmitter<string>();
 
+  searchForm: FormGroup;
+
   searchString: string = '';
 
   constructor() { }
 
   ngOnInit() {
+    this.searchForm = new FormGroup({
+      'searchString' : new FormControl('test', [
+        Validators.required,
+        Validators.minLength(3)
+      ])
+    });
+    this.searchForm.valueChanges.pipe(
+      filter( query => query.searchString.length >= 3),
+      debounceTime(500)
+    ).subscribe(
+      (dataIn) => {
+        this.clickBtn.emit(dataIn.searchString);
+      });
   }
 
-  onClickEvent($event) {
-    this.clickBtn.emit(this.searchString);
+  doSearch() {
+    //console.log(this.searchForm);
+    // this.clickBtn.emit(searchString);
   }
 
 }

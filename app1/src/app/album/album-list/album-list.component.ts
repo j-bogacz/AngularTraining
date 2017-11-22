@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Album } from '../interfaces';
 
+
 @Component({
   selector: 'abc-album-list',
   templateUrl: './album-list.component.html',
@@ -10,7 +11,6 @@ import { Album } from '../interfaces';
 export class AlbumListComponent implements OnInit {
 
   @Input('listAlbum') listAlbum: Album[];
-
 
   constructor() { }
 
