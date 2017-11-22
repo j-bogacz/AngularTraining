@@ -19,6 +19,8 @@
     >
       <div *ngIf="searchForm.get('word').hasError('required')" class="alert alert-danger">Field is required</div>
       <div *ngIf="searchForm.get('word').hasError('minlength')" class="alert alert-warning">value too short </div>
+      <div *ngIf="searchForm.get('word').hasError('badword')" class="alert alert-warning">Niedozwolone</div>
+      <div *ngIf="searchForm.get('word').hasError('badwordasync')" class="alert alert-danger">Zabronine babacia</div>
     </div>
   </div>
 </form>
