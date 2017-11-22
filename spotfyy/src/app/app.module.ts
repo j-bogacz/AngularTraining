@@ -15,11 +15,16 @@ import {WraperSearchAlbumComponent} from './search-music/wraper-search-album/wra
 import { WraperPlaylistsComponent } from './wraper-playlists/wraper-playlists.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { PlaylistService } from './playlist.service';
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'search', component: WraperSearchAlbumComponent},
-  {path: 'playlists', component: WraperPlaylistsComponent},
-  {path: '**', component: ErrorComponent}
+  {path: 'playlists', component: WraperPlaylistsComponent, children: [
+    {path: '', component: DetailPlaylistComponent },
+    {path: ':id', component: DetailPlaylistComponent}
+  ]},
+  {path: '**', redirectTo: 'search', pathMatch: 'full'}
 ];
 
 
@@ -40,7 +45,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    AuthService
+    AuthService,
+    PlaylistService
   ],
   bootstrap: [AppComponent]
 })

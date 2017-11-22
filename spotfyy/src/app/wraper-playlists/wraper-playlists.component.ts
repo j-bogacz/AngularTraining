@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {PlaylistService} from '../playlist.service';
 import {Playlist} from '../playlist';
 
 @Component({
@@ -9,12 +10,13 @@ import {Playlist} from '../playlist';
 })
 export class WraperPlaylistsComponent implements OnInit {
 
-  listPlaylists: Playlist[] = [
-    {id: 1, name: 'Hity lat 80', description: 'Opis1', favorite: true, color: '#ff0000'},
-    {id: 2, name: 'Hity lat 70', description: 'Opis2', favorite: false, color: '#00ff00'},
-    {id: 3, name: 'Hity lat 60', description: 'Opis3', favorite: false, color: '#0000ff'},
-  ];
-  constructor() { }
+  listPlaylists: Playlist[] = [];
+
+  constructor(private playlistService: PlaylistService) {
+    this.listPlaylists = this.playlistService.getPlaylists();
+    const t = this.playlistService.getOnePlaylist(1);
+    console.log(t);
+  }
 
   ngOnInit() {
   }
