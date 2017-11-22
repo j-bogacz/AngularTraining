@@ -15,12 +15,16 @@ import { AlbumWrapperComponent} from './album/album-wrapper/album-wrapper.compon
 import { WrapperPlaylistComponent } from './wrapper-playlist/wrapper-playlist.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import {PlaylistService} from './playlist.service';
 
 const routes: Routes = [
   { path: 'search', component: AlbumWrapperComponent},
-  { path: 'playlist', component: WrapperPlaylistComponent},
+  { path: 'playlist', component: WrapperPlaylistComponent, children:[
+    {path: '', component: WrapperPlaylistComponent},
+    {path: ':id', component: DetailPlaylistComponent}
+  ]},
   { path: '', component: HomeComponent},
-  { path: '**', component: ErrorComponent},
+  { path: '**', redirectTo: 'search', pathMatch: 'full'},
 ];
 
 @NgModule({
@@ -40,7 +44,8 @@ const routes: Routes = [
     AlbumModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    PlaylistService
   ],
   bootstrap: [AppComponent]
 })

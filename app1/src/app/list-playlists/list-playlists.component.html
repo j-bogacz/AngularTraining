@@ -2,9 +2,8 @@
   <li
     class="list-group-item"
     *ngFor="let playlist of listPlaylists"
-    (click)="onSelected(playlist)"
     [ngClass]="{'active': selected == playlist}"
     [abcHighlight]="playlist.color"
     [defaultcolor]="'black'"
-  >{{playlist.name}}</li>
+  ><a [routerLink]="['/playlist',playlist.id]">{{playlist.name}}</a></li>
 </ul>
