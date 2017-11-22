@@ -14,6 +14,8 @@ import {WrapperComponent} from "./search-music/wrapper/wrapper.component";
 import { WrapperPlaylistComponent } from './wrapper-playlist/wrapper-playlist.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import {PlaylistService} from "./playlist.service";
+import { SpinnerComponent } from './spinner/spinner.component';
 
 const routes: Routes = [
   {
@@ -22,7 +24,11 @@ const routes: Routes = [
   },
   {
     path: 'playlist',
-    component: WrapperPlaylistComponent
+    component: WrapperPlaylistComponent,
+    children: [
+      {path: '', component: DetailPlaylistComponent},
+      {path: ':id', component: DetailPlaylistComponent}
+    ]
   },
   {
     path: '',
@@ -30,7 +36,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: ErrorComponent
+    redirectTo: 'search',
+    pathMatch: 'full'
   }
 ]
 
@@ -42,7 +49,8 @@ const routes: Routes = [
     HighlightDirective,
     WrapperPlaylistComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,7 @@ const routes: Routes = [
     SearchMusicModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService],
+  providers: [AuthService, PlaylistService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
