@@ -1,6 +1,15 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {
+  AbstractControl,
+  AsyncValidatorFn,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 import {debounceTime, filter} from "rxjs/operators";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'kuku-search-view',
@@ -17,14 +26,39 @@ export class SearchViewComponent implements OnInit {
   searchForm: FormGroup;
 
   constructor() {
-
   }
 
+
   ngOnInit() {
+    type OptionalErrors = ValidationErrors | null;
+
+    const asyncCensor = (word: string): AsyncValidatorFn => (control: AbstractControl): Observable<OptionalErrors> => {
+      return Observable.create(observer => {
+        setTimeout(() => {
+          const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
+          observer.next(isError);
+          observer.complete();
+        }, 2000);
+      });
+    };
+
+    const censor = (word: string): ValidatorFn => (control: AbstractControl): OptionalErrors => {
+      if (control.value && control.value.indexOf(word) !== -1) {
+        return {
+          'cenzura': word
+        };
+      } else {
+        return null;
+      }
+    };
+
     this.searchForm = new FormGroup({
       'query': new FormControl(null, [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        censor('babcia')
+      ], [
+        asyncCensor('dziadek')
       ])
     });
     this.searchForm.valueChanges.pipe(
@@ -33,14 +67,16 @@ export class SearchViewComponent implements OnInit {
       }),
       debounceTime(600)
     ).subscribe((dataIn) => {
-      console.log(dataIn);
+      console.log('auto:', dataIn);
       this.onSearchTextChange.emit(dataIn.query);
     });
   }
 
   searchSpotify() {
+    console.log('probuje szukac: ', this.searchForm.valid);
     if (this.searchForm.valid) {
       this.onSearchTextChange.emit(this.searchForm.value.query);
     }
+    console.log(this.searchForm);
   }
 }

@@ -24,6 +24,12 @@
                 <div
                   *ngIf="searchForm.get('query').errors && (searchForm.get('query').touched || searchForm.get('query').dirty)"
                   ngClass="alert alert-danger">
+                  <div *ngIf="searchForm.get('query').hasError('cenzura')">Użyto niecenzuralne słowo:
+                    {{searchForm.get('query').getError('cenzura')}}
+                  </div>
+                  <div *ngIf="searchForm.get('query').hasError('badwordasync')">Użyto niecenzuralne słowo:
+                    {{searchForm.get('query').getError('badwordasync')}}
+                  </div>
                   <div *ngIf="searchForm.get('query').hasError('required')">Pole jest wymagane</div>
                   <div *ngIf="searchForm.get('query').hasError('minlength')">Szukana fraza zbyt krótka
                     ({{searchForm.get('query').getError('minlength').actualLength}} z
