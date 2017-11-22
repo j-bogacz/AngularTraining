@@ -1,14 +1,32 @@
-<div class="form-row align-items-center">
-  <div class="col-auto">
-    <input class="form-control"
-           type="text"
-           [placeholder]="queryPlaceholder"
-           [(ngModel)]="query"
-           (keyup.enter)="EmitQuery()"
-    >
-  </div>
-  <div class="col-auto">
-    <button type="submit" class="btn btn-primary" (click)="EmitQuery()" [disabled]="!query">Search</button>
-  </div>
-</div>
+<!--<div class="form-row align-items-center">-->
+<!--<div class="col-auto">-->
+<!--<input class="form-control"-->
+<!--type="text"-->
+<!--[placeholder]="queryPlaceholder"-->
+<!--[(ngModel)]="query"-->
+<!--(keyup.enter)="EmitQuery()"-->
+<!--&gt;-->
+<!--</div>-->
+<!--<div class="col-auto">-->
+<!--<button type="submit" class="btn btn-primary" (click)="EmitQuery()" [disabled]="!query">Search</button>-->
+<!--</div>-->
+<!--</div>-->
 
+<form class="form-inline"
+      [formGroup]="queryForm">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <input class="form-control"
+             formControlName="query"
+             type="text"
+             [placeholder]="queryPlaceholder"
+      >
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary"
+              type="submit">
+        Search
+      </button>
+    </div>
+  </div>
+</form>
