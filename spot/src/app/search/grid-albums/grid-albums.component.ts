@@ -9,9 +9,7 @@ import {Album} from "../../album";
 })
 export class GridAlbumsComponent implements OnInit {
 
-  @Input() albums: Album[] = [
-    {id: 1, imgSrc: 'qwe', title: 'Title', artist: 'Singer'}
-  ];
+  @Input() albums: Album[] = [];
 
   constructor() {
   }

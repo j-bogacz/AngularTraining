@@ -6,11 +6,12 @@
         class="form-control"
         id="searchInput"
         placeholder="Enter album name"
-        name="name"
+        name="albumName"
+        [(ngModel)]="albumName"
       >
     </div>
     <div class="col-2">
-      <button type="submit" class="btn btn-primary" (click)="search">Submit</button>
+      <button class="btn btn-primary" (click)="search(albumName)">Submit</button>
     </div>
   </div>
 </form>

@@ -14,7 +14,7 @@ import { Playlist } from '../playlist';
 export class ListPlaylistsComponent implements OnInit {
   selectedPlaylist: Playlist;
   @Input() listPlaylists: Playlist[];
-  @Output() selectedChange = new EventEmitter()
+  @Output() selectedChange = new EventEmitter();
 
   constructor() { }
 

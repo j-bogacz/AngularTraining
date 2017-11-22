@@ -1,6 +1,13 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <mk-search-bar></mk-search-bar>
+    <mk-search-bar
+      (searchQueryChanged)="query = search($event)"
+    ></mk-search-bar>
   </div>
-  <mk-grid-albums [albums]="albums"></mk-grid-albums>
+
+  <div class="row">
+    <mk-grid-albums
+      [albums]="albums"
+    ></mk-grid-albums>
+  </div>
 </div>

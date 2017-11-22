@@ -10,7 +10,7 @@ export class SpotifyService {
   constructor(private httpClient: HttpClient, private auth: AuthService) {
   }
 
-  getAlbums(query: string = 'Chill') {
+  getAlbums(query: string = 'ACDC') {
     return this.httpClient.get(`https://api.spotify.com/v1/search?q=${query}&type=album`, {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.auth.getToken()

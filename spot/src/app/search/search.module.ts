@@ -7,12 +7,14 @@ import {DetailAlbumComponent} from './detail-album/detail-album.component';
 import {SearchWrapperComponent} from './search-wrapper/search-wrapper.component';
 import {SpotifyService} from './spotify.service';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     SearchBarComponent,

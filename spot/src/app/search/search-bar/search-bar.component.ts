@@ -1,4 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {SpotifyService} from '../spotify.service';
+import {Album} from "../interfaces";
 
 @Component({
   selector: 'mk-search-bar',
@@ -8,15 +10,18 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() {
+  query: string;
+  @Output() searchQueryChanged = new EventEmitter();
+
+  constructor(private spotify: SpotifyService) {
   }
 
   ngOnInit() {
   }
 
-  search() {
-    console.log('Search');
-
+  search(query: string) {
+    console.log('Search', query);
+    this.searchQueryChanged.emit(this.query);
   }
 
 }
