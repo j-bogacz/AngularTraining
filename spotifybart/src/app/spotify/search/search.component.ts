@@ -19,13 +19,20 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      'keyword': new FormControl('placki', [
+      'keyword': new FormControl('', [
         Validators.required,
         Validators.minLength( 3)
       ])
     });
+    let fromApi = {
+      query: 'queen'
+    }
+
+    this.searchForm.patchValue({
+      'keyword': fromApi.query
+    })
     this.searchForm.valueChanges
-      .pipe(filter((query) => query.keyword.length >= 3),
+      .pipe(filter(() => this.searchForm.valid),
         debounceTime(500))
       .subscribe((dataIn) => {
         this.searchClicked.emit(dataIn.keyword);
@@ -36,5 +43,13 @@ export class SearchComponent implements OnInit {
   search() {
     console.log(this.searchForm);
     this.searchClicked.emit(this.searchText);
+  }
+
+  doSearch() {
+    if(this.searchForm.valid) {
+      this.searchClicked.emit(this.searchForm.value.keyword)
+    }
+
+    console.log(this.searchForm);
   }
 }

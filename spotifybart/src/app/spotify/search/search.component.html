@@ -1,5 +1,6 @@
 <form
   class="form-inline"
+  (submit)="doSearch()"
   [formGroup] = "searchForm"
 >
 
@@ -18,4 +19,9 @@
     type="submit"
     class="btn btn-primary"
   >Szukaj</button>
+  <div *ngIf="searchForm.get('keyword').touched || searchForm.get('keyword').dirty"
+  >
+    <div *ngIf="searchForm.get('keyword').hasError('required')"   class="alert alert-danger">Field is required</div>
+    <div *ngIf="searchForm.get('keyword').hasError('minlength')"   class="alert alert-danger">value too short </div>
+  </div>
 </form>
