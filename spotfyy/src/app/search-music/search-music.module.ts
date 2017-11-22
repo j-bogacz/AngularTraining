@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { WraperSearchAlbumComponent } from './wraper-search-album/wraper-search-album.component';
 import {SpotifyService} from "./spotify.service";
+import {SpoftifyMockService} from './spoftify-mock.service';
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   declarations: [
     SearchBoxComponent,
@@ -22,7 +23,8 @@ import {SpotifyService} from "./spotify.service";
     WraperSearchAlbumComponent
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    SpoftifyMockService
   ],
   exports: [
     WraperSearchAlbumComponent

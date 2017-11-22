@@ -1,15 +1,13 @@
 <form
   class="form-inline"
-  (submit)="onSubmit()"
+  [formGroup]="searchForm"
 >
   <div class="form-group">
     <input
       type="text"
       class="form-control"
-      id="keyWord"
       placeholder="Wpisz frazę do szukania"
-      [(ngModel)]="keyWord"
-      name="keyWord"
+      formControlName="keyWord"
     >
   </div>
   <button type="submit" class="btn btn-primary">Szukaj</button>
