@@ -16,6 +16,7 @@
     <div *ngIf="searchForm.get('query').touched || searchForm.get('query').dirty" >
       <div class="alert alert-danger" *ngIf="searchForm.get('query').hasError('required')">Field is required</div>
       <div  class="alert alert-danger" *ngIf="searchForm.get('query').hasError('minlength')">Value is too short </div>
+      <div *ngIf="searchForm.get('query').hasError('badwordasync')" class="alert alert-danger">Zabronine babacia</div>
     </div>
   </div>
 </form>
