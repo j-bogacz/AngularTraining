@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
 import { SpotifyService} from "../spotify.service"
 import { Album } from "../interfaces";
 
@@ -10,9 +10,12 @@ import { Album } from "../interfaces";
 })
 export class WrapperComponent implements OnInit {
 
+  query:string;
+
   albums: Album[];
+
   constructor(private spotifyService: SpotifyService) {
-    this.spotifyService.getalbum()
+    this.spotifyService.getalbum(this.query)
       .subscribe( albums => {
         this.albums = albums as Album[];
         console.log('albums', albums)
@@ -22,5 +25,11 @@ export class WrapperComponent implements OnInit {
   ngOnInit() {
   }
 
+  search(query: string = "aaaa") {
+    this.spotifyService.getalbum(query)
+      .subscribe((albums => {
+        this.albums = albums as Album[];
+      });
+  }
 
 }

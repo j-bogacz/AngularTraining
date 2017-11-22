@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'bart-search',
@@ -8,9 +8,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  searchText:string = "";
   constructor() { }
+
+  @Output() searchClicked = new EventEmitter<string>();
 
   ngOnInit() {
   }
 
+  search() {
+    this.searchClicked.emit(this.searchText);
+  }
 }

@@ -5,11 +5,13 @@ import { SearchComponent } from './search/search.component';
 import { ArtistListComponent } from './artist-list/artist-list.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { SpotifyService } from "./spotify.service";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     SearchComponent,

@@ -1,10 +1,12 @@
 <div class="container">
   <div class="col">
     <div class="col-sm">
-      <bart-search></bart-search>
+      <bart-search (searchClicked)="search($event)"></bart-search>
     </div>
     <div class="col-sm">
-      <bart-artist-list [albums] = albums></bart-artist-list>
+      <bart-artist-list
+        [albums] = albums
+      ></bart-artist-list>
     </div>
   </div>
 </div>
