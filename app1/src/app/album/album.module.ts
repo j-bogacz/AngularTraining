@@ -7,12 +7,14 @@ import { AlbumWrapperComponent } from './album-wrapper/album-wrapper.component';
 import { SpotifyService } from './spotify.service';
 import { SpotifyMockService} from './spotify-mock.service'
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     AlbumListComponent,

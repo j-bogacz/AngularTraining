@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -9,19 +10,33 @@ import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.compo
 import { HighlightDirective } from './shared/highlight.directive';
 
 import { AlbumModule } from './album/album.module';
-import {AuthService} from './album/auth/auth.service';
+import { AuthService} from './album/auth/auth.service';
+import { AlbumWrapperComponent} from './album/album-wrapper/album-wrapper.component';
+import { WrapperPlaylistComponent } from './wrapper-playlist/wrapper-playlist.component';
+import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
 
+const routes: Routes = [
+  { path: 'search', component: AlbumWrapperComponent},
+  { path: 'playlist', component: WrapperPlaylistComponent},
+  { path: '', component: HomeComponent},
+  { path: '**', component: ErrorComponent},
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPlaylistsComponent,
     DetailPlaylistComponent,
-    HighlightDirective
+    HighlightDirective,
+    WrapperPlaylistComponent,
+    HomeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule.forRoot(routes),
     AlbumModule
   ],
   providers: [
@@ -30,7 +45,7 @@ import {AuthService} from './album/auth/auth.service';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor (private  auth:AuthService){
+  constructor (private  auth: AuthService){
     this.auth.getToken();
   }
 }
