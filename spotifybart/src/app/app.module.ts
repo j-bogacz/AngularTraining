@@ -14,12 +14,16 @@ import {WrapperComponent} from "./spotify/wrapper/wrapper.component";
 import { WraperPlaylistComponent } from './wraper-playlist/wraper-playlist.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import {PlaylistServiceService} from "./playlist-service.service";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'search', component: WrapperComponent},
-  {path: 'playlist', component: WraperPlaylistComponent},
-  {path: '**', component: ErrorComponent}
+  {path: 'playlist', component: WraperPlaylistComponent, children: [
+    {path: '', component: WraperPlaylistComponent},
+    {path: ':id', component: DetailPlaylistComponent}
+  ]},
+  {path: '**', redirectTo: 'search', pathMatch: 'full'}
 ]
 
 @NgModule({
@@ -39,7 +43,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    AuthService
+    AuthService,
+    PlaylistServiceService
   ],
   bootstrap: [AppComponent]
 })

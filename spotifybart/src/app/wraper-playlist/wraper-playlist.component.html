@@ -9,17 +9,10 @@
     <div class="col-sm">
       <lekarz-list-playlists
         [listPlaylistsTmp]="listPlaylists"
-        (selectedChanged)="selected = $event"
       ></lekarz-list-playlists>
     </div>
     <div class="col-sm">
-      <lekarz-detail-playlist
-        *ngIf="selected"
-        [playlist]="selected"
-      ></lekarz-detail-playlist>
-      <div class="alert alert-primary" role="alert" *ngIf="!selected">
-        Proszę wybrać playlistę z listy
-      </div>
+        <router-outlet></router-outlet>
     </div>
   </div>
 </div>
