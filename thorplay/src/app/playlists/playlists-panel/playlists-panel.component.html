@@ -5,20 +5,19 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-sm-5">
       <kuku-list-playlists
         [listPlaylists]="playlists"
-        (onCurrentPlaylistChange)="currentPlaylist = $event"
         class="bordered"
       >
       </kuku-list-playlists>
 
     </div>
-    <div class="col-sm">
-      <router-outlet></router-outlet>
+    <div class="col-sm-3 alert alert-info" style="height: 60px;" role="alert" *ngIf="!hasParam">
+      <p class="text-center">Proszę wybrać playlistę z listy</p>
     </div>
-    <div class="alert" role="alert" *ngIf="!currentPlaylist">
-      Proszę wybrać playlistę z listy
+    <div class="col-sm-7">
+      <router-outlet (activate)="onAcvtivate($event)"></router-outlet>
     </div>
   </div>
 </div>

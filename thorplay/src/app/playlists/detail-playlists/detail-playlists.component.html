@@ -17,7 +17,7 @@
   </div>
 
   <div *ngSwitchCase="true">
-    <form>
+    <form (submit)="isEditMode = false">
       <div class="form-group">
         <label for="myPlaylistName">Nazwa listy</label>
         <input
@@ -65,8 +65,7 @@
         </div>
 
       </div>
-      <a (click)="isEditMode = false" href="#" class="btn btn-primary">Zapisz</a>
-      <div>Test: '{{myPlaylist | json}}'</div>
+      <button class="btn btn-primary">Zapisz</button>
     </form>
   </div>
 </div>
