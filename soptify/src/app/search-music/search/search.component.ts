@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {SpotifyService} from "../spotify.service";
+import {Album} from "../interfaces";
 
 @Component({
   selector: 'lekarz-search',
@@ -8,9 +10,22 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+
+  searchUrl: string;
+
+  @Output() searchChanged = new EventEmitter<string>();
+
+  constructor(private spoti: SpotifyService) {
+
+  }
 
   ngOnInit() {
+  }
+
+
+
+  searchMusic() {
+    this.searchChanged.emit(this.searchUrl);
   }
 
 }

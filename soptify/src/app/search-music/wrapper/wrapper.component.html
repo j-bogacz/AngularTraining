@@ -1,5 +1,6 @@
 <div class="container">
-  <lekarz-search></lekarz-search>
+  <lekarz-search
+  (searchChanged)="searchMusic($event)"></lekarz-search>
   <br/>
   <div class="card-deck">
     <lekarz-album *ngFor="let a of albums"

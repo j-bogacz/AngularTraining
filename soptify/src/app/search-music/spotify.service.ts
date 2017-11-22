@@ -12,8 +12,8 @@ export class SpotifyService {
   }
 
 
-  getAlbums(query = 'ACDC') {
-    return this.httpClient.get(`https://api.spotify.com/v1/search?q=${query}&type=album`, {
+  getAlbums(s: string) {
+    return this.httpClient.get(`https://api.spotify.com/v1/search?q=${s}&type=album`, {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.auth.getToken()
       })

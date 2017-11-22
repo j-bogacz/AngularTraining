@@ -5,11 +5,13 @@ import { WrapperComponent } from './wrapper/wrapper.component';
 import {SearchComponent} from './search/search.component';
 import {AlbumComponent} from './album/album.component';
 import {SpotifyService} from './spotify.service';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     WrapperComponent,
