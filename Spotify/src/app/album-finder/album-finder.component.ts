@@ -11,23 +11,17 @@ import {Album} from "./interfaces";
 })
 export class AlbumFinderComponent implements OnInit {
 
-  albumName: string;
-  albums: Album[];
+  foundAlbums: Album[];
 
   constructor(private spotifyAccessorService: SpotifyAccessorService) {
   }
 
   ngOnInit() {
-    this.spotifyAccessorService.GetAlbums(this.albumName).subscribe(foundAlbums => {
-      this.albums = foundAlbums;
-      console.log('Found albums: ', this.albums);
-    });
   }
 
-  LookForAlbum(albumName: string) {
+  FindAlbum(albumName: string) {
     this.spotifyAccessorService.GetAlbums(albumName).subscribe(foundAlbums => {
-      this.albums = foundAlbums;
-      console.log('Found albums: ', this.albums);
+      this.foundAlbums = foundAlbums;
     });
   }
 

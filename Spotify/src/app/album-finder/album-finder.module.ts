@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import {SearchComponent} from './search/search.component';
+import {SearchBoxComponent} from './search-box/search-box.component';
 import {ResultsComponent} from './results/results.component';
 import {AlbumFinderComponent} from './album-finder.component';
 import {DetailsComponent} from './details/details.component';
@@ -12,10 +13,11 @@ import {SpotifyAccessorAuthenticationService} from "./spotify-accessor-authentic
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     HttpClientModule
   ],
   declarations: [
-    SearchComponent,
+    SearchBoxComponent,
     ResultsComponent,
     AlbumFinderComponent,
     DetailsComponent

@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Album} from "../interfaces";
 
 @Component({
   selector: 'component-details',
@@ -7,6 +8,9 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class DetailsComponent implements OnInit {
+
+  @Input()
+  album: Album;
 
   constructor() {
   }

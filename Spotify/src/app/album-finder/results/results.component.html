@@ -1,8 +1,3 @@
-<ul class="list-group">
-  <li
-    class="list-group-item"
-    *ngFor="let album of albums;"
-  >
-    {{album.artists[0].name}} - {{album.name}}
-  </li>
-</ul>
+<div class="card-group">
+  <component-details *ngFor="let album of albums" [album]="album"></component-details>
+</div>
