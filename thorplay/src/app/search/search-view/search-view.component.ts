@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {debounceTime, filter} from "rxjs/operators";
 
 @Component({
   selector: 'kuku-search-view',
@@ -11,17 +13,32 @@ import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angul
   encapsulation: ViewEncapsulation.Emulated
 })
 export class SearchViewComponent implements OnInit {
-  searchText: string = '';
   @Output() onSearchTextChange = new EventEmitter<string>();
+  searchForm: FormGroup;
 
   constructor() {
 
   }
 
   ngOnInit() {
+    this.searchForm = new FormGroup({
+      'query': new FormControl('null', [
+        Validators.required,
+        Validators.minLength(3)
+      ])
+    });
+    this.searchForm.valueChanges.pipe(
+      filter(t => {
+        return t.query.length > 3;
+      }),
+      debounceTime(600)
+    ).subscribe((dataIn) => {
+      console.log(dataIn);
+      this.onSearchTextChange.emit(dataIn.query);
+    });
   }
 
-  searchSpotify() {
-    this.onSearchTextChange.emit(this.searchText);
+  searchSpotify(query) {
+    this.onSearchTextChange.emit(query);
   }
 }

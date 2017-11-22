@@ -20,9 +20,12 @@ export class SpotifyService {
       map(res => {
         return res['albums']['items'];
       })
-    ).catch(err => {
-      console.log(err);
-      //this.auth.authorize();
+    ).catch((err: Response) => {
+      if (err['status'] === 401) {
+        this.auth.authorize();
+      } else {
+        console.log('Błąd:', err);
+      }
       return [];
     });
   }

@@ -5,12 +5,15 @@ import {SearchPanelComponent} from './search-panel/search-panel.component';
 import {SearchViewComponent} from "./search-view/search-view.component";
 import {HttpClientModule} from "@angular/common/http";
 import {SpotifyService} from "./spotify.service";
-import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
+import {PreviewComponent} from "./preview/preview.component";
+import {SpotifyMockService} from "./spotify-mock.service";
+import {FilterAlbumsPipe} from './filter-albums.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   exports: [
@@ -19,10 +22,13 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     SearchViewComponent,
     SearchResultComponent,
-    SearchPanelComponent
+    SearchPanelComponent,
+    PreviewComponent,
+    FilterAlbumsPipe
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    SpotifyMockService
   ]
 })
 export class SearchModule {

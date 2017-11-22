@@ -2,20 +2,22 @@
   <div class="card-body">
     <h4 class="card-title">Wyszukiwarka</h4>
     <div class="card-text">
-      <form>
+      <form (submit)="searchSpotify()" [formGroup]="searchForm">
         <div class="input-group input-group-lg">
           <input
             placeholder="Wpisz nazwę albumu"
-            [(ngModel)]="searchText"
             class="form-control"
             type="text"
             id="searchField"
+            formControlName="query"
             name="searchField"
+            #ref
           >
           <span class="input-group-btn">
-            <a href="#" class="btn btn-primary" (click)="searchSpotify()">Szukaj</a>
+            <button type="submit" class="btn btn-primary">Szukaj</button>
           </span>
         </div>
       </form>
     </div>
   </div>
+</div>
