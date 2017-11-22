@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Playlist} from '../../playlist';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -34,19 +35,18 @@ import {Playlist} from '../../playlist';
 export class ListPlaylistsComponent implements OnInit {
   @Input() listPlaylists: Playlist[];
 
-  @Output() onCurrentPlaylistChange = new EventEmitter<Playlist>();
   currentPlaylist: Playlist;
   hover: number = 0;
 
-  constructor() { }
+  constructor(private _router: Router) {
+  }
 
   ngOnInit() {
   }
 
   selectPlaylist(playlist) {
-    console.log(playlist);
-    this.onCurrentPlaylistChange.emit(playlist);
     this.currentPlaylist = playlist;
+    this._router.navigate(['/playlists', playlist.id]);
   }
 
   setSpecialColor(event, playlist) {
