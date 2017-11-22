@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
 import { Playlist } from '../playlist';
+import {PlaylistsService} from "../playlists.service";
 
 @Component({
   selector: 'mk-list-playlists',
@@ -16,7 +17,7 @@ export class ListPlaylistsComponent implements OnInit {
   @Input() listPlaylists: Playlist[];
   @Output() selectedChange = new EventEmitter();
 
-  constructor() { }
+  constructor(private playlists: PlaylistsService) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,8 @@ export class ListPlaylistsComponent implements OnInit {
   onSelected(playlist) {
     this.selectedPlaylist = playlist;
     this.selectedChange.emit(playlist);
-    console.log(playlist);
+    // console.log(playlist);
+    console.log(this.playlists.getPlaylistById(playlist.id));
   }
 
 }

@@ -15,12 +15,16 @@ import {SearchWrapperComponent} from './search/search-wrapper/search-wrapper.com
 import { PlaylistsWrapperComponent } from './playlists-wrapper/playlists-wrapper.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import {PlaylistsService} from "./playlists.service";
 
 const routes: Routes = [
   {path: 'search', component: SearchWrapperComponent},
-  {path: 'playlist', component: PlaylistsWrapperComponent},
+  {path: 'playlist', component: PlaylistsWrapperComponent, children: [
+    {path: '', component: DetailPlaylistComponent},
+    {path: ':id', component: DetailPlaylistComponent}
+  ]},
   {path: '', component: HomeComponent},
-  {path: '**', component: ErrorComponent}
+  {path: '**', redirectTo: 'search', pathMatch: 'full'}
 ];
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    AuthService
+    AuthService,
+    PlaylistsService
   ],
   bootstrap: [AppComponent]
 })

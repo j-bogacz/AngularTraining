@@ -2,8 +2,8 @@
   <li
     class="list-group-item"
     *ngFor="let playlist of listPlaylists"
+    routerLink="/playlist/{{playlist.id}}"
     [class.active]="selectedPlaylist == playlist"
-    (click)="onSelected(playlist)"
     [mkHighlight]="playlist.color"
     [mkDefaultHighlight]="'black'"
   >{{playlist.name}}</li>

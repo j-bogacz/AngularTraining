@@ -1,7 +1,7 @@
-<div class="container">
-  <a routerLink="/search" class="btn btn-primary">Szukaj</a>
-  <a routerLink="/playlist" class="btn btn-primary">Playlisty</a>
-</div>
+<!--<div class="container">-->
+  <!--<a routerLink="/search" class="btn btn-primary">Szukaj</a>-->
+  <!--<a routerLink="/playlist" class="btn btn-primary">Playlisty</a>-->
+<!--</div>-->
 
 <div class="container">
   <div class="row">
@@ -13,10 +13,8 @@
       ></mk-list-playlists>
     </div>
     <div class="col-sm">
-      <mk-detail-playlist
-        *ngIf="selectedPlaylist"
-        [playlist]="selectedPlaylist"
-      ></mk-detail-playlist>
+      <router-outlet></router-outlet>
+
     </div>
   </div>
 </div>
