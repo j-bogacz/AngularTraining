@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {SpotifyService} from '../spotify.service';
 import {Album} from '../interfaces';
+import {SpotifyMockService} from '../spotify-mock.service';
 
 @Component({
   selector: 'lekarz-search-panel-wrapper',
@@ -10,7 +11,8 @@ import {Album} from '../interfaces';
 })
 export class SearchPanelWrapperComponent implements OnInit {
   @Output() albums: Album[];
-  constructor(private spotifyService: SpotifyService) {
+  constructor(private spotifyService: SpotifyService,
+              private spotifyMockService: SpotifyMockService) {
 
   }
 
@@ -21,6 +23,8 @@ export class SearchPanelWrapperComponent implements OnInit {
         this.albums = albums;
         console.log('albums', albums);
       });
+
+    // this.albums = this.spotifyMockService.getAlbums()['albums']['items'];
   }
 
   ngOnInit() {

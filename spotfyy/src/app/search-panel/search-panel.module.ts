@@ -5,13 +5,14 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchPanelWrapperComponent } from './search-panel-wrapper/search-panel-wrapper.component';
 import {SpotifyService} from './spotify.service';
-import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
+import {SpotifyMockService} from './spotify-mock.service';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   declarations: [
     SearchBoxComponent,
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     SearchPanelWrapperComponent
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    SpotifyMockService
   ],
   exports: [
     SearchPanelWrapperComponent

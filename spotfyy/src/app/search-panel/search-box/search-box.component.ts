@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {Album} from '../interfaces';
+import {FormControl, FormGroup} from '@angular/forms';
+import {debounceTime, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'lekarz-search-box',
@@ -9,17 +10,29 @@ import {Album} from '../interfaces';
 })
 export class SearchBoxComponent implements OnInit {
 
-  keyword: string;
-  @Output() searchClicked = new EventEmitter();
+  // keyword: string;
+  @Output() keywordChange = new EventEmitter();
+  searchForm: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
+    this.searchForm = new FormGroup({
+      'keyword': new FormControl('pizza')
+    });
+    this.searchForm.valueChanges
+      .pipe(
+        filter(query => query.keyword.length >= 3),
+        debounceTime(500)
+      )
+      .subscribe((dataIn) => {
+        this.keywordChange.emit(dataIn.keyword);
+    });
   }
 
-  onSearchClick(){
-    console.log('onSearchClick ' + this.keyword);
-    this.searchClicked.emit(this.keyword);
+  doSearch(keyword) {
+    console.log(this.searchForm);
+    this.keywordChange.emit(keyword);
 
   }
 }

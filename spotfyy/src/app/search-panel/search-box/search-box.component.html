@@ -1,6 +1,7 @@
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..." [(ngModel)]="keyword" >
-  <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button" (click)="onSearchClick()" (keyup.enter)="onSearchClick()">Go!</button>
-      </span>
+<form class="form-inline" (submit)="doSearch()" [formGroup]="searchForm">
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..." formControlName="keyword">
+
 </div>
+  <button type="submit" class="btn btn-primary">Go</button>
+</form>
