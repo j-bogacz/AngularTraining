@@ -1,16 +1,23 @@
-<form
-  [formGroup]="searchForm"
+<form class="form"
+      [formGroup]="searchForm"
+      (submit)="search()"
 >
   <div class="row">
-    <div class="col-10">
-      <input
-        type="text"
-        class="form-control"
-        id="searchInput"
-        placeholder="Enter album name"
-        formControlName="query"
-      >
-    </div>
+    <!--<div class="col-10">-->
+    <input
+      type="text"
+      class="form-control"
+      id="searchInput"
+      placeholder="Enter album name"
+      formControlName="query"
+    >
+    <!--</div>-->
+    <!--<button type="submit" class="btn btn-submit">Szukaj</button>-->
+
+  </div>
+  <div class="row" *ngIf="searchForm.get('query').touched || searchForm.get('query').dirty">
+    <div class="col-10 alert alert-warning" *ngIf="searchForm.get('query').hasError('required')">Field is required</div>
+    <div class="col-10 alert alert-danger" *ngIf="searchForm.get('query').hasError('minlength')">value too short</div>
   </div>
 </form>
 

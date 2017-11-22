@@ -24,12 +24,19 @@ export class SearchBarComponent implements OnInit {
       ])
     });
     this.searchForm.valueChanges.pipe(
-      filter(v => v.query.length > 2),
+      filter(() => this.searchForm.valid),
       debounceTime(500)
     ).subscribe((newValue) => {
       console.log(newValue);
       this.searchQueryChanged.emit(newValue.query);
     });
+  }
+
+  search() {
+    if (this.searchForm.valid) {
+      console.log(this.searchForm);
+      this.searchQueryChanged.emit(this.searchForm.value.query);
+    }
   }
 
 }
