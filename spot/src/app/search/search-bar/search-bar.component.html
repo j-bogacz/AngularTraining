@@ -16,8 +16,10 @@
 
   </div>
   <div class="row" *ngIf="searchForm.get('query').touched || searchForm.get('query').dirty">
-    <div class="col-10 alert alert-warning" *ngIf="searchForm.get('query').hasError('required')">Field is required</div>
-    <div class="col-10 alert alert-danger" *ngIf="searchForm.get('query').hasError('minlength')">value too short</div>
+    <div class="alert alert-warning" *ngIf="searchForm.get('query').hasError('required')">Field is required</div>
+    <div class="alert alert-danger" *ngIf="searchForm.get('query').hasError('minlength')">value too short</div>
+    <div class="alert alert-danger" *ngIf="searchForm.get('query').hasError('badword')">Wrong value</div>
+    <div class="alert alert-danger" *ngIf="searchForm.get('query').hasError('badwordasync')">Wrong value async</div>
   </div>
 </form>
 
