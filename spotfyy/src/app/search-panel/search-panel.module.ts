@@ -7,12 +7,15 @@ import { SearchPanelWrapperComponent } from './search-panel-wrapper/search-panel
 import {SpotifyService} from './spotify.service';
 import { ReactiveFormsModule} from '@angular/forms';
 import {SpotifyMockService} from './spotify-mock.service';
+import {RouterModule } from "@angular/router";
+
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     SearchBoxComponent,
