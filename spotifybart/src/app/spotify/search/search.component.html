@@ -1,4 +1,7 @@
-<form class="form-inline">
+<form
+  class="form-inline"
+  [formGroup] = "searchForm"
+>
 
   <div class="form-group mx-sm-3">
     <label for="inputAlbum" class="sr-only"></label>
@@ -7,13 +10,12 @@
       class="form-control"
       id="inputAlbum"
       placeholder="album"
-      [(ngModel)]  = "searchText"
-      name = "searchText"
+      formControlName = "keyword"
+
     >
   </div>
   <button
     type="submit"
     class="btn btn-primary"
-    (click)="search()"
   >Szukaj</button>
 </form>

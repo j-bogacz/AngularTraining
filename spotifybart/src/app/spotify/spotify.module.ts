@@ -6,12 +6,15 @@ import { ArtistListComponent } from './artist-list/artist-list.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { SpotifyService } from "./spotify.service";
 import { FormsModule } from '@angular/forms';
+import {SpotifyMockService} from "./spotify-mock.service";
+import { ReactiveFormsModule } from "@angular/forms"
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SearchComponent,
@@ -19,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     WrapperComponent
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    SpotifyMockService
   ],
   exports: [
     WrapperComponent
