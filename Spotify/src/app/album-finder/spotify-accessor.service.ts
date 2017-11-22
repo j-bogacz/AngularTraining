@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {SpotifyAccessorAuthenticationService} from './spotify-accessor-authentication.service';
+import {SpotifyAccessorAuthenticationService} from '../error/spotify-accessor-authentication.service';
 import {map} from "rxjs/operators";
 import 'rxjs/add/operator/catch';
 

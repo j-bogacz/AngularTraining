@@ -10,16 +10,23 @@ import {HighlightDirective} from './shared/highlight.directive';
 
 import {AlbumFinderModule} from './album-finder/album-finder.module';
 import {AlbumFinderComponent} from "./album-finder/album-finder.component";
-import {SpotifyAccessorAuthenticationService} from "./album-finder/spotify-accessor-authentication.service";
+import {SpotifyAccessorAuthenticationService} from "./error/spotify-accessor-authentication.service";
 import {PlaylistsComponent} from './playlists/playlists.component';
 import {HomeComponent} from './home/home.component';
 import {ErrorComponent} from './error/error.component';
+import {PlaylistsAccessorService} from "./playlists/playlists-accessor.service";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'playlists', component: PlaylistsComponent},
   {path: 'search', component: AlbumFinderComponent},
-  {path: '**', component: ErrorComponent}
+  {
+    path: 'playlists', component: PlaylistsComponent, children: [
+    {path: '', component: PlaylistsComponent},
+    {path: ':id', component: DetailPlaylistsComponent},
+
+  ]
+  },
+  {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -38,7 +45,7 @@ const routes: Routes = [
     AlbumFinderModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SpotifyAccessorAuthenticationService],
+  providers: [SpotifyAccessorAuthenticationService, PlaylistsAccessorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

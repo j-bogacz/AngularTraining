@@ -10,7 +10,7 @@ import {DetailsComponent} from './details/details.component';
 import {SpotifyAccessorService} from "./spotify-accessor.service";
 import {SpotifyAccessorMockService} from "./spotify-accessor-mock.service";
 import {HttpClientModule} from "@angular/common/http";
-import {SpotifyAccessorAuthenticationService} from "./spotify-accessor-authentication.service";
+import {SpotifyAccessorAuthenticationService} from "../error/spotify-accessor-authentication.service";
 
 @NgModule({
   imports: [

@@ -1,5 +1,7 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Playlist} from "../interfaces";
+import {ActivatedRoute} from "@angular/router";
+import {PlaylistsAccessorService} from "../playlists-accessor.service";
 
 @Component({
   selector: 'component-detail-playlists',
@@ -11,13 +13,15 @@ export class DetailPlaylistsComponent implements OnInit {
 
   title: string = 'Playlist detail';
 
-  @Input()
   playlist: Playlist;
+
+  playlistId: number;
 
   isInEditMode: boolean = false;
 
-  constructor() {
-    console.log(this);
+  constructor(private activatedRoute: ActivatedRoute, private playlistsAccessorService: PlaylistsAccessorService) {
+    this.playlistId = parseInt(this.activatedRoute.snapshot.params['id'], 10);
+    this.playlist = this.playlistsAccessorService.GetPlaylist(this.playlistId);
   }
 
   ngOnInit() {

@@ -4,10 +4,9 @@
   <li
     class="list-group-item"
     *ngFor="let playlist of playlists;"
-    (click)="SelectPlaylist(playlist)"
     [ngClass]="{'active': selectedPlaylist == playlist}"
     directive-highlight propertyName="border-right-color" [highlightedColor]="playlist.color" defaultColor="lightgray"
   >
-    {{playlist.name}}{{i}}
+    <a routerLink="/playlists/{{playlist.id}}">{{playlist.name}}{{i}}</a>
   </li>
 </ul>
