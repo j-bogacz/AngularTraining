@@ -7,14 +7,15 @@ import {DetailAlbumComponent} from './detail-album/detail-album.component';
 import {SearchWrapperComponent} from './search-wrapper/search-wrapper.component';
 import {SpotifyService} from './spotify.service';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
+import {SpotifyMockService} from './spotify-mock.service';
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   declarations: [
     SearchBarComponent,
@@ -26,7 +27,8 @@ import {FormsModule} from '@angular/forms';
     SearchWrapperComponent
   ],
   providers: [
-    SpotifyService
+    SpotifyService,
+    SpotifyMockService
   ]
 })
 export class SearchModule {

@@ -10,6 +10,7 @@ import {Album} from '../interfaces';
 })
 export class SearchWrapperComponent implements OnInit {
   albums: Album[];
+  // albums: any;
 
   @Input() query: string;
 
@@ -20,7 +21,7 @@ export class SearchWrapperComponent implements OnInit {
   ngOnInit() {
   }
 
-  search(query: string) {
+  search(query: string = 'ACDC') {
     console.log(query);
     this.spotify.getAlbums(query).subscribe(albums => this.albums = albums);
   }
