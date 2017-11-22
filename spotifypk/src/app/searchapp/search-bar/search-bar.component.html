@@ -1,4 +1,5 @@
 <form
+  (submit)="doSearch()"
    [formGroup]="searchForm">
   <div class="form-group">
     <label>Provide your query</label>
@@ -12,5 +13,9 @@
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Search</button>
+    <div *ngIf="searchForm.get('query').touched || searchForm.get('query').dirty" >
+      <div class="alert alert-danger" *ngIf="searchForm.get('query').hasError('required')">Field is required</div>
+      <div  class="alert alert-danger" *ngIf="searchForm.get('query').hasError('minlength')">Value is too short </div>
+    </div>
   </div>
 </form>

@@ -22,10 +22,10 @@ export class SearchBarComponent implements OnInit {
         ])
     });
     this.searchForm.valueChanges.pipe(
-      filter(query => query['query'].length >= 3),
+      filter(() => this.searchForm.valid),
       debounceTime(1000)
     ).subscribe((dataIn) => {
-        this.doSearch(dataIn['query']);
+      this.textChanged.emit(dataIn.query);
     });
   }
 
@@ -35,8 +35,8 @@ export class SearchBarComponent implements OnInit {
   }
 
   doSearch(value) {
-    console.log(this.searchForm);
-    this.onTextChanged(value);
-    console.log('Current value of query is: ' + value);
+    if(this.searchForm.valid){
+      this.textChanged.emit(this.searchForm.value.query);
+    }
   }
 }
