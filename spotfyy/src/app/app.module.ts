@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -9,20 +10,34 @@ import { DetailPlaylistComponent } from './detail-playlist/detail-playlist.compo
 import { HighlightDirective } from './shared/highlight.directive';
 
 import { SearchMusicModule } from './search-music/search-music.module';
-import {AuthService} from "./auth/auth.service";
-import {SpotifyService} from "./search-music/spotify.service";
+import {AuthService} from './auth/auth.service';
+import {WraperSearchAlbumComponent} from './search-music/wraper-search-album/wraper-search-album.component';
+import { WraperPlaylistsComponent } from './wraper-playlists/wraper-playlists.component';
+import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'search', component: WraperSearchAlbumComponent},
+  {path: 'playlists', component: WraperPlaylistsComponent},
+  {path: '**', component: ErrorComponent}
+];
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPlaylistsComponent,
     DetailPlaylistComponent,
-    HighlightDirective
+    HighlightDirective,
+    WraperPlaylistsComponent,
+    HomeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    SearchMusicModule
+    SearchMusicModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     AuthService

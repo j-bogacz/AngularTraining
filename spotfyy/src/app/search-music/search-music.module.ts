@@ -8,13 +8,15 @@ import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { WraperSearchAlbumComponent } from './wraper-search-album/wraper-search-album.component';
 import {SpotifyService} from "./spotify.service";
 import {SpoftifyMockService} from './spoftify-mock.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     SearchBoxComponent,
