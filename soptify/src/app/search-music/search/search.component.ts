@@ -56,9 +56,10 @@ export class SearchComponent implements OnInit {
     });
 
     this.searchForm.valueChanges.pipe(
-      filter(() => this.searchForm.valid),
+      filter(query => query.word.length >= 3),
       debounceTime(500)
     ).subscribe((dataIn) => {
+      console.log(dataIn)
       this.searchChanged.emit(dataIn.word);
     });
   }

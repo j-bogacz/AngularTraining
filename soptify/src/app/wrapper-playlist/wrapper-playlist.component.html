@@ -1,0 +1,24 @@
+<p class="lead">
+  <a class="btn btn-primary btn-block" routerLink="/search" role="button">Szukaj</a>
+  <a class="btn btn-success btn-block" routerLink="/playlist" role="button">Playlist</a>
+</p>
+<div class="container">
+<div class="row">
+  <div class="col-sm">
+    <lekarz-list-playlists
+    [listPlaylistsTmp]="listPlaylists"
+    (selectedChanged)="selected = $event"
+      ></lekarz-list-playlists>
+      </div>
+      <div class="col-sm">
+      <lekarz-detail-playlist
+      *ngIf="selected"
+      [playlist]="selected"
+      ></lekarz-detail-playlist>
+      <div class="alert alert-primary" role="alert" *ngIf="!selected">
+      Proszę wybrać playlistę z listy
+    </div>
+  </div>
+</div>
+</div>
+

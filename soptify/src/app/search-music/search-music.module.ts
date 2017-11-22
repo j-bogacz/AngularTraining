@@ -7,12 +7,14 @@ import {AlbumComponent} from './album/album.component';
 import {SpotifyService} from './spotify.service';
 import {ReactiveFormsModule} from "@angular/forms";
 import {SpotiMockService} from "./spoti-mock.service";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     WrapperComponent,
