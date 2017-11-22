@@ -29,8 +29,12 @@
 // }
 
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {
+  FormGroup, FormControl, Validators, ValidationErrors, AbstractControl, ValidatorFn,
+  AsyncValidatorFn
+} from '@angular/forms';
 import {debounceTime, filter} from "rxjs/operators";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'component-search-box',
@@ -52,10 +56,34 @@ export class SearchBoxComponent implements OnInit {
   }
 
   ngOnInit() {
+    const censor = (word: string): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
+      if (control.value.indexOf(word) !== -1) {
+        return {
+          'badword': word
+        }
+      } else {
+        return null
+      }
+    }
+
+    type OptionalErrors = ValidationErrors | null;
+
+    const asyncCensor = (word: string): AsyncValidatorFn => (control: AbstractControl): Observable<OptionalErrors> => {
+      return Observable.create(observer => {
+        setTimeout(() => {
+          const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
+          observer.next(isError);
+          observer.complete();
+        }, 5000);
+      });
+    }
+
     this.queryForm = new FormGroup({
       'query': new FormControl('', [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        censor('batman')], [
+        asyncCensor('babcia')
       ])
     });
     this.queryForm.patchValue({
@@ -75,13 +103,18 @@ export class SearchBoxComponent implements OnInit {
   OnValueChanges(newValue, eventEmmiter) {
     console.log('Value changes, new value: ', newValue);
     var query = newValue.query;
-    console.log('Emit query: ', query);
-    eventEmmiter.emit(query);
+    if (this.queryForm.valid) {
+      console.log('Emit query: ', query);
+      eventEmmiter.emit(query);
+    }
   }
 
   DoSearch() {
+    console.log(this.queryForm);
     if (this.queryForm.valid) {
       console.log(this.queryForm);
     }
   }
+
+
 }

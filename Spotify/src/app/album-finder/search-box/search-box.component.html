@@ -37,5 +37,11 @@
     <div class="alert alert-danger"
          *ngIf="queryForm.get('query').hasError('minlength')">Value too short
     </div>
+    <div class="alert alert-danger"
+         *ngIf="queryForm.get('query').hasError('badword')">Value contains forbidden word
+    </div>
+    <div class="alert alert-danger"
+         *ngIf="queryForm.get('query').hasError('badwordasync')">Value contains forbidden word (async)
+    </div>
   </div>
 </form>
