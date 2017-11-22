@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <lekarz-search-box
+      (keyWordChange)="search($event)"
+    ></lekarz-search-box>
+  </div>
+  <div class="row">
+    <lekarz-search-results
+      [albums]="albums"
+    ></lekarz-search-results>
+  </div>
+</div>

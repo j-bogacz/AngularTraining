@@ -1,0 +1,24 @@
+<form
+  class="form-inline"
+  (submit)="doSearch()"
+  [formGroup]="searchForm"
+>
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Wpisz frazę do szukania"
+      formControlName="keyWord"
+    >
+  </div>
+  <button type="submit" class="btn btn-primary">Szukaj</button>
+  <div
+    *ngIf="searchForm.get('keyWord').touched || searchForm.get('keyWord').dirty"
+
+  >
+    <div *ngIf="searchForm.get('keyWord').hasError('required')" class="alert alert-danger">Pole wymagane</div>
+    <div *ngIf="searchForm.get('keyWord').hasError('minlength')" class="alert alert-danger">Za mało znaków</div>
+    <div *ngIf="searchForm.get('keyWord').hasError('badword')" class="alert alert-danger">Zabronine słowa</div>
+    <div *ngIf="searchForm.get('keyWord').hasError('badwordasync')" class="alert alert-danger">Zabronine babacia</div>
+  </div>
+</form>
