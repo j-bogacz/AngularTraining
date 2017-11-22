@@ -12,10 +12,17 @@ import {SearchPanelWrapperComponent} from './search-panel/search-panel-wrapper/s
 import { PlaylistsWrapperComponent } from './playlists-wrapper/playlists-wrapper.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import {PlaylistsSourceService} from "./playlists-source.service";
 
 const routes: Routes = [
   {path: 'search', component: SearchPanelWrapperComponent},
-  {path: 'playlists', component: PlaylistsWrapperComponent},
+  {path: 'playlists', component: PlaylistsWrapperComponent, children: [
+    {path: '', component: PlaylistsWrapperComponent },
+    {path: ':id', component: PlaylistsWrapperComponent, children: [
+      {path: 'edit', component: DetailPlaylistComponent },
+      {path: 'show', component: DetailPlaylistComponent }
+    ]}
+  ]},
   {path: '', component: HomeComponent},
   {path: '*', component: ErrorComponent}
 ]
@@ -38,7 +45,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    AuthService
+    AuthService,
+    PlaylistsSourceService
   ],
   bootstrap: [AppComponent]
 })

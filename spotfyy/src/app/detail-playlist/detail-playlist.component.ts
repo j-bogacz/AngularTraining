@@ -1,6 +1,8 @@
 
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Playlist } from '../playlist';
+import {ActivatedRoute} from "@angular/router";
+import {PlaylistsSourceService} from "../playlists-source.service";
 
 
 @Component({
@@ -18,10 +20,13 @@ export class DetailPlaylistComponent implements OnInit {
   isEditingMode: boolean = false;
   title: string = 'Playlist detail';
   test: number = 2;
-  @Input() playlist: Playlist;
+  playlist: Playlist;
+  idPlaylist: number = 0;
 
-  constructor() {
-    console.log(this.playlist);
+  constructor(private activatedRoute: ActivatedRoute,
+              private playlistsSourceService: PlaylistsSourceService) {
+    this.idPlaylist = parseInt(this.activatedRoute.snapshot.params['id'], 10);
+    this.playlist = this.playlistsSourceService.getPlaylist(this.idPlaylist);
   }
 
   ngOnInit() {
