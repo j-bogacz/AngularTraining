@@ -11,7 +11,7 @@ export class AlbumComponent implements OnInit {
 
 
   @Input()
-  albums: Album[];
+  albums: Album;
 
   constructor() { }
 
