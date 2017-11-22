@@ -16,7 +16,7 @@ export class SpotifyService {
         'Authorization': 'Bearer ' + this.auth.getToken()
       })
     }).pipe(
-        map(data => data.albums.items)
+        map(data => data['albums']['items'])
       )
       .catch(
         err => {

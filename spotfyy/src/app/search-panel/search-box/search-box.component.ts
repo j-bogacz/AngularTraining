@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Album} from '../interfaces';
 
 @Component({
   selector: 'lekarz-search-box',
@@ -8,9 +9,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SearchBoxComponent implements OnInit {
 
+  keyword: string;
+  @Output() searchClicked = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSearchClick(){
+    console.log('onSearchClick ' + this.keyword);
+    this.searchClicked.emit(this.keyword);
+
+  }
 }

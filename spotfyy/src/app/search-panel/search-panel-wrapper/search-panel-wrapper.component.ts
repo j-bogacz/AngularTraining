@@ -11,9 +11,13 @@ import {Album} from '../interfaces';
 export class SearchPanelWrapperComponent implements OnInit {
   @Output() albums: Album[];
   constructor(private spotifyService: SpotifyService) {
-    console.log('test');
-    this.spotifyService.getAlbums()
-      .subscribe(albums=> {
+
+  }
+
+  performSearch(keyword) {
+    console.log('performSearch ' + keyword);
+    this.spotifyService.getAlbums(keyword)
+      .subscribe(albums => {
         this.albums = albums;
         console.log('albums', albums);
       });

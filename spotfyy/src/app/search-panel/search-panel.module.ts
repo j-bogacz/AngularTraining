@@ -5,11 +5,13 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchPanelWrapperComponent } from './search-panel-wrapper/search-panel-wrapper.component';
 import {SpotifyService} from './spotify.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     SearchBoxComponent,

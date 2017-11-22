@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Album} from '../interfaces';
 
 @Component({
@@ -11,10 +11,19 @@ import {Album} from '../interfaces';
 })
 export class SearchResultsComponent implements OnInit {
 
+  // @Output() selectedChanged = new EventEmitter();
   @Input() albums: Album[];
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  // onSelected(album){
+  //  this.selectedChanged.emit(album);
+
+    // this.selected = album;
+
+  // }
 
 }
