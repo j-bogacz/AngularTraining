@@ -18,17 +18,24 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      'word' : new FormControl('cos tam cos tam',[
+      'word' : new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ])
     });
+    
     this.searchForm.valueChanges.pipe(
-      filter(query => query.word.length >= 3),
+      filter(() => this.searchForm.valid),
       debounceTime(500)
     ).subscribe((dataIn) => {
-      console.log(dataIn);
       this.searchChanged.emit(dataIn.word);
     });
+  }
+
+
+  doSearch() {
+    if (this.searchForm.valid) {
+      this.searchChanged.emit(this.searchForm.value.word);
+    }
   }
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="searchForm">
+<form [formGroup]="searchForm" (submit)="doSearch()">
   <div class="row">
     <div class="col-lg-6">
       <div class="input-group">
@@ -14,6 +14,11 @@
           >Go!</button>
       </span>
       </div>
+    </div>
+    <div *ngIf="searchForm.get('word').touched || searchForm.get('word').dirty"
+    >
+      <div *ngIf="searchForm.get('word').hasError('required')" class="alert alert-danger">Field is required</div>
+      <div *ngIf="searchForm.get('word').hasError('minlength')" class="alert alert-warning">value too short </div>
     </div>
   </div>
 </form>
