@@ -10,14 +10,20 @@ import {Album} from "../interfaces";
 })
 export class WraperSearchAlbumComponent implements OnInit {
   albums: Album[];
+  query: string;
   constructor(private spotifyService: SpotifyService) {
-    this.spotifyService.getAlbums()
+    this.search();
+  }
+
+  search(query: string = 'acdc'){
+    this.spotifyService.getAlbums(query)
       .subscribe(albums => {
         this.albums = albums as Album[];
       });
   }
 
   ngOnInit() {
+
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'lekarz-search-box',
@@ -8,9 +8,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SearchBoxComponent implements OnInit {
 
+  keyWord: string = '';
+  @Output() keyWordChange = new EventEmitter<string>();
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    this.keyWordChange.emit(this.keyWord);
   }
 
 }
