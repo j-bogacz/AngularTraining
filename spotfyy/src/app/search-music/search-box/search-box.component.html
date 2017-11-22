@@ -1,5 +1,6 @@
 <form
   class="form-inline"
+  (submit)="doSearch()"
   [formGroup]="searchForm"
 >
   <div class="form-group">
@@ -11,4 +12,11 @@
     >
   </div>
   <button type="submit" class="btn btn-primary">Szukaj</button>
+  <div
+    *ngIf="searchForm.get('keyWord').touched || searchForm.get('keyWord').dirty"
+
+  >
+    <div *ngIf="searchForm.get('keyWord').hasError('required')" class="alert alert-danger">Pole wymagane</div>
+    <div *ngIf="searchForm.get('keyWord').hasError('minlength')" class="alert alert-danger">Za mało znaków</div>
+  </div>
 </form>

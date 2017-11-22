@@ -18,18 +18,34 @@ export class SearchBoxComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      'keyWord': new FormControl('placki', [
+      'keyWord': new FormControl('', [
         Validators.required,
         Validators.minLength(3)
       ])
     });
     this.searchForm.valueChanges.pipe(
-      filter(query => query.keyWord.length >= 3),
+      filter(() => this.searchForm.valid),
       debounceTime(500)
     ).subscribe((dataIn) => {
       this.keyWordChange.emit(dataIn.keyWord);
     });
 
+  }
+  onGetDataFromApi(){
+    let fromApi = {
+      query: 'quen'
+    }
+    this.searchForm.patchValue({
+      'keyWord': fromApi.query
+    });
+    this.registerForm.setValue({
+      'addres': {'home':"Płock"}
+    });
+  }
+  doSearch() {
+    if (this.searchForm.valid) {
+      this.keyWordChange.emit(this.searchForm.value.keyWord);
+    }
   }
 
 }
