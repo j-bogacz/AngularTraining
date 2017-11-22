@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {debounceTime, filter} from 'rxjs/operators';
 
 @Component({
@@ -18,21 +18,27 @@ export class SearchBoxComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      'keyword': new FormControl('pizza')
+      'keyword': new FormControl('pizza', [
+          Validators.required,
+          Validators.minLength(3)
+        ])
     });
     this.searchForm.valueChanges
       .pipe(
-        filter(query => query.keyword.length >= 3),
-        debounceTime(500)
+        filter(() => this.searchForm.valid),
+        debounceTime(800)
       )
       .subscribe((dataIn) => {
         this.keywordChange.emit(dataIn.keyword);
     });
   }
 
-  doSearch(keyword) {
+  doSearch() {
     console.log(this.searchForm);
-    this.keywordChange.emit(keyword);
+    if(this.searchForm.valid) {
+      this.keywordChange.emit(this.searchForm.value.keyword);
+    }
+
 
   }
 }
