@@ -57,9 +57,9 @@ export class SearchViewComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         censor('babcia')
-      ], [
+      ]/*, [
         asyncCensor('dziadek')
-      ])
+      ]*/)
     });
     this.searchForm.valueChanges.pipe(
       filter(t => {
@@ -72,8 +72,8 @@ export class SearchViewComponent implements OnInit {
     });
   }
 
+//folk
   searchSpotify() {
-    console.log('probuje szukac: ', this.searchForm.valid);
     if (this.searchForm.valid) {
       this.onSearchTextChange.emit(this.searchForm.value.query);
     }

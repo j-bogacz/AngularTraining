@@ -31,9 +31,7 @@ export class HighlightDirective implements OnInit {
   }
 
   @HostListener('document:click', ['$event.target', '$event.x'])
-  checkcClick(event: Event, x: number) {
-    console.log('event:' + JSON.stringify(event));
-    console.log('event.X:' + x);
+  checkClick(event: Event, x: number) {
   }
 
   private highlight(color: string) {

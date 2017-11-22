@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {Playlist} from '../playlist';
+import {Playlist} from '../../playlist';
+
 
 @Component({
   selector: 'kuku-list-playlists',
@@ -22,6 +23,10 @@ import {Playlist} from '../playlist';
     .list-group-item {
       border-left: 5px solid transparent;
     }
+
+    a:visited {
+      color: black;
+    }
   `
   ],
   encapsulation: ViewEncapsulation.Emulated
@@ -39,6 +44,7 @@ export class ListPlaylistsComponent implements OnInit {
   }
 
   selectPlaylist(playlist) {
+    console.log(playlist);
     this.onCurrentPlaylistChange.emit(playlist);
     this.currentPlaylist = playlist;
   }

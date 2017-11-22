@@ -3,9 +3,8 @@
     *ngFor="let pl of listPlaylists; let i = index"
     class="list-group-item"
     [class.active]="pl == currentPlaylist"
-    (click)="selectPlaylist(pl)"
     [kukuHighlight]="pl.color" defaultColor="blue"
   >
-    {{pl.name}}
+    <a routerLink="/playlists/{{pl.id}}">{{pl.name}}</a>
   </li>
 </ul>

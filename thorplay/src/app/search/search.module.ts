@@ -9,12 +9,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {PreviewComponent} from "./preview/preview.component";
 import {SpotifyMockService} from "./spotify-mock.service";
 import {FilterAlbumsPipe} from './filter-albums.pipe';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     SearchPanelComponent
