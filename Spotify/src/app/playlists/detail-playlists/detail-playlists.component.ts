@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Playlist} from "../playlist";
+import {Playlist} from "../interfaces";
 
 @Component({
   selector: 'component-detail-playlists',

@@ -82,37 +82,43 @@ export class SearchBoxComponent implements OnInit {
       'query': new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        censor('batman')], [
-        asyncCensor('babcia')
+        censor('batman')
       ])
     });
+
+    // version using async validator
+    // this.queryForm = new FormGroup({
+    //   'query': new FormControl('', [
+    //     Validators.required,
+    //     Validators.minLength(3),
+    //     censor('batman')], [
+    //     asyncCensor('babcia')
+    //   ])
+    // });
     this.queryForm.patchValue({
-      'query': 'Initial value'
+      'query': 'Westbam'
     })
     this.queryForm.valueChanges.pipe(
-      filter(this.FilterValues),
+      filter(value => this.FilterValues(value, this.queryForm)),
       debounceTime(500))
-      .subscribe(newValue => this.OnValueChanges(newValue, this.queryChanged));
+      .subscribe(this.OnValueChanges);
   }
 
-  FilterValues(value) {
-    console.log('Incoming query: ', value.query, value.query.length < 3 ? ' (too short)' : '');
-    return value.query.length >= 3;
+  FilterValues(value, formGroup) {
+    console.log('Incoming query: ', value.query, formGroup.invalid ? ' (invalid)' : '');
+    return formGroup.valid;
   }
 
-  OnValueChanges(newValue, eventEmmiter) {
+  OnValueChanges(newValue) {
     console.log('Value changes, new value: ', newValue);
-    var query = newValue.query;
-    if (this.queryForm.valid) {
-      console.log('Emit query: ', query);
-      eventEmmiter.emit(query);
-    }
   }
 
   DoSearch() {
-    console.log(this.queryForm);
+    console.log('Current query form: ', this.queryForm);
     if (this.queryForm.valid) {
-      console.log(this.queryForm);
+      var query = this.queryForm.value.query;
+      console.log('Emit query: ', query);
+      this.queryChanged.emit(query);
     }
   }
 
