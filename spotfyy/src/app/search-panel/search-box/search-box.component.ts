@@ -1,6 +1,10 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
+import {
+  AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, ValidatorFn,
+  Validators
+} from '@angular/forms';
 import {debounceTime, filter} from 'rxjs/operators';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'lekarz-search-box',
@@ -26,13 +30,30 @@ export class SearchBoxComponent implements OnInit {
     }
   }
 
+
   ngOnInit() {
+    type OptionalErrors = ValidationErrors|null;
+
+    const asyncCensor = (word: string): AsyncValidatorFn => (control: AbstractControl): Observable<OptionalErrors> => {
+      return Observable.create( observer => {
+        setTimeout(() => {
+          const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
+          observer.next(isError);
+          observer.complete();
+        },5000);
+      });
+    };
+
+
+
     this.searchForm = new FormGroup({
       'keyword': new FormControl('pizza', [
           Validators.required,
           Validators.minLength(3),
           this.censor('aaa')
-        ])
+        ], [
+        asyncCensor('babcia')
+      ])
     });
     this.searchForm.valueChanges
       .pipe(
