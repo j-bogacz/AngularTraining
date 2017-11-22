@@ -7,14 +7,18 @@ import { WrapperComponent } from './wrapper/wrapper.component';
 import { SpotifyService } from "./spotify.service";
 import { FormsModule } from '@angular/forms';
 import {SpotifyMockService} from "./spotify-mock.service";
-import { ReactiveFormsModule } from "@angular/forms"
+import { ReactiveFormsModule } from "@angular/forms";
+import {RouterModule} from "@angular/router";
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     SearchComponent,

@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
-import {FormControl, ReactiveFormsModule} from "@angular/forms"
-import { FormGroup, Validators } from "@angular/forms"
+import {AsyncValidatorFn, FormControl, ReactiveFormsModule} from "@angular/forms"
+import { FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from "@angular/forms"
 import { filter, debounceTime} from "rxjs/operators";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'bart-search',
@@ -12,17 +13,55 @@ import { filter, debounceTime} from "rxjs/operators";
 export class SearchComponent implements OnInit {
 
   searchText:string = "";
-  constructor() { }
+  constructor() {
+
+  }
 
   searchForm: FormGroup;
   @Output() searchClicked = new EventEmitter<string>();
 
   ngOnInit() {
+
+    const censor = (word:string): ValidatorFn => (control: AbstractControl): ValidationErrors|null => {
+      if(control.value && control.value.indexOf(word) !== -1){
+        return {
+          'badword':word
+        }
+      }else{
+        return null
+      }
+    };
+    type OptionalErrors = ValidationErrors|null;
+
+    const asyncCensor = (word: string): AsyncValidatorFn => (control: AbstractControl): Observable<OptionalErrors> => {
+      return Observable.create( observer => {
+        setTimeout(() => {
+          const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
+          observer.next(isError);
+          observer.complete();
+        },2000);
+      });
+    }
+
+    this.searchForm = new FormGroup({
+      'keyWord': new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+        censor('batman')
+      ],
+
+        [
+        asyncCensor('babcia')
+      ])
+    });
+
     this.searchForm = new FormGroup({
       'keyword': new FormControl('', [
         Validators.required,
-        Validators.minLength( 3)
-      ])
+        Validators.minLength( 3),
+        censor("psiajucha")
+      ],
+        [asyncCensor('babcia')])
     });
     let fromApi = {
       query: 'queen'

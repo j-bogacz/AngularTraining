@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
 import { map } from "rxjs/operators";
 import 'rxjs/add/operator/catch';
+import { Routes, RouterModule } from '@angular/router'
 
 @Injectable()
 export class SpotifyService {
