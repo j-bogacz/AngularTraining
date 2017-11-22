@@ -1,6 +1,4 @@
 <div class="container">
-  <a routerLink="/search" class="btn btn-primary">Szukaj</a>
-  <a routerLink="/playLists" class="btn btn-primary">Playlist</a>
 </div>
 <div class="container">
   <div class="row">
@@ -11,10 +9,7 @@
       ></lekarz-list-playlists>
     </div>
     <div class="col-sm">
-      <lekarz-detail-playlist
-        *ngIf="selected"
-        [playlist]="selected"
-      ></lekarz-detail-playlist>
+      <router-outlet></router-outlet>
       <div class="alert alert-primary" role="alert" *ngIf="!selected">
         Proszę wybrać playlistę z listy
       </div>

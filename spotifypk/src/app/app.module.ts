@@ -13,13 +13,17 @@ import { SearchappModule } from './searchapp/searchapp.module';
 import { AuthService } from "./auth/auth.service";
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { PlayListServiceService } from './play-list-service.service';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'search', component: SearchWrapperComponent },
-  {path: 'playLists', component: ListPlaylistsComponent },
-  {path: 'wrapper', component: WraperPlayListsComponent },
-  {path: '**', component: ErrorComponent }
+  {path: 'playLists', component: WraperPlayListsComponent, children: [
+      {path: '', component: DetailPlaylistComponent },
+      {path: ':id', component: DetailPlaylistComponent },
+  ]},
+
+  {path: '**', redirectTo: 'search', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -40,6 +44,7 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
+    PlayListServiceService,
     ChildrenOutletContexts
   ],
   bootstrap: [AppComponent]

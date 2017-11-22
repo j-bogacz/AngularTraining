@@ -3,11 +3,11 @@
   <a routerLink="/playLists" class="btn btn-primary">Playlist</a>
 </div>
 <div class="card">
+  <p>test</p>
   <li
     class="list-group-item"
     *ngFor="let playlist of listPlaylists"
-    (click)="onSelected(playlist)"
     [ngClass]="{'active': selected == playlist}"
     [lekarzHighlight]="playlist.color"
-  >{{playlist.name}}</li>
+  ><a routerLink="/playLists/{{playlist.id}}">{{playlist.name}}</a></li>
 </div>
