@@ -5,11 +5,13 @@ import { AlbumSearchComponent } from './album-search/album-search.component';
 import { AlbumListComponent } from './album-list/album-list.component';
 import { AlbumWrapperComponent } from './album-wrapper/album-wrapper.component';
 import { SpotifyService } from './spotify.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     AlbumListComponent,

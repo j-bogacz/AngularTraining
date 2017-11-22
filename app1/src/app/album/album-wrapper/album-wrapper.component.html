@@ -1,5 +1,5 @@
 <div class="container">
-    <abc-album-search ></abc-album-search>
+    <abc-album-search (clickBtn)="search($event)"></abc-album-search>
 
     <abc-album-list
       [listAlbum]="albums"

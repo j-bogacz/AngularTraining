@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'abc-album-search',
@@ -8,10 +8,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AlbumSearchComponent implements OnInit {
 
-  searchString: string = 'ala';
+
+  @Output() clickBtn = new EventEmitter<string>();
+
+  searchString: string = '';
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClickEvent($event) {
+    this.clickBtn.emit(this.searchString);
   }
 
 }

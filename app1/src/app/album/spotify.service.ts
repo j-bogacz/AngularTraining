@@ -20,8 +20,9 @@ export class SpotifyService {
       })
     })
       .pipe(
-        map(data => return data['albums']['items']
-           )
+        map(data => {
+          return data['albums']['items']
+          })
       ).catch(err => {
         console.log(err);
         this.auth.authorize();
