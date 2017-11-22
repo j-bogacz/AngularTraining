@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {debounceTime, filter} from 'rxjs/operators';
 
 @Component({
@@ -16,11 +16,22 @@ export class SearchBoxComponent implements OnInit {
 
   constructor() { }
 
+  private readonly censor = (word:string): ValidatorFn => (control: AbstractControl): ValidationErrors|null => {
+    if(control.value.indexOf(word) !== -1) {
+      return {
+        'badword': word
+      };
+    } else {
+      return null;
+    }
+  }
+
   ngOnInit() {
     this.searchForm = new FormGroup({
       'keyword': new FormControl('pizza', [
           Validators.required,
-          Validators.minLength(3)
+          Validators.minLength(3),
+          this.censor('aaa')
         ])
     });
     this.searchForm.valueChanges
