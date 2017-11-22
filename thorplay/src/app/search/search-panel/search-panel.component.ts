@@ -26,7 +26,7 @@ export class SearchPanelComponent implements OnInit {
       console.log(this.albums);
     });
 
-    // this.albums = this.spotifyMockService.getAlbums(text)['albums']['items'];
+    // this.albums = this.spotifyMockService.getAlbums(text);
   }
 
 }

@@ -2,12 +2,10 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class SpotifyMockService {
+  mockAlbums: any;
 
   constructor() {
-  }
-
-  getAlbums(text: string) {
-    let mockAlbums = {
+    this.mockAlbums = {
       "albums": {
         "href": "https://api.spotify.com/v1/search?query=acdc&type=album&market=PL&offset=0&limit=20",
         "items": [{
@@ -698,6 +696,11 @@ export class SpotifyMockService {
         "total": 58
       }
     };
-    return mockAlbums;
+  }
+
+  getAlbums(text: string) {
+    return this.mockAlbums.albums.items.filter(item => {
+      return item.name.toLowerCase().indexOf(text) > -1;
+    });
   }
 }

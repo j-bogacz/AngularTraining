@@ -3,21 +3,39 @@
     <h4 class="card-title">Wyszukiwarka</h4>
     <div class="card-text">
       <form (submit)="searchSpotify()" [formGroup]="searchForm">
-        <div class="input-group input-group-lg">
-          <input
-            placeholder="Wpisz nazwę albumu"
-            class="form-control"
-            type="text"
-            id="searchField"
-            formControlName="query"
-            name="searchField"
-            #ref
-          >
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary">Szukaj</button>
-          </span>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <div class="input-group input-group-lg">
+                <input
+                  placeholder="Wpisz nazwę albumu"
+                  class="form-control"
+                  type="text"
+                  id="searchField"
+                  formControlName="query"
+                  name="searchField"
+                  #ref
+                >
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary">Szukaj</button>
+                </span>
+              </div>
+              <div class="col">
+                <div
+                  *ngIf="searchForm.get('query').errors && (searchForm.get('query').touched || searchForm.get('query').dirty)"
+                  ngClass="alert alert-danger">
+                  <div *ngIf="searchForm.get('query').hasError('required')">Pole jest wymagane</div>
+                  <div *ngIf="searchForm.get('query').hasError('minlength')">Szukana fraza zbyt krótka
+                    ({{searchForm.get('query').getError('minlength').actualLength}} z
+                    {{searchForm.get('query').getError('minlength').requiredLength}})
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+

@@ -22,14 +22,14 @@ export class SearchViewComponent implements OnInit {
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      'query': new FormControl('null', [
+      'query': new FormControl(null, [
         Validators.required,
         Validators.minLength(3)
       ])
     });
     this.searchForm.valueChanges.pipe(
       filter(t => {
-        return t.query.length > 3;
+        return this.searchForm.valid;
       }),
       debounceTime(600)
     ).subscribe((dataIn) => {
@@ -38,7 +38,9 @@ export class SearchViewComponent implements OnInit {
     });
   }
 
-  searchSpotify(query) {
-    this.onSearchTextChange.emit(query);
+  searchSpotify() {
+    if (this.searchForm.valid) {
+      this.onSearchTextChange.emit(this.searchForm.value.query);
+    }
   }
 }
