@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchService } from './search.service';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SpotifyMockService } from './spotify-mock.service';
+import { Routes, RouterModule, ChildrenOutletContexts } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     SearchBarComponent,
