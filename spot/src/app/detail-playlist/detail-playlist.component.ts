@@ -4,12 +4,7 @@ import {Playlist} from '../playlist';
 @Component({
   selector: 'mk-detail-playlist',
   templateUrl: './detail-playlist.component.html',
-  styles: [`
-    .card-body {
-      background-color: lightblue;
-      padding: 20px;
-    }
-  `],
+  styles: [],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class DetailPlaylistComponent implements OnInit {

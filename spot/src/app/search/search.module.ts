@@ -9,13 +9,15 @@ import {SpotifyService} from './spotify.service';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule} from '@angular/forms';
 import {SpotifyMockService} from './spotify-mock.service';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     SearchBarComponent,

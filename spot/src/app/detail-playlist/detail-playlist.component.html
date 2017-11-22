@@ -4,7 +4,7 @@
       <h4 class="card-title" [style.color]="playlist.color">{{'Playlist ' + playlist.name + (playlist.favourite ? ' (Fav)'
         : '' )}}</h4>
       <p class="card-text">{{playlist.description}}</p>
-      <a href="#" class="btn btn-primary" (click)="editMode=true">Edit</a>
+      <a class="btn btn-primary" (click)="editMode=true">Edit</a>
     </div>
   </div>
 

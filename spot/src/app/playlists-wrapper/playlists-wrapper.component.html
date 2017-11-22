@@ -1,0 +1,22 @@
+<div class="container">
+  <a routerLink="/search" class="btn btn-primary">Szukaj</a>
+  <a routerLink="/playlist" class="btn btn-primary">Playlisty</a>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <mk-list-playlists
+        [listPlaylists]="listPlaylists"
+        (selectedChange)="selectedPlaylist = $event"
+        class="red bordered"
+      ></mk-list-playlists>
+    </div>
+    <div class="col-sm">
+      <mk-detail-playlist
+        *ngIf="selectedPlaylist"
+        [playlist]="selectedPlaylist"
+      ></mk-detail-playlist>
+    </div>
+  </div>
+</div>

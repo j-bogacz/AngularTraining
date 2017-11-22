@@ -51,8 +51,6 @@ export class SearchBarComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         censor('barman')
-      ], [
-        asyncCensor('babcia')
       ])
     });
     this.searchForm.valueChanges.pipe(

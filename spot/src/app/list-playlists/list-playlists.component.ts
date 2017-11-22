@@ -24,6 +24,7 @@ export class ListPlaylistsComponent implements OnInit {
   onSelected(playlist) {
     this.selectedPlaylist = playlist;
     this.selectedChange.emit(playlist);
+    console.log(playlist);
   }
 
 }
