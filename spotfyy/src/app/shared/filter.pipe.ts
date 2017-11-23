@@ -7,7 +7,9 @@ import {Playlist} from "../playlist";
 export class FilterPipe implements PipeTransform {
 
   transform(value: Playlist[], filterString: string = '', propertyName: string): any {
-    return value.filter(e=> e[propertyName].includes(filterString));
+    return value.filter(e=> {
+      return e[propertyName].indexOf(filterString) >= 0;
+    });
   }
 
 }
