@@ -17,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import {PlaylistsService} from "./playlists.service";
 import { FilterPipe } from './shared/filter.pipe';
+import { TestComponent } from './test/test/test.component';
+import { TestPipe } from './test/test.pipe';
 
 const routes: Routes = [
   {path: 'search', component: SearchWrapperComponent},
@@ -36,7 +38,9 @@ const routes: Routes = [
     PlaylistsWrapperComponent,
     HomeComponent,
     ErrorComponent,
-    FilterPipe
+    FilterPipe,
+    TestComponent,
+    TestPipe
   ],
   imports: [
     BrowserModule,
