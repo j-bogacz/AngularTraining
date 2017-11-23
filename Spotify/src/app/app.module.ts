@@ -16,6 +16,8 @@ import {HomeComponent} from './home/home.component';
 import {ErrorComponent} from './error/error.component';
 import {PlaylistsAccessorService} from "./playlists/playlists-accessor.service";
 import {FilterPipe} from './shared/filter.pipe';
+import {TestComponent} from './test/test.component';
+import {TestPipe} from './test/test.pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -38,6 +40,8 @@ const routes: Routes = [
     HomeComponent,
     ErrorComponent,
     FilterPipe,
+    TestComponent,
+    TestPipe,
   ],
   imports: [
     BrowserModule,
