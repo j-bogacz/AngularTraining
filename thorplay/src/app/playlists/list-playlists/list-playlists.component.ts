@@ -35,6 +35,7 @@ import {Router} from "@angular/router";
 export class ListPlaylistsComponent implements OnInit {
   @Input() playlistId: number = 0;
   @Input() listPlaylists: Playlist[];
+  query: string = '';
 
   currentPlaylist: Playlist;
   hover: number = 0;

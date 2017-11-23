@@ -5,7 +5,7 @@
 
 <ul class="list-group">
   <li
-    *ngFor="let pl of listPlaylists | filter:query:'name'; let i = index"
+    *ngFor="let pl of listPlaylists | filter:query: 'name'; let i = index"
     class="list-group-item"
     [class.active]="pl.id == playlistId"
     (click)="selectPlaylist(pl)"
