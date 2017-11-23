@@ -26,9 +26,18 @@ export class DetailPlaylistsComponent implements OnInit {
     });
   }
 
-  private RefreshPlaylist(params) {
+  RefreshPlaylist(params) {
     this.playlistId = parseInt(this.activatedRoute.snapshot.params['id'], 10);
     this.playlist = this.playlistsAccessorService.GetPlaylist(this.playlistId);
+  }
+
+  EditPlaylist() {
+    this.isInEditMode = true;
+  }
+
+  UpdatePlaylist() {
+    this.isInEditMode = false;
+    this.playlistsAccessorService.SetPlaylist(this.playlist);
   }
 
   ngOnInit() {

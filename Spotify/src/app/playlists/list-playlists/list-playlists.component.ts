@@ -1,5 +1,6 @@
 import {Component, Input, Output, OnInit, ViewEncapsulation, EventEmitter} from '@angular/core';
 import {Playlist} from '../interfaces';
+import {PlaylistsAccessorService} from "../playlists-accessor.service";
 
 @Component({
   selector: 'component-list-playlists',
@@ -20,14 +21,10 @@ export class ListPlaylistsComponent implements OnInit {
   @Output()
   selectedPlaylistChanged = new EventEmitter();
 
-  constructor() {
+  constructor(private playlistsAccessorService: PlaylistsAccessorService) {
   }
 
   ngOnInit() {
-  }
-
-  SelectPlaylist(selectedPlaylist){
-    this.selectedPlaylist = selectedPlaylist;
-    this.selectedPlaylistChanged.emit(this.selectedPlaylist);
+    this.playlistsAccessorService.playlistChanged.subscribe(newPlaylists => this.playlists = newPlaylists);
   }
 }

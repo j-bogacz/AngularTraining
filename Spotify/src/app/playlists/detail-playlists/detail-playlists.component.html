@@ -11,11 +11,13 @@
           {{playlist.description}}<br/>
           Favorite: {{(playlist.favorite?"Yes":"No")}}
         </p>
-        <a class="btn btn-primary" (click)="isInEditMode = true">Edit</a>
+        <a class="btn btn-primary" (click)="EditPlaylist()">Edit</a>
       </div>
     </div>
 
-    <form *ngSwitchCase="true">
+    <form *ngSwitchCase="true"
+          (submit)="UpdatePlaylist()"
+    >
       <div class="form-group">
         <label for="nameInput">Playlist name</label>
         <input
@@ -62,7 +64,7 @@
           Is favorite
         </label>
       </div>
-      <button type="submit" class="btn btn-primary" (click)="isInEditMode = false">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 </div>
