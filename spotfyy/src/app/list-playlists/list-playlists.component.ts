@@ -1,6 +1,7 @@
 
 import {Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
 import { Playlist } from '../playlist';
+import {PlaylistsSourceService} from "../playlists-source.service";
 
 @Component({
   selector: 'lekarz-list-playlists',
@@ -17,7 +18,7 @@ export class ListPlaylistsComponent implements OnInit {
   selected: Playlist;
   @Input() listPlaylists: Playlist[];
   @Output() selectedChanged = new EventEmitter();
-  constructor() { }
+  constructor(private playlistsSourceService: PlaylistsSourceService) { }
 
   ngOnInit() {
   }
@@ -27,4 +28,6 @@ export class ListPlaylistsComponent implements OnInit {
     this.selected = playlist;
 
   }
+
+
 }

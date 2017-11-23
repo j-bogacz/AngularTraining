@@ -9,7 +9,7 @@ export class HighlightDirective {
   @Input('lekarzHighlight') color: string;
 
   constructor(private el: ElementRef) {
-    console.log(el);
+    //console.log(el);
 
   }
 

@@ -12,7 +12,12 @@ export class PlaylistsWrapperComponent implements OnInit {
 
   listPlaylists: Playlist[] = this.playlistsSourceService.getPlaylists();
 
-  constructor(private playlistsSourceService: PlaylistsSourceService) { }
+  constructor(private playlistsSourceService: PlaylistsSourceService) {
+    this.playlistsSourceService.changeList.subscribe((newList: Playlist[]) => {
+      this.listPlaylists = newList;
+    });
+  }
+
 
   ngOnInit() {
   }
