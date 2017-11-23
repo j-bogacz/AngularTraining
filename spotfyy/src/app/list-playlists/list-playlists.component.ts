@@ -25,13 +25,11 @@ import { Playlist } from '../playlist';
 export class ListPlaylistsComponent implements OnInit {
   selected: Playlist;
   @Input('listPlaylistsTmp') listPlaylists: Playlist[];
-  @Output() selectedChanged = new EventEmitter<Playlist>();
   constructor() { }
 
   ngOnInit() {
   }
   onSelected(playlist){
-    this.selectedChanged.emit(playlist);
     this.selected = playlist;
   }
 }

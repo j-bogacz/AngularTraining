@@ -14,8 +14,9 @@ export class WraperPlaylistsComponent implements OnInit {
 
   constructor(private playlistService: PlaylistService) {
     this.listPlaylists = this.playlistService.getPlaylists();
-    const t = this.playlistService.getOnePlaylist(1);
-    console.log(t);
+    this.playlistService.changeList.subscribe( (newListPlaylist: Playlist[]) => {
+      this.listPlaylists = newListPlaylist;
+    });
   }
 
   ngOnInit() {
