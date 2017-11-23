@@ -53,8 +53,8 @@ export class SearchBarComponent implements OnInit {
     });
 
     this.searchForm.valueChanges.pipe(
+      debounceTime(500),
       filter(() => this.searchForm.valid),
-      debounceTime(1000)
     ).subscribe((dataIn) => {
       this.textChanged.emit(dataIn.query);
     });
