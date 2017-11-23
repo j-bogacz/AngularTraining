@@ -49,8 +49,8 @@ export class SearchBoxComponent implements OnInit {
       ])
     });
     this.searchForm.valueChanges.pipe(
-      filter(() => this.searchForm.valid),
-      debounceTime(500)
+      debounceTime(500),
+      filter(() => this.searchForm.valid)
     ).subscribe((dataIn) => {
       this.keyWordChange.emit(dataIn.keyWord);
     });

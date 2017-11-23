@@ -17,13 +17,17 @@ export class DetailPlaylistComponent implements OnInit {
   isEditingMode: boolean = false;
   title: string = 'Playlist detail';
   test: number = 2;
-  playlist: Playlist;
+  playlist: Playlist = null;
   idPlaylist: number = 0;
+
 
   constructor(
     private activatetedRoute: ActivatedRoute,
     private playlistService: PlaylistService
   ) {
+    this.activatetedRoute.params.subscribe(params => {
+      this.playlist = this.playlistService.getOnePlaylist( parseInt(params.id,10));
+    });
     this.idPlaylist =  parseInt(this.activatetedRoute.snapshot.params['id'], 10);
     this.playlist = this.playlistService.getOnePlaylist(this.idPlaylist);
   }

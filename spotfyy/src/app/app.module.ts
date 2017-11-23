@@ -24,6 +24,7 @@ const routes: Routes = [
     {path: '', component: DetailPlaylistComponent },
     {path: ':id', component: DetailPlaylistComponent}
   ]},
+  {path: 'playlists/:id/:type', component: DetailPlaylistComponent},
   {path: '**', redirectTo: 'search', pathMatch: 'full'}
 ];
 
