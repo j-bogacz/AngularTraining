@@ -1,7 +1,7 @@
 <ul class="list-group">
   <li
     class="list-group-item"
-    *ngFor="let playlist of listPlaylists"
+    *ngFor="let playlist of listPlaylists | filter:'70':'name'"
     [ngClass]="{'active': selected == playlist}"
     [bartHighlight]="playlist.color"
     [defaultColor]="'black'"

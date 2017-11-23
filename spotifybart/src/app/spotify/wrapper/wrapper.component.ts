@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, Input, EventEmitter} from '@angular/core';
 import { SpotifyService} from "../spotify.service"
 import { Album } from "../interfaces";
 import { SpotifyMockService } from '../spotify-mock.service'
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'bart-wrapper',
@@ -14,6 +15,7 @@ export class WrapperComponent implements OnInit {
   query:string;
 
   albums: Album[];
+  $albums: Observable<Album[]>;
 
   constructor(private spotifyService: SpotifyService, private spotifyMockService: SpotifyMockService) {
     // this.spotifyService.getalbum(this.query)
@@ -28,10 +30,11 @@ export class WrapperComponent implements OnInit {
   }
 
   search(query: string = "aaaa") {
-    this.spotifyService.getalbum(query)
-      .subscribe(albums => {
-        this.albums = albums as Album[];
-      });
+    this.$albums = this.spotifyService.getalbum(query);
+    // this.spotifyService.getalbum(query)query
+    //   .subscribe(albums => {
+    //     this.albums = albums as Album[];
+    //   });
     // console.log(query);
     // this.albums = this.spotifyMockService.getAlbums()['albums']['items'];
   }

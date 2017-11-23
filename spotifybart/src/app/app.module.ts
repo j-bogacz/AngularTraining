@@ -15,6 +15,7 @@ import { WraperPlaylistComponent } from './wraper-playlist/wraper-playlist.compo
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import {PlaylistServiceService} from "./playlist-service.service";
+import { FilterPipe } from './shared/filter.pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
     HighlightDirective,
     WraperPlaylistComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

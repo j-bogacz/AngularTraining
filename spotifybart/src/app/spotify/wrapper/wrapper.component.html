@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm">
       <bart-artist-list
-        [albums] = albums
+        [albums] = "$albums | async"
       ></bart-artist-list>
     </div>
   </div>
