@@ -20,18 +20,16 @@ export class DetailPlaylistComponent implements OnInit {
   idPlayList: number;
   playlist: Playlist = {} as Playlist;
   editPlayList: Playlist;
+  testData = new Date();
 
   constructor( private activatedRoute: ActivatedRoute,
                private playlistService: PlaylistService) {
     this.activatedRoute.params.subscribe( params => {
       this.idPlayList = parseInt(params.id,10);
       this.editPlayList = this.playlistService.getPlayList(this.idPlayList);
-      console.log('id', this.idPlayList);
-      console.log('before e', this.editPlayList);
-      console.log('before p', this.playlist);
+
       this.copyPlayList();
-      console.log('e', this.editPlayList);
-      console.log('p', this.playlist);
+
     });
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { SpotifyService } from '../spotify.service';
 import { SpotifyMockService} from '../spotify-mock.service';
 import { Album } from '../interfaces';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'abc-album-wrapper',
@@ -14,6 +15,7 @@ export class AlbumWrapperComponent implements OnInit {
 
   @Input('searchText') searchText: string;
 
+  $albums: Observable<Album[]>;
 
   constructor(
       private spotifyService: SpotifyService,
@@ -22,11 +24,11 @@ export class AlbumWrapperComponent implements OnInit {
   }
 
   search(query: string){
-    this.spotifyService.getAlbums(query)
-      .subscribe( albums => {
-        this.albums = albums as Album[];
-        console.log('albums', this.albums);
-     });
+    this.$albums =  this.spotifyService.getAlbums(query);
+      // .subscribe( albums => {
+      //   this.albums = albums as Album[];
+      //  console.log('albums', this.albums);
+     //});
     //console.log(query);
     //this.albums = this.spotifyMockService.getAlbums()['albums']['items'];
   }

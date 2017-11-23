@@ -1,4 +1,6 @@
 <h1>{{title}}</h1>
+<pre>{{playlist | json}}</pre>
+<pre>{{testData | date:'yyyy-MM-dd, HH:mm:ss'}}</pre>
 <div *ngIf="playlist.id">
   <div [ngSwitch]="isEditingMode">
     <div class="card" *ngSwitchDefault>

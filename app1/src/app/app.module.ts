@@ -16,6 +16,7 @@ import { WrapperPlaylistComponent } from './wrapper-playlist/wrapper-playlist.co
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import {PlaylistService} from './playlist.service';
+import { FilterPipe } from './shared/filter.pipe';
 
 const routes: Routes = [
   { path: 'search', component: AlbumWrapperComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
     HighlightDirective,
     WrapperPlaylistComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
