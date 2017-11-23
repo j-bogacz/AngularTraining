@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {Playlist} from "./playlist";
 
 @Injectable()
 export class PlaylistServiceService {
 
   playlists: Playlist[];
+
+  changeList = new EventEmitter<Playlist[]>();
   constructor() {
     this.playlists = [
       {id: 1, name: 'Hity lat 80', description: 'Opis1', favorite: true, color: '#ff0000'},
@@ -19,5 +21,19 @@ export class PlaylistServiceService {
 
   getPlaylsits() {
     return this.playlists;
+  }
+
+  updatePlaylist(playlist: Playlist) {
+    console.log(playlist);
+    let  pl = this.playlists.find(list => list.id == playlist.id);
+    pl = playlist;
+  }
+
+  updateOnePlayList(newPlayList: Playlist) {
+    this.playlists = this.playlists.map( playlist => {
+      return (playlist.id === newPlayList.id ? newPlayList : playlist);
+    });
+    console.log(this.playlists);
+    this.changeList.emit(this.playlists);
   }
 }

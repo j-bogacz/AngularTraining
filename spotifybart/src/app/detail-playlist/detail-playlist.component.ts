@@ -17,19 +17,24 @@ export class DetailPlaylistComponent implements OnInit {
   isEditingMode: boolean = false;
   title: string = 'Playlist detail';
   test: number = 2;
-  playlist: Playlist = null;
+  playlist: Playlist = {} as Playlist;
   idPlaylist: number = 0;
 
   constructor(
       private activatedRoute: ActivatedRoute,
       private playlistServiceService : PlaylistServiceService) {
 
-    this.activatedRoute.params.subscribe((params => {
+    this.activatedRoute.params.subscribe(params => {
       this.idPlaylist = parseInt(params.id, 10);
-      this.playlist = this.playlistServiceService.getPlaylist(this.idPlaylist);
-    }));
-    this.idPlaylist =  parseInt(this.activatedRoute.snapshot.params['id'], 10);
-    this.playlist = this.playlistServiceService.getPlaylist(this.idPlaylist);
+      let playlistTmp = this.playlistServiceService.getPlaylist(this.idPlaylist);
+      if (playlistTmp && playlistTmp.id) {
+        this.playlist.id = playlistTmp.id;
+        this.playlist.name = playlistTmp.name;
+        this.playlist.description = playlistTmp.description;
+        this.playlist.color = playlistTmp.color;
+        this.playlist.favorite = playlistTmp.favorite;
+      }
+    });
     console.log(this.playlist);
   }
 
@@ -38,6 +43,11 @@ export class DetailPlaylistComponent implements OnInit {
 
   returnGreen(){
     return 'green';
+  }
+
+  updatePlaylist() {
+    this.playlistServiceService.updateOnePlayList(this.playlist);
+    this.isEditingMode = false;
   }
 
 }

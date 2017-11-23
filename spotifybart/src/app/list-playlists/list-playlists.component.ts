@@ -34,4 +34,5 @@ export class ListPlaylistsComponent implements OnInit {
     this.selectedChanged.emit(playlist);
     this.selected = playlist;
   }
+
 }
