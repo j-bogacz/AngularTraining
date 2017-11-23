@@ -21,6 +21,7 @@ export class DetailPlaylistComponent implements OnInit {
   playlist: Playlist = null;
   idPlaylist: number = 0;
 
+  testData = new Date();
 
   constructor(
     private activatetedRoute: ActivatedRoute,
