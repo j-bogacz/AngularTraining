@@ -3,9 +3,10 @@
   <a routerLink="/playLists" class="btn btn-primary">Playlist</a>
 </div>
 <div class="card">
+  <input type="text" [(ngModel)]="filterValue" class="form-control" placeholder="Filter value..."/>
   <li
     class="list-group-item"
-    *ngFor="let playlist of listPlaylists"
+    *ngFor="let playlist of listPlaylists | filter: filterValue:'name'"
     [ngClass]="{'active': selected == playlist}"
     [lekarzHighlight]="playlist.color"
   ><a routerLink="/playLists/{{playlist.id}}">{{playlist.name}}</a></li>

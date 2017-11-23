@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, EventEmitter, OnInit, ViewEncapsulation} from '@angular/core';
 import {Playlist} from "../playlist";
 import { PlayListServiceService } from '../play-list-service.service';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'lekarz-wraper-play-lists',
@@ -11,6 +12,7 @@ import { PlayListServiceService } from '../play-list-service.service';
 export class WraperPlayListsComponent implements OnInit {
 
   listPlaylists: Playlist[];
+
   constructor(private playListSvc: PlayListServiceService)
   {
     this.listPlaylists = playListSvc.getPlayLists() as Playlist[];

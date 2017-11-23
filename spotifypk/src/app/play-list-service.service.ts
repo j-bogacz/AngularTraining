@@ -35,18 +35,18 @@ export class PlayListServiceService {
   }
 
 
-  updatePlayList(playListToUpdate: Playlist){
-
-        this.internalPlayLists.forEach(function(element, index, array)
-        {
-            if(playListToUpdate.id == element.id){
-              element.name = playListToUpdate.name;
-              element.description = playListToUpdate.description;
-              element.favorite= playListToUpdate.favorite;
-              element.color = playListToUpdate.color;
-              console.log('Play list with id: ' + playListToUpdate.id + ' has been updated');
-            }
-        });
+  updatePlayList(playListToUpdate: Playlist) {
+    this.internalPlayLists.forEach(function(element, index, array)
+    {
+      if(playListToUpdate.id == element.id){
+        element.name = playListToUpdate.name;
+        element.description = playListToUpdate.description;
+        element.favorite= playListToUpdate.favorite;
+        element.color = playListToUpdate.color;
+        console.log('Play list with id: ' + playListToUpdate.id + ' has been updated');
+      }
     });
+
+    };
   }
 

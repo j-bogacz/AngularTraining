@@ -10,6 +10,7 @@ import { Playlist } from '../playlist';
 })
 export class ListPlaylistsComponent implements OnInit {
   selected: Playlist;
+  filterValue: string;
   @Input() listPlaylists: Playlist[];
   @Output() selectedChanged = new EventEmitter<Playlist>();
   constructor() { }

@@ -19,6 +19,7 @@ export class DetailPlaylistComponent implements OnInit {
   test: number = 2;
   playlist: Playlist;
   idPlayList: number = 0;
+  testDate = new Date();
 
   constructor(private activatedRoute: ActivatedRoute, private playListSvc: PlayListServiceService) {
     this.activatedRoute.params.subscribe(p => {
@@ -26,7 +27,7 @@ export class DetailPlaylistComponent implements OnInit {
       const tempPlayList = this.playListSvc.getPlayList(this.idPlayList);
       if(tempPlayList){
         if(!this.playlist){
-          this.playlist = {};
+          this.playlist = {} as Playlist;
         }
         this.playlist.id = tempPlayList.id;
         this.playlist.name = tempPlayList.name;

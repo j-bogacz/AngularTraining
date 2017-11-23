@@ -14,6 +14,7 @@ import { AuthService } from "./auth/auth.service";
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { PlayListServiceService } from './play-list-service.service';
+import { FilterPipe } from './shared/filter.pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
     HighlightDirective,
     WraperPlayListsComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

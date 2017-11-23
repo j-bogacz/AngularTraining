@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SearchService } from '../search.service';
 import { SpotifyMockService } from '../spotify-mock.service';
 import {Album} from '../interfaces';
+import { Observable } from "rxjs/Observable";
+import {Playlist} from "../../playlist";
 
 @Component({
   selector: 'lekarz-search-wrapper',
@@ -17,11 +19,12 @@ export class SearchWrapperComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  $albums: Observable<Album[]>;
   getSearchResults(query: string) {
-    this.searchSvc.getAlbums(query).subscribe(albums =>{
-      this.albums = albums as Album[];
-    });
+       this.$albums = this.searchSvc.getAlbums(query);
+      //this.searchSvc.getAlbums(query).subscribe(albums =>{
+      //this.albums = albums as Album[];
+    //});
     //console.log('doSearchResults() executed');
     //this.albums = this.searchSvc.getAlbums()['albums']['items'] as Album[];
   }
