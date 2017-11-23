@@ -12,11 +12,17 @@ export class WrapperPlaylistComponent implements OnInit {
 
   listPlaylist: Playlist[] = [];
   constructor(private playlistSvc: PlaylistService) {
+    //
+    // this.playlistSvc.loadPlaylist().subscribe( playlist =>
+    //   this.listPlaylist = playlist);
+
     this.playlistSvc.changeList.subscribe((newListPlaylist: Playlist[]) =>{
       this.listPlaylist = newListPlaylist;
       console.log('wrapper odpalony');
       }
     );
+
+
   }
 
   ngOnInit() {

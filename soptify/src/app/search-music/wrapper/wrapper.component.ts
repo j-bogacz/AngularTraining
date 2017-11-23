@@ -1,7 +1,8 @@
-import {Component, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {SpotifyService} from "../spotify.service";
 import {Album} from "../interfaces";
 import {SpotiMockService} from "../spoti-mock.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'lekarz-wrapper',
@@ -11,7 +12,9 @@ import {SpotiMockService} from "../spoti-mock.service";
 })
 export class WrapperComponent implements OnInit {
 
+  testData = new Date();
   albums: Album[];
+  albums$: Observable<Album[]>;
 
   ngOnInit() {
   }
@@ -20,12 +23,15 @@ export class WrapperComponent implements OnInit {
   }
 
   searchMusic(searchUrl) {
+    this.albums$ = this.spotify.getAlbums(searchUrl);
+
+
     //this.albums = this.spotiMock.getAlbums()['albums']['items'];
    //
-    console.log('WrapperComponent.searchMusic() searchUrl', searchUrl);
-    this.spotify.getAlbums(searchUrl).subscribe(albums => {
-      this.albums = albums as Album[];
-      console.log('Albums: ', albums);
-    });
+   //  console.log('WrapperComponent.searchMusic() searchUrl', searchUrl);
+   //  this.spotify.getAlbums(searchUrl).subscribe(albums => {
+   //    this.albums = albums as Album[];
+   //    console.log('Albums: ', albums);
+   //  });
   }
 }

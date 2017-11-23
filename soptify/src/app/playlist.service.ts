@@ -37,7 +37,7 @@ export class PlaylistService {
       setTimeout(() => {
         observer.next(this.listPlaylists);
         observer.complete();
-      }, 2000);
+      }, 0);
     });
     return prjLoader;
   }

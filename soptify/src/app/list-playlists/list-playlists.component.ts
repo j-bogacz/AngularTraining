@@ -26,6 +26,7 @@ import {Router} from "@angular/router";
 })
 export class ListPlaylistsComponent implements OnInit {
 
+  query: string;
   selected: Playlist;
   @Input('listPlaylistsTmp') listPlaylists: Playlist[];
   @Output() selectedChanged = new EventEmitter<Playlist>();
@@ -33,6 +34,9 @@ export class ListPlaylistsComponent implements OnInit {
   constructor(private playSvc: PlaylistService, private router: Router) {
     this.playSvc.loadPlaylist().subscribe( playlist =>
     this.listPlaylists = playlist);
+
+    // this.listPlaylists = this.playSvc.loadStuff();
+    // console.log(this.listPlaylists);
   }
 
   ngOnInit() {

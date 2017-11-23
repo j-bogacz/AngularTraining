@@ -1,7 +1,10 @@
+<input type="text"
+[(ngModel)]="query"
+class="form-control">
 <ul class="list-group">
   <li
     class="list-group-item"
-    *ngFor="let playlist of listPlaylists; let i of index"
+    *ngFor="let playlist of listPlaylists | filter: query:'name'"
     [ngClass]="{'active': selected == playlist}"
     [lekarzHighlight]="playlist.color"
   ><a  routerLink="/playlist/{{playlist.id}}">{{playlist.name}}</a></li>

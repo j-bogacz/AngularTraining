@@ -18,9 +18,10 @@ export class DetailPlaylistComponent implements OnInit {
   isEditingMode: boolean = false;
   title: string = 'Playlist detail';
   test: number = 2;
-  playlist: Playlist = null;
+  playlist: Playlist;
   playlistId: number = 0;
 
+  testData = new Date();
 
   constructor(private activatedRoute: ActivatedRoute, private playSvc: PlaylistService) {
     this.activatedRoute.params.subscribe(params =>{

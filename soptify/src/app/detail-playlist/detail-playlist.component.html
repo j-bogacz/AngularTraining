@@ -1,4 +1,6 @@
 <h1>{{title + (test>1?'blue':'red') + ' ' +returnGreen()}}</h1>
+
+<pre>{{testData | date:'short' }}</pre>
 <div *ngIf="playlist">
   <div [ngSwitch]="isEditingMode">
     <div class="card" *ngSwitchDefault>

@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import {PlaylistService} from "./playlist.service";
 import { SpinnerComponent } from './spinner/spinner.component';
+import { FilterPipe } from './shared/filter.pipe';
 
 const routes: Routes = [
   {
@@ -50,7 +51,8 @@ const routes: Routes = [
     WrapperPlaylistComponent,
     HomeComponent,
     ErrorComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
