@@ -9,7 +9,7 @@ export class HighlightDirective {
   @Input() defaultcolor: string = 'green';
 
   constructor(private el: ElementRef) {
-    console.log(el);
+    //console.log(el);
 
     el.nativeElement.style.borderLeftColor = this.color;
   }

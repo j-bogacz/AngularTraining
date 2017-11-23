@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Playlist} from '../playlist';
 import {PlaylistService} from '../playlist.service';
 
@@ -13,11 +13,13 @@ export class WrapperPlaylistComponent implements OnInit {
   listPlaylists: Playlist[];
   oneList: Playlist;
 
-  constructor( private playlistService: PlaylistService) {
+  constructor(private playlistService: PlaylistService) {
     this.listPlaylists = playlistService.getPlaylists();
-    //this.oneList = playlistService.getPlayList(1);
-    //console.log(this.oneList);
+    this.playlistService.changeList.subscribe((newListPlayList: Playlist[]) => {
+      this.listPlaylists = newListPlayList;
+    });
   }
+
 
   ngOnInit() {
   }
