@@ -6,10 +6,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="">Home</a>
-        <a class="nav-item nav-link" routerLink="wrapper">Wrapper</a>
-        <a class="nav-item nav-link" routerLink="playLists">Playlisty</a>
-        <a class="nav-item nav-link" routerLink="search">Szukaj</a>
+        <a class="nav-item nav-link"
+           routerLinkActive="active"
+           routerLinkActiveOptions="{extract: true}"
+           routerLink="">Home</a>
+
+        <a class="nav-item nav-link"
+           routerLinkActive="active"
+           routerLink="wrapper">Wrapper</a>
+
+        <a class="nav-item nav-link"
+           routerLinkActive="active"
+           routerLink="/playLists">Play lists</a>
+
+        <a class="nav-item nav-link"
+           routerLinkActive="active"
+           routerLink="/search">Szukaj</a>
       </div>
     </div>
   </nav>
