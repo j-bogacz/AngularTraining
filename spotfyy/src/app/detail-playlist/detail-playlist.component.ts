@@ -20,13 +20,19 @@ export class DetailPlaylistComponent implements OnInit {
   isEditingMode: boolean = false;
   title: string = 'Playlist detail';
   test: number = 2;
-  playlist: Playlist;
+  playlist: Playlist = null;
   idPlaylist: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute,
               private playlistsSourceService: PlaylistsSourceService) {
+    this.activatedRoute.params.subscribe(params => {
+      console.log(params);
+      this.playlist = this.playlistsSourceService.getPlaylist(parseInt(params.id, 10));
+    });
+
     this.idPlaylist = parseInt(this.activatedRoute.snapshot.params['id'], 10);
     this.playlist = this.playlistsSourceService.getPlaylist(this.idPlaylist);
+
   }
 
   ngOnInit() {

@@ -17,14 +17,11 @@ import {PlaylistsSourceService} from "./playlists-source.service";
 const routes: Routes = [
   {path: 'search', component: SearchPanelWrapperComponent},
   {path: 'playlists', component: PlaylistsWrapperComponent, children: [
-    {path: '', component: PlaylistsWrapperComponent },
-    {path: ':id', component: PlaylistsWrapperComponent, children: [
-      {path: 'edit', component: DetailPlaylistComponent },
-      {path: 'show', component: DetailPlaylistComponent }
-    ]}
+    {path: '', component: DetailPlaylistComponent },
+    {path: ':id', component: DetailPlaylistComponent }
   ]},
   {path: '', component: HomeComponent},
-  {path: '*', component: ErrorComponent}
+  {path: '**', component: ErrorComponent}
 ]
 
 @NgModule({

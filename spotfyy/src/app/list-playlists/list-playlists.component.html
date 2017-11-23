@@ -8,6 +8,8 @@
 
     [lekarzHighlight]="playlist.color"
     [defaultColor]="'black'"
-  >{{playlist.name}}</li>
+  >
+    <a [routerLink]="['/playlists', playlist.id]">{{playlist.name}}</a>
+  </li>
 
 </ul>
