@@ -37,7 +37,7 @@ export class HighlightDirective implements OnInit{
 
   @HostListener('document:click', ['$event.x', '$event'])
     enter(x: number, event: Event){
-    console.log(x, "  ", event);
+    //console.log(x, "  ", event);
   }
 
   @HostBinding('style.borderLeftColor')

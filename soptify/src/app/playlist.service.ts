@@ -12,7 +12,7 @@ export class PlaylistService {
     {id: 3, name: 'Hity lat 60', description: 'Opis3', favorite: false, color: '#0000ff'},
   ];
 
-  loadProjects(): Observable<Playlist[]> {
+  loadPlaylist(): Observable<Playlist[]> {
     const prjLoader = Observable.create((observer: Observer<Playlist[]>) => {
       setTimeout(() => {
         observer.next(this.listPlaylists);

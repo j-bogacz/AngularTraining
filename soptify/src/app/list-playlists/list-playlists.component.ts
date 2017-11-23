@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter} from '@angular/core';
 import { Playlist } from '../playlist';
 import {PlaylistService} from "../playlist.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -29,8 +30,8 @@ export class ListPlaylistsComponent implements OnInit {
   @Input('listPlaylistsTmp') listPlaylists: Playlist[];
   @Output() selectedChanged = new EventEmitter<Playlist>();
 
-  constructor(private playSvc: PlaylistService) {
-    this.playSvc.loadProjects().subscribe( playlist =>
+  constructor(private playSvc: PlaylistService, private router: Router) {
+    this.playSvc.loadPlaylist().subscribe( playlist =>
     this.listPlaylists = playlist);
   }
 
@@ -38,7 +39,7 @@ export class ListPlaylistsComponent implements OnInit {
   }
   onSelected(playlist){
     this.selectedChanged.emit(playlist);
-    this.selected = playlist;
+    //this.router.navigate('/playlist' + playlist.id);
   }
 
   getOne(id: number){
