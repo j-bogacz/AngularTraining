@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
 
     const asyncCensor = (word: string): AsyncValidatorFn => (control: AbstractControl): Observable<OptionalErrors> => {
       return Observable.create( observer => {
-        setTimeout(() => {
+         setTimeout(() => {
           const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
           observer.next(isError);
           observer.complete();
@@ -63,6 +63,7 @@ export class SearchComponent implements OnInit {
       ],
         [asyncCensor('babcia')])
     });
+
     let fromApi = {
       query: 'queen'
     }
@@ -70,9 +71,10 @@ export class SearchComponent implements OnInit {
     this.searchForm.patchValue({
       'keyword': fromApi.query
     })
-    this.searchForm.valueChanges
-      .pipe(filter(() => this.searchForm.valid),
-        debounceTime(500))
+    this.searchForm.valueChanges.pipe(
+        debounceTime(500),
+        filter(() => this.searchForm.valid)
+        )
       .subscribe((dataIn) => {
         this.searchClicked.emit(dataIn.keyword);
       console.log(dataIn);

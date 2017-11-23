@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'search', component: WrapperComponent},
   {path: 'playlist', component: WraperPlaylistComponent, children: [
-    {path: '', component: WraperPlaylistComponent},
+    {path: '', component: DetailPlaylistComponent},
     {path: ':id', component: DetailPlaylistComponent}
   ]},
   {path: '**', redirectTo: 'search', pathMatch: 'full'}

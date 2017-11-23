@@ -5,5 +5,5 @@
     [ngClass]="{'active': selected == playlist}"
     [bartHighlight]="playlist.color"
     [defaultColor]="'black'"
-  ><a [routerlink]="">{{playlist.name}}</a> </li>
+  ><a [routerLink]="['/playlist', playlist.id]">{{playlist.name}}</a> </li>
 </ul>
