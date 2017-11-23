@@ -74,7 +74,7 @@ export class SearchBoxComponent implements OnInit {
           const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
           observer.next(isError);
           observer.complete();
-        }, 5000);
+        }, 1000);
       });
     }
 

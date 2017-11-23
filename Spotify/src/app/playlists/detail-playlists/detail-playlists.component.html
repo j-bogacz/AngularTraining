@@ -1,6 +1,8 @@
 <h1>{{title}}</h1>
 
 <div *ngIf="playlist">
+  <pre>{{playlist | json}}</pre>
+  <pre>{{currentDate | date:'medium'}}</pre>
   <div [ngSwitch]="isInEditMode">
     <div class="card" style="width: 20rem;" *ngSwitchDefault>
       <div class="card-body">

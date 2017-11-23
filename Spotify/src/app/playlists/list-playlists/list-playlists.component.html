@@ -1,12 +1,16 @@
 <h1>{{title}}</h1>
-
-<ul class="list-group">
-  <li
-    class="list-group-item"
-    *ngFor="let playlist of playlists;"
-    [ngClass]="{'active': selectedPlaylist == playlist}"
-    directive-highlight propertyName="border-right-color" [highlightedColor]="playlist.color" defaultColor="lightgray"
+<div class="col-auto">
+  <input class="form-control"
+         [(ngModel)]="filterText"
+         type="text"
   >
-    <a routerLink="/playlists/{{playlist.id}}">{{playlist.name}}{{i}}</a>
-  </li>
-</ul>
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      *ngFor="let playlist of playlists | filter:filterText:'name';"
+      [ngClass]="{'active': selectedPlaylist == playlist}"
+      directive-highlight propertyName="border-right-color" [highlightedColor]="playlist.color" defaultColor="lightgray"
+    >
+      <a routerLink="/playlists/{{playlist.id}}">{{playlist.name}}{{i}}</a>
+    </li>
+  </ul>

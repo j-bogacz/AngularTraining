@@ -19,6 +19,8 @@ export class DetailPlaylistsComponent implements OnInit {
 
   isInEditMode: boolean = false;
 
+  currentDate = new Date();
+
   constructor(private activatedRoute: ActivatedRoute, private playlistsAccessorService: PlaylistsAccessorService) {
     this.activatedRoute.params.subscribe(params => {
       console.log('Current route params: ', params);
