@@ -22,7 +22,7 @@ export class WrapperComponent implements OnInit {
   searchMusic(searchUrl) {
     //this.albums = this.spotiMock.getAlbums()['albums']['items'];
    //
-    //console.log('WrapperComponent.searchMusic() searchUrl',searchUrl);
+    console.log('WrapperComponent.searchMusic() searchUrl', searchUrl);
     this.spotify.getAlbums(searchUrl).subscribe(albums => {
       this.albums = albums as Album[];
       console.log('Albums: ', albums);

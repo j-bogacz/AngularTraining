@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Playlist } from '../playlist';
 import {ActivatedRoute} from "@angular/router";
-import {PlaylistService} from "../playlist.service";
+import {PlaylistService, PlaylistObject} from "../playlist.service";
+
 
 @Component({
   selector: 'lekarz-detail-playlist',
@@ -17,14 +18,18 @@ export class DetailPlaylistComponent implements OnInit {
   isEditingMode: boolean = false;
   title: string = 'Playlist detail';
   test: number = 2;
-  playlist: Playlist =null;
+  playlist: Playlist = null;
   playlistId: number = 0;
+
 
   constructor(private activatedRoute: ActivatedRoute, private playSvc: PlaylistService) {
     this.activatedRoute.params.subscribe(params =>{
       this.playlistId = parseInt(this.activatedRoute.snapshot.params['id'], 10);
-      this.playlist = this.playSvc.getOnePlaylist(this.playlistId);
+      this.playlist = new PlaylistObject(this.playSvc.getOnePlaylist(this.playlistId));
     });
+
+    this.playlist = new PlaylistObject(this.playSvc.getOnePlaylist(this.playlistId));
+
   }
 
   ngOnInit() {
@@ -32,6 +37,11 @@ export class DetailPlaylistComponent implements OnInit {
 
   returnGreen(){
     return 'green';
+  }
+
+  submitChanges(playlist: Playlist) {
+    this.playSvc.updateOnePlaylist(playlist);
+    this.isEditingMode = false;
   }
 
 }

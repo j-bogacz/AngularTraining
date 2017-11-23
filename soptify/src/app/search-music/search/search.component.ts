@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
           const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
           observer.next(isError);
           observer.complete();
-        },2000);
+        },1000);
       });
     }
 
@@ -56,10 +56,10 @@ export class SearchComponent implements OnInit {
     });
 
     this.searchForm.valueChanges.pipe(
-      debounceTime(500),
-      filter(() => this.searchForm.valid)
+      debounceTime(500)
+     // filter(() => this.searchForm.valid)
     ).subscribe((dataIn) => {
-      console.log(dataIn)
+      console.log("values change " + dataIn)
       this.searchChanged.emit(dataIn.word);
     });
   }
@@ -67,6 +67,7 @@ export class SearchComponent implements OnInit {
 
   doSearch() {
     if (this.searchForm.valid) {
+      console.log('do search');
       this.searchChanged.emit(this.searchForm.value.word);
     }
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Playlist} from "../playlist";
+import {PlaylistService} from "../playlist.service";
 
 @Component({
   selector: 'lekarz-wrapper-playlist',
@@ -9,7 +10,14 @@ import {Playlist} from "../playlist";
 })
 export class WrapperPlaylistComponent implements OnInit {
 
-  constructor() { }
+  listPlaylist: Playlist[] = [];
+  constructor(private playlistSvc: PlaylistService) {
+    this.playlistSvc.changeList.subscribe((newListPlaylist: Playlist[]) =>{
+      this.listPlaylist = newListPlaylist;
+      console.log('wrapper odpalony');
+      }
+    );
+  }
 
   ngOnInit() {
   }
