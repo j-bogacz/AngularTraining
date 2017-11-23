@@ -33,19 +33,22 @@ import {Router} from "@angular/router";
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ListPlaylistsComponent implements OnInit {
+  @Input() playlistId: number = 0;
   @Input() listPlaylists: Playlist[];
 
   currentPlaylist: Playlist;
   hover: number = 0;
 
   constructor(private _router: Router) {
+    console.log('lista.konstruktor:', this.playlistId);
   }
 
   ngOnInit() {
+    console.log('lista.init:', this.playlistId);
   }
 
   selectPlaylist(playlist) {
-    this.currentPlaylist = playlist;
+    this.playlistId = playlist.id;
     this._router.navigate(['/playlists', playlist.id]);
   }
 

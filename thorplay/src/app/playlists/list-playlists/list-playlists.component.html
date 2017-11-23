@@ -1,8 +1,13 @@
+<input
+  class="input-group"
+  [(ngModel)]="query"
+  placeholder="Filtruj">
+
 <ul class="list-group">
   <li
-    *ngFor="let pl of listPlaylists; let i = index"
+    *ngFor="let pl of listPlaylists | filter:query:'name'; let i = index"
     class="list-group-item"
-    [class.active]="pl == currentPlaylist"
+    [class.active]="pl.id == playlistId"
     (click)="selectPlaylist(pl)"
     [kukuHighlight]="pl.color" defaultColor="blue"
   >

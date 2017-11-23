@@ -11,13 +11,13 @@
           Ulubiona: {{myPlaylist.favorite ? 'tak' : 'nie'}}
           <br/>
         </p>
-        <a (click)="isEditMode = true" href="#" class="btn btn-primary">Edycja</a>
+        <button (click)="isEditMode = true" class="btn btn-primary">Edycja</button>
       </div>
     </div>
   </div>
 
   <div *ngSwitchCase="true">
-    <form (submit)="isEditMode = false">
+    <form>
       <div class="form-group">
         <label for="myPlaylistName">Nazwa listy</label>
         <input
@@ -65,7 +65,7 @@
         </div>
 
       </div>
-      <button class="btn btn-primary">Zapisz</button>
+      <button class="btn btn-primary" (click)="savePlaylist(myPlaylist); isEditMode = false">Zapisz</button>
     </form>
   </div>
 </div>

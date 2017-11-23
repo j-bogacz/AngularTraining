@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Playlist} from "../../playlist";
 import {PlaylistService} from "../playlist.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -10,21 +10,23 @@ import {ActivatedRoute, Router} from "@angular/router";
   encapsulation: ViewEncapsulation.Emulated
 })
 export class PlaylistsPanelComponent implements OnInit {
+  playlistId: number = 0;
   title = 'Tere fere kuku';
   playlists: Playlist[];
-  @Input() hasParam: boolean = false;
 
   constructor(private playlistService: PlaylistService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.playlistId = 0;
     this.playlists = this.playlistService.getAllPlaylists();
-    console.log('start: ', this.hasParam);
+    playlistService.onPlaylistsChange.subscribe(lista => {
+      this.playlists = lista;
+    });
   }
 
   ngOnInit() {
   }
 
   onAcvtivate(event) {
-    console.log('activte:', event);
-    this.hasParam = !isNaN(event.playlistId);
+    this.playlistId = event.playlistId;
   }
 
 }

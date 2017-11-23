@@ -7,6 +7,7 @@ import {PlaylistsPanelComponent} from './playlists-panel/playlists-panel.compone
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {PlaylistService} from "./playlist.service";
+import {FilterPipe} from "../shared/filter.pipe";
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {PlaylistService} from "./playlist.service";
     ListPlaylistsComponent,
     DetailPlaylistsComponent,
     HighlightDirective,
-    PlaylistsPanelComponent]
+    PlaylistsPanelComponent,
+    FilterPipe]
 })
 export class PlaylistsModule {
 }

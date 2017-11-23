@@ -12,6 +12,8 @@ import {PlaylistsPanelComponent} from './playlists/playlists-panel/playlists-pan
 import {PlaylistsModule} from "./playlists/playlists.module";
 import {HomeComponent} from './home/home.component';
 import {ErrorComponent} from './error/error.component';
+import {TestComponent} from './test/test/test.component';
+import {TestPipe} from './test/test.pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,7 +31,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    TestComponent,
+    TestPipe
   ],
   imports: [
     BrowserModule,

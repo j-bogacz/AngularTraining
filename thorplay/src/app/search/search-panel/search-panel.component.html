@@ -1,8 +1,11 @@
-<div class="container">
-  <a routerLink="/search" class="btn btn-primary">Szukaj</a>
-  <a routerLink="/playlists" class="btn btn-primary">Playlisty</a>
-</div>
-<div>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a routerLink="/search" routerLinkActive="active" class="nav-link">Szukaj</a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="/playlists" routerLinkActive="active" class="nav-link">Playlisty</a>
+  </li>
+</ul>
+<br/>
 <kuku-search-view (onSearchTextChange)="findAlbums($event)"></kuku-search-view>
-<kuku-search-result [albums]="albums"></kuku-search-result>
-</div>
+<kuku-search-result [albums]="albums$ | async"></kuku-search-result>

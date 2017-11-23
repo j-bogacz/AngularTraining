@@ -38,7 +38,7 @@ export class SearchViewComponent implements OnInit {
           const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
           observer.next(isError);
           observer.complete();
-        }, 2000);
+        }, 1000);
       });
     };
 
@@ -62,16 +62,15 @@ export class SearchViewComponent implements OnInit {
       ]*/)
     });
     this.searchForm.valueChanges.pipe(
+      debounceTime(500),
       filter(t => {
         return this.searchForm.valid;
-      }),
-      debounceTime(600)
+      })
     ).subscribe((dataIn) => {
       console.log('auto:', dataIn);
       this.onSearchTextChange.emit(dataIn.query);
     });
   }
-
 //folk
   searchSpotify() {
     if (this.searchForm.valid) {

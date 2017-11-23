@@ -1,19 +1,24 @@
-<div class="container">
-  <a routerLink="/search" class="btn btn-primary">Szukaj</a>
-  <a routerLink="/playlists" class="btn btn-primary">Playlisty</a>
-</div>
-
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a routerLink="/search" routerLinkActive="active" class="nav-link">Szukaj</a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="/playlists" routerLinkActive="active" class="nav-link">Playlisty</a>
+  </li>
+</ul>
+<br/>
 <div class="container">
   <div class="row">
     <div class="col-sm-5">
       <kuku-list-playlists
         [listPlaylists]="playlists"
         class="bordered"
+        [playlistId]="playlistId"
       >
       </kuku-list-playlists>
 
     </div>
-    <div class="col-sm-3 alert alert-info" style="height: 60px;" role="alert" *ngIf="!hasParam">
+    <div class="col-sm-3 alert alert-info" style="height: 60px;" role="alert" *ngIf="!playlistId">
       <p class="text-center">Proszę wybrać playlistę z listy</p>
     </div>
     <div class="col-sm-7">

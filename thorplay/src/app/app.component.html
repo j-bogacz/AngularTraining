@@ -6,9 +6,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="">Start</a>
-      <a class="nav-item nav-link" routerLink="playlists">Playlisty</a>
-      <a class="nav-item nav-link" routerLink="search">Szukaj</a>
+      <a class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="">Start</a>
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="search">Szukaj</a>
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="playlists">Playlisty</a>
     </div>
   </div>
 </nav>
