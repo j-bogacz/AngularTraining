@@ -12,7 +12,7 @@
 
     <form
       *ngSwitchDefault
-      (submit)="save"
+      (submit)="save(playlist)"
     >
       <div class="form-group">
         <label for="nameInput">Playlist name</label>
@@ -24,7 +24,6 @@
           [(ngModel)]="playlist.name"
           name="name"
         >
-        <small id="nameHelp" class="form-text text-muted">You typed {{playlist.name}}</small>
       </div>
       <div class="form-group">
         <label for="descriptionInput">Playlist description</label>
@@ -56,7 +55,7 @@
           name="favourite"
         >
       </div>
-      <button type="submit" class="btn btn-primary" (click)="editMode=false">Submit</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 </div>

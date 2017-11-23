@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Playlist} from '../playlist';
 import {ActivatedRoute} from "@angular/router";
-import {PlaylistsService} from "../playlists.service";
+import {PlaylistObject, PlaylistsService} from "../playlists.service";
 
 @Component({
   selector: 'mk-detail-playlist',
@@ -11,24 +11,26 @@ import {PlaylistsService} from "../playlists.service";
 })
 export class DetailPlaylistComponent implements OnInit {
 
-  playlist: Playlist;
+  playlist: Playlist = null;
   idPlaylist: number = 0;
   editMode: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, playlists: PlaylistsService) {
+  constructor(private activatedRoute: ActivatedRoute, private playlistsService: PlaylistsService) {
     console.log('Starting DetailPlaylistComponent');
     this.activatedRoute.params.subscribe((params) => {
-      console.log('Showing playlist for id: ' + params.id, params);
       this.idPlaylist = parseInt(params.id, 10);
-      this.playlist = playlists.getPlaylistById(this.idPlaylist);
+      this.playlist = new PlaylistObject(playlistsService.getPlaylistById(this.idPlaylist));
+      console.log('Showing playlist for id: ' + params.id, this.playlist);
     });
   }
 
   ngOnInit() {
   }
 
-  save() {
+  save(playlist) {
+    console.log('Saving playlist', playlist);
     this.editMode = false;
+    this.playlistsService.savePlaylist(this.playlist);
   }
 
 }
