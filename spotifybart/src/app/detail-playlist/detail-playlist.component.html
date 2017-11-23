@@ -9,7 +9,7 @@
           <br/>
           Favorite {{(playlist.favorite?'Yes':'No')}}
         </p>
-        <a href="#" class="btn btn-primary" (click)="isEditingMode = true">Edit</a>
+        <a routerLink="/playlist/{{playlist.id}}/" class="btn btn-primary" (click)="isEditingMode = true">Edit</a>
       </div>
     </div>
 
