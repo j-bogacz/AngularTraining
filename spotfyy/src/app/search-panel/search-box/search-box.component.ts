@@ -51,14 +51,12 @@ export class SearchBoxComponent implements OnInit {
           Validators.required,
           Validators.minLength(3),
           this.censor('aaa')
-        ], [
-        asyncCensor('babcia')
-      ])
+        ])
     });
     this.searchForm.valueChanges
       .pipe(
-        filter(() => this.searchForm.valid),
-        debounceTime(800)
+        debounceTime(800),
+        filter(() => this.searchForm.valid)
       )
       .subscribe((dataIn) => {
         this.keywordChange.emit(dataIn.keyword);

@@ -13,6 +13,7 @@ import { PlaylistsWrapperComponent } from './playlists-wrapper/playlists-wrapper
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import {PlaylistsSourceService} from "./playlists-source.service";
+import { FilterPipe } from './shared/filter.pipe';
 
 const routes: Routes = [
   {path: 'search', component: SearchPanelWrapperComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
     HighlightDirective,
     PlaylistsWrapperComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    FilterPipe
 
   ],
   imports: [
