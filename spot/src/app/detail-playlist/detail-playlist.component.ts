@@ -16,11 +16,19 @@ export class DetailPlaylistComponent implements OnInit {
   editMode: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, playlists: PlaylistsService) {
-    this.idPlaylist = parseInt(this.activatedRoute.snapshot.params['id'], 10);
-    this.playlist = playlists.getPlaylistById(this.idPlaylist);
+    console.log('Starting DetailPlaylistComponent');
+    this.activatedRoute.params.subscribe((params) => {
+      console.log('Showing playlist for id: ' + params.id, params);
+      this.idPlaylist = parseInt(params.id, 10);
+      this.playlist = playlists.getPlaylistById(this.idPlaylist);
+    });
   }
 
   ngOnInit() {
+  }
+
+  save() {
+    this.editMode = false;
   }
 
 }
