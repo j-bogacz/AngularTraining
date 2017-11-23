@@ -44,7 +44,7 @@ export class AlbumSearchComponent implements OnInit {
           const isError = (control.value && control.value.indexOf(word) !== -1) ? {'badwordasync': word} : null;
           observer.next(isError);
           observer.complete();
-        }, 2000);
+        }, 200);
       });
 
     }
@@ -56,14 +56,15 @@ export class AlbumSearchComponent implements OnInit {
         censor('batman')
       ],
         [
-          asyncCensor('babcia')
+          //asyncCensor('babcia')
         ])
     });
 
     this.searchForm.valueChanges.pipe(
-      filter( () => this.searchForm.valid),
+      debounceTime(500),
+      filter( () => this.searchForm.valid)
         //query => query.searchString.length >= 3),
-      debounceTime(500)
+
     ).subscribe(
       (dataIn) => {
         this.clickBtn.emit(dataIn.searchString);

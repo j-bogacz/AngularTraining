@@ -20,7 +20,7 @@ import {PlaylistService} from './playlist.service';
 const routes: Routes = [
   { path: 'search', component: AlbumWrapperComponent},
   { path: 'playlist', component: WrapperPlaylistComponent, children:[
-    {path: '', component: WrapperPlaylistComponent},
+    {path: '', component: DetailPlaylistComponent},
     {path: ':id', component: DetailPlaylistComponent}
   ]},
   { path: '', component: HomeComponent},
