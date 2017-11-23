@@ -1,7 +1,12 @@
+<input
+  type="text"
+  [(ngModel)] = "query"
+  class="form-control">
+
 <ul class="list-group">
   <li
     class="list-group-item"
-    *ngFor="let playlist of listPlaylists | filter:'70':'name'"
+    *ngFor="let playlist of listPlaylists | filter:query:'name'"
     [ngClass]="{'active': selected == playlist}"
     [bartHighlight]="playlist.color"
     [defaultColor]="'black'"
