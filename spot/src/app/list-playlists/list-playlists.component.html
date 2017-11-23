@@ -1,7 +1,15 @@
+<input
+  type="text"
+  class="form-control"
+  id="filterString"
+  placeholder="Enter filter string"
+  [(ngModel)]="filterString"
+>
+
 <ul class="list-group">
   <li
     class="list-group-item"
-    *ngFor="let playlist of listPlaylists"
+    *ngFor="let playlist of listPlaylists | filter:filterString:'name'"
     routerLink="/playlist/{{playlist.id}}"
     [class.active]="selectedPlaylist == playlist"
     [mkHighlight]="playlist.color"

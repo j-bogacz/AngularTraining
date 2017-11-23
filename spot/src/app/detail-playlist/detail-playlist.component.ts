@@ -14,6 +14,8 @@ export class DetailPlaylistComponent implements OnInit {
   playlist: Playlist = null;
   idPlaylist: number = 0;
   editMode: boolean = false;
+  testDate = new Date();
+
 
   constructor(private activatedRoute: ActivatedRoute, private playlistsService: PlaylistsService) {
     console.log('Starting DetailPlaylistComponent');

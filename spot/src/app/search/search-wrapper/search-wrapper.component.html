@@ -13,7 +13,7 @@
 
   <div class="row">
     <mk-grid-albums
-      [albums]="albums"
+      [albums]="$albums | async"
     ></mk-grid-albums>
   </div>
 </div>

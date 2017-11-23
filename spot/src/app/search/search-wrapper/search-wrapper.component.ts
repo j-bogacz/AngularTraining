@@ -1,6 +1,7 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {SpotifyService} from '../spotify.service';
 import {Album} from '../interfaces';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'mk-search-wrapper',
@@ -10,6 +11,7 @@ import {Album} from '../interfaces';
 })
 export class SearchWrapperComponent implements OnInit {
   albums: Album[];
+  $albums: Observable<Album[]>;
   // albums: any;
 
   @Input() query: string;
@@ -22,8 +24,9 @@ export class SearchWrapperComponent implements OnInit {
   }
 
   search(query: string = 'ACDC') {
-    console.log(query);
-    this.spotify.getAlbums(query).subscribe(albums => this.albums = albums);
+    console.log('Search for ', query);
+    // this.spotify.getAlbums(query).subscribe(albums => this.albums = albums);
+    this.$albums = this.spotify.getAlbums(query);
   }
 
 

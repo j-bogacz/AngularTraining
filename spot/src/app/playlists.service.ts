@@ -28,9 +28,9 @@ export class PlaylistsService {
   }
 
   listPlaylists: Playlist[] = [
-    {id: 1, name: 'Chill', description: 'Chill music for the weekend', favourite: true, color: '#ff0000'},
-    {id: 2, name: 'Relax', description: 'Relax music for the weekend', favourite: false, color: '#00ff00'},
-    {id: 3, name: 'Jazz', description: 'Jazz music for the weekend', favourite: false, color: '#0000ff'}
+    {id: 1, name: 'Chill music', description: 'Chill music for the weekend', favourite: true, color: '#ff0000'},
+    {id: 2, name: 'Relax music', description: 'Relax music for the weekend', favourite: false, color: '#00ff00'},
+    {id: 3, name: 'Jazz music', description: 'Jazz music for the weekend', favourite: false, color: '#0000ff'}
   ];
 
   getPlaylists() {
