@@ -17,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { PlaylistService } from './playlist.service';
 import { FilterPipe } from './shared/filter.pipe';
+import { TestComponent } from './test/test/test.component';
+import { TestPipe } from './test/test.pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -39,7 +41,9 @@ const routes: Routes = [
     WraperPlaylistsComponent,
     HomeComponent,
     ErrorComponent,
-    FilterPipe
+    FilterPipe,
+    TestComponent,
+    TestPipe
   ],
   imports: [
     BrowserModule,
