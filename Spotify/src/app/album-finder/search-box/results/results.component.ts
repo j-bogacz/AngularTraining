@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Album} from "../interfaces";
+import {Album} from "../../interfaces";
 
 @Component({
   selector: 'component-results',

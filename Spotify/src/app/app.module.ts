@@ -21,10 +21,8 @@ const routes: Routes = [
   {path: 'search', component: AlbumFinderComponent},
   {
     path: 'playlists', component: PlaylistsComponent, children: [
-    {path: '', component: PlaylistsComponent},
-    {path: ':id', component: DetailPlaylistsComponent},
-
-  ]
+    {path: '', component: DetailPlaylistsComponent},
+    {path: ':id', component: DetailPlaylistsComponent},]
   },
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

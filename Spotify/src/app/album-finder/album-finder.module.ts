@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 
 import {SearchBoxComponent} from './search-box/search-box.component';
-import {ResultsComponent} from './results/results.component';
+import {ResultsComponent} from './search-box/results/results.component';
 import {AlbumFinderComponent} from './album-finder.component';
 import {DetailsComponent} from './details/details.component';
 import {SpotifyAccessorService} from "./spotify-accessor.service";

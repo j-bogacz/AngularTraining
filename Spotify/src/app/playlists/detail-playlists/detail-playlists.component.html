@@ -1,66 +1,68 @@
 <h1>{{title}}</h1>
 
-<div [ngSwitch]="isInEditMode">
-  <div class="card" style="width: 20rem;" *ngSwitchDefault>
-    <div class="card-body">
-      <h4
-        class="card-title" [style.border-right-color]="playlist.color">{{playlist.name}}
-      </h4>
-      <p class="card-text">
-        {{playlist.description}}<br/>
-        Favorite: {{(playlist.favorite?"Yes":"No")}}
-      </p>
-      <a href="#" class="btn btn-primary" (click)="isInEditMode = true">Edit</a>
+<div *ngIf="playlist">
+  <div [ngSwitch]="isInEditMode">
+    <div class="card" style="width: 20rem;" *ngSwitchDefault>
+      <div class="card-body">
+        <h4
+          class="card-title" [style.border-right-color]="playlist.color">{{playlist.name}}
+        </h4>
+        <p class="card-text">
+          {{playlist.description}}<br/>
+          Favorite: {{(playlist.favorite?"Yes":"No")}}
+        </p>
+        <a class="btn btn-primary" (click)="isInEditMode = true">Edit</a>
+      </div>
     </div>
-  </div>
 
-  <form *ngSwitchCase="true">
-    <div class="form-group">
-      <label for="nameInput">Playlist name</label>
-      <input
-        name="name"
-        type="text"
-        class="form-control"
-        id="nameInput"
-        placeholder="Name"
-        [(ngModel)]="playlist.name"
-        (ngModelChange)="playlist.name = $event"
-      >
-    </div>
-    <div class="form-group">
-      <label for="descriptionInput">Playlist description</label>
-      <input
-        name="description"
-        type="text"
-        class="form-control"
-        id="descriptionInput"
-        placeholder="Description"
-        [(ngModel)]="playlist.description"
-        (ngModelChange)="playlist.description = $event"
-      >
-    </div>
-    <div class="form-group">
-      <label for="colorInput">Playlist color</label>
-      <input
-        name="color"
-        type="color"
-        id="colorInput"
-        [(ngModel)]="playlist.color"
-        (ngModelChange)="playlist.color = $event"
-      >
-    </div>
-    <div class="form-check">
-      <label class="form-check-label">
+    <form *ngSwitchCase="true">
+      <div class="form-group">
+        <label for="nameInput">Playlist name</label>
         <input
-          name="favorite"
-          type="checkbox"
-          class="form-check-input"
-          [(ngModel)]="playlist.favorite"
-          (ngModelChange)="playlist.favorite = $event"
+          name="name"
+          type="text"
+          class="form-control"
+          id="nameInput"
+          placeholder="Name"
+          [(ngModel)]="playlist.name"
+          (ngModelChange)="playlist.name = $event"
         >
-        Is favorite
-      </label>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="isInEditMode = false">Submit</button>
-  </form>
+      </div>
+      <div class="form-group">
+        <label for="descriptionInput">Playlist description</label>
+        <input
+          name="description"
+          type="text"
+          class="form-control"
+          id="descriptionInput"
+          placeholder="Description"
+          [(ngModel)]="playlist.description"
+          (ngModelChange)="playlist.description = $event"
+        >
+      </div>
+      <div class="form-group">
+        <label for="colorInput">Playlist color</label>
+        <input
+          name="color"
+          type="color"
+          id="colorInput"
+          [(ngModel)]="playlist.color"
+          (ngModelChange)="playlist.color = $event"
+        >
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            name="favorite"
+            type="checkbox"
+            class="form-check-input"
+            [(ngModel)]="playlist.favorite"
+            (ngModelChange)="playlist.favorite = $event"
+          >
+          Is favorite
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="isInEditMode = false">Submit</button>
+    </form>
+  </div>
 </div>

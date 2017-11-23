@@ -78,29 +78,30 @@ export class SearchBoxComponent implements OnInit {
       });
     }
 
-    this.queryForm = new FormGroup({
-      'query': new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-        censor('batman')
-      ])
-    });
-
-    // version using async validator
     // this.queryForm = new FormGroup({
     //   'query': new FormControl('', [
     //     Validators.required,
     //     Validators.minLength(3),
-    //     censor('batman')], [
-    //     asyncCensor('babcia')
+    //     censor('batman')
     //   ])
     // });
+
+    // version using async validator
+    this.queryForm = new FormGroup({
+      'query': new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        censor('batman')], [
+        asyncCensor('Westbama')
+      ])
+    });
+
     this.queryForm.patchValue({
       'query': 'Westbam'
     })
     this.queryForm.valueChanges.pipe(
-      filter(value => this.FilterValues(value, this.queryForm)),
-      debounceTime(500))
+      debounceTime(500),
+      filter(value => this.FilterValues(value, this.queryForm)))
       .subscribe(this.OnValueChanges);
   }
 

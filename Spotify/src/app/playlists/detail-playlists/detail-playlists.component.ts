@@ -20,6 +20,13 @@ export class DetailPlaylistsComponent implements OnInit {
   isInEditMode: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private playlistsAccessorService: PlaylistsAccessorService) {
+    this.activatedRoute.params.subscribe(params => {
+      console.log('Current route params: ', params);
+      this.RefreshPlaylist(params);
+    });
+  }
+
+  private RefreshPlaylist(params) {
     this.playlistId = parseInt(this.activatedRoute.snapshot.params['id'], 10);
     this.playlist = this.playlistsAccessorService.GetPlaylist(this.playlistId);
   }
