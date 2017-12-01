@@ -2,4 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+<<<<<<< HEAD
 /Spotify/node_modules
+=======
+/.idea
+>>>>>>> 6781a58b5528b0f21826154635e1f0ef7caa665e
